@@ -1,21 +1,48 @@
-defaults: &defaults
-  pool: 5
-  timeout: 5000
-  encoding: utf8
+defaults:
   adapter: postgresql
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
-  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  encoding: utf8
+  host: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>"
   min_messages: ERROR
+  password: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>"
+  pool: 5
+  port: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>"
   reconnect: false
-
+  timeout: 5000
+  username: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>"
 development:
-  <<: *defaults
-
-test: &test
-  <<: *defaults
-
+  adapter: postgresql
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  encoding: utf8
+  host: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>"
+  min_messages: ERROR
+  password: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>"
+  pool: 5
+  port: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>"
+  reconnect: false
+  timeout: 5000
+  username: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>"
 production:
-  <<: *defaults
+  adapter: postgresql
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  encoding: utf8
+  host: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>"
+  min_messages: ERROR
+  password: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>"
+  pool: 5
+  port: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>"
+  reconnect: false
+  timeout: 5000
+  username: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>"
+test:
+  adapter: postgresql
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  encoding: utf8
+  host: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>"
+  min_messages: ERROR
+  password: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>"
+  pool: 5
+  port: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>"
+  reconnect: false
+  timeout: 5000
+  username: "<%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>"
