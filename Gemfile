@@ -68,7 +68,7 @@ gem 'spring',        group: :development
 
 gem 'jquery-turbolinks'
 
-gem 'devise'
+gem 'devise', '~> 3.5.10'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'rails_admin'
