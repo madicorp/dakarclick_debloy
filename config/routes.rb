@@ -1,9 +1,38 @@
 Rails.application.routes.draw do
+
+
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
+  get 'talking'=> 'talking#index'
+
+  get 'submission' => 'submission#index'
+
+  get 'how_it_works' => 'how_it_works#index'
+
+  get 'confirm' => 'confirm#index'
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
+
+  resources :products do
+  end
+  resources :orders do
+  end
+  resources :auctions do
+      resources :bids , only: [ :create] do
+      end
+  end
+
+  get '404' => 'errors#not_found'
+  get '500' => 'errors#internal_server_error'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -12,7 +41,6 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do
