@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails4Example</title>
+  <title>DakarClic</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-<%= yield %>
-
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= render "images/spinner" %>
+<div class="home-4-waraper">
+  <%= render "header" %>
+  <%= yield %>
+  <%= render "footer"%>
+</div>
+<%= render "modal" %>
 </body>
 </html>

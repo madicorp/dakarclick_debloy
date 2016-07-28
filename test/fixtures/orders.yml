@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference: MyString
+  designation: MyText
+  unit_price_ht: 9.99
+  quantity: 1
+  total_ht: 9.99
+  total_ttc: 9.99
+  created_at: 2016-07-18 03:09:23
+  updated_at: 2016-07-18 03:09:23
+  status: MyString
+  payment_method: MyString
+  belongs_to: 
+
+two:
+  reference: MyString
+  designation: MyText
+  unit_price_ht: 9.99
+  quantity: 1
+  total_ht: 9.99
+  total_ttc: 9.99
+  created_at: 2016-07-18 03:09:23
+  updated_at: 2016-07-18 03:09:23
+  status: MyString
+  payment_method: MyString
+  belongs_to: 

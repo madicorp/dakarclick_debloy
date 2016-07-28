@@ -1,0 +1,57 @@
+<div tabindex="-1" role="dialog" id="credit-modal" class="modal fade account-area" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Recharger Vos Credits</h3>
+        <hr>
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <td class="model">Prix à l'unité</td>
+            <td><span class="price">100 F CFA</span></td>
+            <td class="align-right">
+              <div class="cart-quantity">
+                <div class="product-quantity">
+                  <div class="cart-quantity">
+                    <div class="cart-plus-minus">
+                      <div class="dec qtybutton">-</div>
+                      <input type="text" value="1" name="qtybutton" class="cart-plus-minus-box">
+                      <div class="inc qtybutton">+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="tfoot cart-total">
+          <table class="table table-hover">
+            <tbody>
+            <tr>
+              <td class="left"><b>Sub-Total:</b></td>
+              <td class="right s_total">100 <em>F CFA</em></td>
+            </tr>
+            <tr>
+              <td class="left "><b>VAT (18%):</b></td>
+              <td class="right tva">18 <em>FCFA</em></td>
+            </tr>
+            <tr>
+              <td class="left  last"><b>Total:</b></td>
+              <td class="right total  last">100 <em>F CFA</em></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Commander", new_order_path(qte: "1" ,tva: "18" ,total: "118") , class: "btn btn-default link_commande" %>
+      </div>
+    </div>
+
+  </div>
+</div>

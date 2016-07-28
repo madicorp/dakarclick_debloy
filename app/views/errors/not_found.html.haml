@@ -1,0 +1,17 @@
+.breadcumb-area
+  .container
+    .row
+      .col-md-12
+        %ol.breadcrumb
+          %li.home
+            =link_to "Accueil" , root_path
+          %li.active 404
+/ breadcumb-area end
+/ 404 content start
+.error404.text-center.pb50
+  .container
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .image-404
+          =image_tag "404image.png"
+          %h1 Oops ! Cette page est introuvable.

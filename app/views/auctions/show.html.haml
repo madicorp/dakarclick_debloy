@@ -1,0 +1,39 @@
+.single-auction.product-wraper.mt60
+  .single-prodcut-area
+    .container
+      .row.row-padd
+        .col-md-5.col-sm-6.col-xs-12.col-padd
+          .auction.product-zoom-area
+            .imgs-area
+              / <img id="zoom_03" src="img/auction.product/h8-380x320.jpg" data-zoom-image="img/auction.product/large/h8-680x573.jpg" alt="">
+              = image_tag @auction.product.image , id: "zoom_03"
+        .col-md-7.col-sm-6.col-xs-12.col-padd
+          .single-prodcut-des
+            .auction.product-name
+              %h3= @auction.product.name
+            .auction.product-des
+              %ul
+                %li Chaque offre augmente l'enchère  de #{@auction.valuetoinc} FCFA
+                %li.infogagn
+                  -if @auction.top_bid.present?
+                    -if current_user
+                      -if @auction.top_bid.user_id == current_user.id
+                        Félicitations ,vous êtes temporairement le gagnant.
+                      -else
+                        Ooopss. Vous êtes hors enchère en ce moment.
+              .running-price.desblockprice
+                %h1.desprice #{@auction.current_bid} FCFA
+                -if current_user
+                  =render "bid"
+                -else
+                  %p
+                    .cart-btn.nopad
+                      %a.white{:href => "#login-modal", :title => "Enchérir" , "data-toggle" => "modal" }
+                        Enchérir
+                      %a.wishl{:href => "#", :title => "Ajouter aux souhaits"}
+                        %i.fa.fa-heart
+            .count-bought
+              .time-counter
+                %div{"data-countdown" => @auction.auction_close}
+              .bought
+                %span.nbench #{@auction.bids.size} Enchères

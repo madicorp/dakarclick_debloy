@@ -1,0 +1,103 @@
+=render "newsletter"
+/ footer area start
+#bt_footer_container.footer-area
+  %footer#bt_footer
+    .container
+      .row
+        .footer_column.pt40.pb40
+          .footer_column_content.col-sm-8.col-xs-12
+            .bt-information.column.col-sm-4.col-xs-12
+              %h3
+                %span Information
+              %ul
+                %li
+                  %a{:href => "about-us.html"} About Us
+                %li
+                  %a{:href => "login.html"} Delivery Information
+                %li
+                  %a{:href => "login.html"} Privacy Policy
+                %li
+                  %a{:href => "login.html"} Terms & Conditions
+                %li
+                  %a{:href => "contact.html"} Contact Us
+                %li
+                  %a{:href => "login.html"} Site Map
+            .bt-service.column.col-sm-4.col-xs-12
+              %h3
+                %span Extras
+              %ul
+                %li
+                  %a{:href => "shop.html"} Returns
+                %li
+                  %a{:href => "shop.html"} Brands
+                %li
+                  %a{:href => "shop.html"} Gift Vouchers
+                %li
+                  %a{:href => "shop.html"} Specials
+            .bt-account.column.col-sm-4.col-xs-12
+              %h3
+                %span My Account
+              %ul
+                %li
+                  %a{:href => "login.html"} Newsletter
+                %li
+                  %a{:href => "blog.html"} Order History
+                %li
+                  %a{:href => "login.html"} Affiliates
+                %li
+                  %a{:href => "wishlist.html"} Wish List
+            .ads_payment
+              .b_footer_ads
+                %a{:href => "#", :title => "Google Play"}
+                  =image_tag  "icon/google_play.png"
+                %a{:href => "#", :title => "App Store"}
+                  =image_tag  "icon/app_store.png"
+              .payment
+                %ul
+                  %li
+                    %a.visa.active{:href => "#", :title => "Visa"}
+                      =image_tag  "icon/ads_visa.png"
+                  %li
+                    %a.masterCard.active{:href => "#", :title => "MasterCard"}
+                      =image_tag "icon/ads_meastro.png"
+                  %li
+                    %a.cirrus.active{:href => "#", :title => "Cirrus"}
+                      =image_tag "icon/ads_cirrus.png"
+                  %li
+                    %a.discover.active{:href => "#", :title => "Discover"}
+                      =image_tag "icon/ads_discover.png"
+                  %li
+                    %a.bank.active{:href => "#", :title => "Bank"}
+                      =image_tag  "icon/ads_bank.png"
+          .bt-information.column.col-sm-4.col-xs-12
+            %a{:href => "#", :title => "logo"}
+              =image_tag  "logo_bas.png"
+            .b_static_footer
+              %h3
+                %span Customer Center
+              %p.street
+                %i.fa.fa-map-marker
+                123 Street name, City, ABC
+              %p.support
+                %i.fa.fa-envelope
+                admin@bootexparts.com
+              %p.service
+                %i.fa.fa-life-ring
+                Customer Service (8:00-17h:00)
+              %p.phone
+                (123) 456-7890
+                %br/
+                (123) 456-7890
+    .powered-payment
+      .container
+        .row
+          .powered.col-sm-12.col-xs-12.pull-left
+            #powered
+              %p
+                Copyright © 2016 - DakarClick. All rights Reserved.
+                %span
+                  Powered by
+                  %a{:href => "http://madi-corp.net/"} MADICORP
+                  / footer area end
+%a#scrollUp{:href => "#top", :style => "display: none; position: fixed; z-index: 2147483647;"}
+  %i.fa.fa-angle-up

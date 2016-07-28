@@ -1,0 +1,42 @@
+<!--  breadcumb-area start -->
+<div class="breadcumb-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li class="home"><a href="index.html" title="Go to Home Page">Home</a></li>
+          <li class="active">Forgot your password?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  breadcumb-area end -->
+<!-- Account Area Start -->
+<div class="account-area pb60">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-xs-12 col-sm-offset-2">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="login-reg">
+              <h3>Forgot your password?</h3>
+              <div class="form-group">
+                <%= f.label :email, :class=>"control-label" %>
+                <%= f.email_field :email, :class=>"form-control", :placeholder=>"E-Mail", autofocus: true %>
+              </div>
+            </div>
+            <div class="frm-action">
+              <div class="buttons common-btn chec">
+                <%= f.submit  "Send me reset password instructions", :class=>"btn btn-primary", :dataLoadingText=>"Loading..." %>
+              </div>
+              <div class="forgotten">
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Account Area End -->

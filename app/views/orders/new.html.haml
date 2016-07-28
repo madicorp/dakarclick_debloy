@@ -1,0 +1,23 @@
+/ breadcumb-area start
+.breadcumb-area
+  .container
+    .row
+      .col-md-12
+        %ol.breadcrumb
+          %li.home
+            %a{:href => "index.html", :title => "Go to Home Page"} Accueil
+          %li.active Commande
+/ breadcumb-area end
+
+/ Checkout process area start
+.checkout-area
+  .container
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .form-title
+          %h1 Nouvelle commande
+        = render 'form'
+
+/ checkout process area end
+
+= link_to 'Back', orders_path

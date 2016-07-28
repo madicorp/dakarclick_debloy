@@ -1,0 +1,145 @@
+<!--  breadcumb-area start -->
+<div class="breadcumb-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li class="home"><a href="index.html" title="Go to Home Page">Home</a></li>
+          <li class="active">My-Account</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  breadcumb-area end -->
+<!--my-account area start-->
+<div class="my-account-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="form-title">
+          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        </div>
+        <div class="panel-group pb60" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel super-accordion">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#billingInformation" aria-expanded="false" aria-controls="billingInformation">
+                   <span class="icon-lft">
+                      <i class="fa fa-file-o"></i>
+                  </span>
+                  <span class="acdr-tit">My Credit Slip</span>
+                  <span><i class="fa fa-caret-down"></i></span>
+                </a>
+              </h4>
+            </div>
+            <div id="billingInformation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <div class="chk-optn">
+                  <p>Credit slips you have received after canceled orders. </p>
+                  <div>
+                    <p class="warning">You have not received any credit slips.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel super-accordion">
+            <div class="panel-heading" role="tab" id="headingfour">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#delivery-method" aria-expanded="false" aria-controls="delivery-method">
+                 <span class="icon-lft">
+                      <i class="fa fa-user"></i>
+                  </span>
+                  <span class="acdr-tit">My Personal Information</span>
+                  <span><i class="fa fa-caret-down"></i></span>
+                </a>
+              </h4>
+            </div>
+            <div id="delivery-method" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 col-xs-12  left">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                        <%= devise_error_messages! %>
+                      <fieldset id="billing-det">
+                        <div class="form-group required">
+                          <label class="control-label" for="input-payment-firstname">First Name<em>*</em></label>
+                          <input type="text" name="firstname" value="" placeholder="First Name" id="input-payment-firstname" class="form-control">
+                        </div>
+                        <div class="form-group required">
+                          <label class="control-label" for="input-payment-lastname">Last Name<em>*</em></label>
+                          <input type="text" name="lastname" value="" placeholder="Last Name" id="input-payment-lastname" class="form-control">
+                        </div>
+                        <div class="form-group required">
+                          <%= f.label :email, :class => "control-label" %>
+                          <%= f.email_field :email, :class => "form-control", :placeholder=> "E-Mail" , autofocus: true %>
+                          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                          <% end %>
+                        </div>
+                        <div class="form-group required">
+                          <label class="control-label" for="input-payment-telephone">Telephone<em>*</em></label>
+                          <input type="text" name="telephone" value="" placeholder="Telephone" id="input-payment-telephone" class="form-control">
+                        </div>
+
+                        <div class="form-group required">
+                          <%= f.label :password, :class => "control-label" %><i>(leave blank if you don't want to change it)</i>
+                          <%= f.password_field :password, :class => "form-control", :placeholder=> "New Password" ,  autocomplete: "off" %>
+                        </div>
+                        <div class="form-group required">
+                          <%= f.label :password_confirmation, :class => "control-label" %>
+                          <%= f.password_field :password_confirmation, :class => "form-control", :placeholder=> "Password" ,  autocomplete: "off" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :current_password, :class => "control-label" %><i>(we need your current password to confirm your changes)</i>
+                          <%= f.password_field :current_password, :class => "form-control", :placeholder=> "Currant Password" , autocomplete: "off" %>
+                        </div>
+                      </fieldset>
+
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="shipping_address" value="1" checked="checked"> Sign up for our newsletter!
+                        </label>
+                        <label>
+                          <input type="checkbox" name="shipping_address" value="1" checked="checked">Receive special offers from our partners!
+                        </label>
+                      </div>
+                      <div class="buttons common-btn">
+                        <%= f.submit "Update", :class => "btn btn-primary", :dataLoadingText => "Loading..." %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel super-accordion">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#cancelAcount" aria-expanded="false" aria-controls="billingInformation">
+                   <span class="icon-lft">
+                      <i class="fa fa-file-o"></i>
+                  </span>
+                  <span class="acdr-tit">Cancel my account</span>
+                  <span><i class="fa fa-caret-down"></i></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cancelAcount" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <div class="chk-optn">
+                  <h3>Cancel my account</h3>
+                  <div>
+                    <p class="warning">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--my-account area end-->

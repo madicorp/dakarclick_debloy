@@ -1,0 +1,86 @@
+.b_header_middle#top
+  .container
+    .row
+      .top_left.col-md-6.col-sm-6.col-xs-6.pull-left
+        .language_currency
+          %form.language{:action => "#", :method => "post"}
+            .btn-group
+              %button.btn-link.dropdown-toggle{"data-toggle" => "dropdown"}
+                %strong
+                  = image_tag "icon/gb.png" , title: "English" , alt:"English"
+                  %b Langue
+                %i.fa.fa-angle-down
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"}
+                    = image_tag "icon/de.png" , title: "Deutsch" , alt:"Deutsch"
+                    %span Deutsch
+                %li
+                  %a{:href => "#"}
+                    = image_tag "icon/gb.png" , title: "English" , alt:"English"
+                    %span English
+      .top_right.col-md-6.col-sm-6.col-xs-.pull-right
+        .footer-social
+          %ul
+            %li.facebook
+              %a{"data-original-title" => "Facebook", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#"}
+                %i.fa.fa-facebook
+            %li.twitter
+              %a{"data-original-title" => "Twitter", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#"}
+                %i.fa.fa-twitter
+            %li.googleplus
+              %a{"data-original-title" => "Googleplus", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#"}
+                %i.fa.fa-google-plus
+            %li.youtube
+              %a{"data-original-title" => "Youtube", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#"}
+                %i.fa.fa-youtube-play
+            %li.instagram
+              %a{"data-original-title" => "Instagram", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#"}
+                %i.fa.fa-instagram
+
+.main-header.pt20.pb20
+  .container
+    .row
+      .col-md-3.col-lg-3.col-sm-3.col-xs-12
+        .logo
+          %a{:href => root_path}
+            =image_tag  "logo.png"
+      .col-md-6.col-lg-6.col-sm-6.col-xs-12
+        .search-catagory
+          .categori
+            %form#select-categoris.form-horizontal{:method => "post"}
+              .search-bar
+                %input{:placeholder => "search hear...", :type => "text"}/
+                %i.fa.fa-search
+      .col-md-3.col-lg-3.col-sm-3.col-xs-12
+        .top-links
+          %ul.list-inline
+            -if current_user
+              %li
+                %a.wishlist-total{:href => "#", :title => "Wish List (0)"}
+                  %i.pe-7s-like
+                  %span.messunits #{current_user.units} Unités
+                  %a.btn.btn-default{"data-toggle" => "modal", :href => "#credit-modal"}
+                    %span.fa.fa-plus
+              %li
+                %a.dropdown-toggle.my_account{"data-toggle" => "dropdown", :href => "#", :title => "My Account"}
+                  %i.fa.fa-lock
+                  %span= current_user.name
+                  %i.fa.fa-angle-down
+                %ul.dropdown-menu.dropdown-menu-right
+                  %li
+                    =link_to "Profil" , edit_user_registration_path
+                  %li
+                    =link_to "Déconnexion" , destroy_user_session_path, method: :delete
+            -else
+              %li
+                %a{"data-toggle" => "modal", :href => "#login-modal", :title => "Connexion", :class=>"btn btn-login dis-left"}
+
+                  %span
+                    %i.fa.fa-sign-in
+                    Connexion
+              %li
+                %a{"data-toggle" => "modal", :href => "#signup-modal", :title => "Inscription", :class=>"btn btn-register dis-left"}
+                  %span
+                    %i.fa.fa-user
+                    Inscription

@@ -1,0 +1,90 @@
+= form_for @order do |f|
+  - if @order.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+
+  #accordion.panel-group.pb60{"aria-multiselectable" => "true", :role => "tablist"}
+    .panel.super-accordion
+      #headingfive.panel-heading{:role => "tab"}
+        %h4.panel-title
+          %a.collapsed{"aria-controls" => "payment-information", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#payment-information"}
+            Choix de paiement
+            %span
+              %i.fa.fa-caret-down
+      #payment-information.panel-collapse.collapse{"aria-labelledby" => "headingfive", :role => "tabpanel"}
+        .panel-body
+          .row
+            .col-sm-12.col-xs-12
+              %fieldset#pay-info.required
+                .content-info
+                  .checkout-option
+                    %form{:action => "#"}
+                      .method-input-box
+                        %p
+                          %input{:checked => "checked",:name => "payment", :type => "radio", :value => "paydunya"}/
+                          %label
+                            %span
+                              =image_tag "icon/paydunya.png"
+                        %p
+                          %input{ :name => "payment", :type => "radio", :value => "paypal"}/
+                          %label
+                            %span
+                              =image_tag "icon/paypal.png"
+
+    .panel.super-accordion
+      #headingsix.panel-heading{:role => "tab"}
+        %h4.panel-title
+          %a.collapsed{"aria-controls" => "confirm-order", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#confirm-order"}
+            Detail Commande
+            %span
+              %i.fa.fa-caret-down
+      #confirm-order.panel-collapse.collapse{"aria-labelledby" => "headingsix", :role => "tabpanel"}
+        .panel-body
+          .table-responsive
+            %table.table.table-bordered
+              %tbody
+                %tr
+                  %td.model Prix à l'unité
+                  %td
+                    %span.price 100 FCFA
+                  %td.align-right
+                    .cart-quantity
+                      .product-quantity
+                        .cart-quantity
+                          .cart-plus-minus
+                            .dec.qtybutton -
+                            =f.text_field :quantity , class: "cart-plus-minus-box"
+                            .inc.qtybutton +
+            .tfoot.cart-total
+              %table.table.table-hover
+                %tbody
+                  %tr
+                    %td.left
+                      %b Sub-Total:
+                    %td.right.s_total
+                      = @order.total_ht
+                      %em F CFA
+                  %tr
+                    %td.left
+                      %b VAT (18%):
+                    %td.right.tva
+                      = @order.total_ttc - @order.total_ht
+                      %em F CFA
+                  %tr
+                    %td.left.last
+                      %b Total:
+                    %td.right.total.last
+                      = @order.total_ttc
+                      =f.hidden_field :total_ttc
+                      =f.hidden_field :total_ht
+
+                      %em F CFA
+          .buttons.common-btn
+            -if current_user
+              =f.button "Commander" ,"data-loading-text" => "Loading...", class: "btn btn-primary"
+            -else
+              %a{:href => "#login-modal", :title => "Commander" , "data-toggle" => "modal" , class: "btn btn-primary" , type: "button" }
+                Commander

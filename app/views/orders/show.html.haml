@@ -1,0 +1,16 @@
+/ breadcumb-area start
+.breadcumb-area
+  .container
+    .row
+      .col-md-12
+        %ol.breadcrumb
+          %li.home
+            %a{:href => "index.html", :title => "Go to Home Page"} Home
+          %li.active Checkout
+/ breadcumb-area end
+%p#notice= notice
+
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path
