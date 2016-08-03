@@ -7,7 +7,7 @@
 development:
   host: ec2-54-243-47-83.compute-1.amazonaws.com
   adapter: postgresql
-  database: dakarclickdb
+  database: d8fv33r2dl1pcd
   username: qvbpwbgztzpina
   password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
   port: 5432
@@ -20,7 +20,7 @@ development:
 test:
   host: ec2-54-243-47-83.compute-1.amazonaws.com
   adapter: postgresql
-  database: dakarclickdb
+  database: d8fv33r2dl1pcd
   username: qvbpwbgztzpina
   password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
   port: 5432
@@ -30,7 +30,7 @@ test:
 production:
   host: ec2-54-243-47-83.compute-1.amazonaws.com
   adapter: postgresql
-  database: b3ozi0nnelubeda
+  database: d8fv33r2dl1pcd
   username: qvbpwbgztzpina
   password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
   port: 5432
