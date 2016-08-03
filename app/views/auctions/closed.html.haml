@@ -1,0 +1,23 @@
+.best-deals-area.pt60#closed
+  .container
+    .row
+      .col-md-12
+        .title.pb30
+          %h1 Enchères terminées
+    .row.row-padd
+      - @auctionClosed.each do |auction|
+        .col-md-3.col-sm-3.col-padd-custom
+          .single-product{:id => "auction#{auction.id}"}
+            .av_title= auction.product.name
+            .product-img
+              %a{:href => "#"}
+                =image_tag auction.product.image
+              .best-deal-tag
+            .single-product-text
+              .price-type
+                .old-price
+                  %span= auction.topbid_user
+                .running-price
+                  %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
+#infinite-scroll
+  = will_paginate @auctionClosed

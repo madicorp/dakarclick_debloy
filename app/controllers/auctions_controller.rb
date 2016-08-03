@@ -15,6 +15,21 @@ class AuctionsController < ApplicationController
     # GET /auctions/1.json
     def show
       @auction = Auction.find(params[:id])
+      @auction = Auction.find(params[:id])
+      if ! current_user.nil?
+        @robot = Robot.find_by_user_id_and_auction_id  current_user.id , @auction.id
+      end
+      if @robot.nil?
+        @robot = Robot.new
+      end
+    end
+
+    def closed
+        @auctionClosed  = Auction.paginate(page: params[:page]).order('created_at DESC').where("auctions.auction_close < ?", Time.now)
+    end
+
+    def online
+        @auctionOnline  = Auction.paginate(page: params[:page]).order('created_at DESC').where("auctions.auction_close > ?", Time.now)
     end
 
     private

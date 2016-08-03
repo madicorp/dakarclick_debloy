@@ -1,6 +1,8 @@
 class Auction < ActiveRecord::Base
   belongs_to :product
   has_many :bids
+  has_many :robots
+  belongs_to :user
 
   def top_bid
       bids.order(value: :desc).first
@@ -15,11 +17,15 @@ class Auction < ActiveRecord::Base
   end
 
   def topbid_user
-      if(top_bid.nil?)
+      if top_bid.nil?
           '...'
       else
           user = User.find_by_id top_bid.user_id
-          user.name
+          user.id if !user.nil?
       end
+  end
+
+  def active_robots
+    Robot.joins(:auction).where(:is_active => true, :auction_id => self.id)
   end
 end

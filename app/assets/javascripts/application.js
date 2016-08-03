@@ -13,6 +13,9 @@
 //= require jquery.min
 //= require jquery.turbolinks.min
 //= require bootstrap-sprockets
+//= require bootstrap-switch
+//= require jquery.form
+//= require jquery-duration-picker
 //= require mustache
 //= require meanmenu
 //= require jquery.nivo.slider
@@ -21,9 +24,14 @@
 //= require jquery.countdown.min
 //= require jquery.fancybox.pack
 //= require jquery.elevateZoom-3.0.8.min
+//= require card
 //= require main
 //= require auction_websocket
 //= require turbolinks
+//= require order
+//= require robot
+//= require chat_websocket
+
 
     $(document).on('ready page:change',function (event) {
         (function ($) {
@@ -75,23 +83,23 @@
     });
 
 
-    // show spinner on AJAX start
-    $(document).ajaxStart(function(){
-        $(".bg_load").show();
-    });
-
-    // hide spinner on AJAX stop
-    $(document).ajaxStop(function(){
-        $(".bg_load").hide();
-    });
-
-    $(document).on("ready page:update", function(){
-        $(".bg_load").show();
-    });
-
-    $(document).on("ready page:receive", function(){
-        $(".bg_load").hide();
-    });
+    // // show spinner on AJAX start
+    // $(document).ajaxStart(function(){
+    //     // $(".bg_load").show();
+    // });
+    //
+    // // hide spinner on AJAX stop
+    // $(document).ajaxStop(function(){
+    //     // $(".bg_load").hide();
+    // });
+    //
+    // $(document).on("ready page:update", function(){
+    //     // $(".bg_load").show();
+    // });
+    //
+    // $(document).on("ready page:receive", function(){
+    //     // $(".bg_load").hide();
+    // });
 
 
 

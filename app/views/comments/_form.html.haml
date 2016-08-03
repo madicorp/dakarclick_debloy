@@ -1,0 +1,48 @@
+.chat_window
+  .top_menu
+    .buttons
+      .button.close
+      .button.minimize
+      .button.maximize
+    .title Chat
+  %ul.messages#media-list
+    = render "comment"
+  .bottom_wrapper.clearfix
+    = form_for @comment, remote: true do |f|
+      .message_input_wrapper
+        = f.text_field :body, class: 'message_input', required: true, placeholder: "Type your message here..."
+      -if current_user
+        .send_message#send-msg-btn
+          .icon
+          .text
+            Envoyer
+      -else
+        .send_message
+          %a{:href => "#login-modal", :title => "Envoyer" , "data-toggle" => "modal"}
+            .icon
+            .text
+              Envoyer
+.message_template
+  %li.message
+    .avatar
+    .text_wrapper
+      .text
+-if current_user
+  :javascript
+
+      $(function(){
+
+      App = {
+        websocket_url: "ws://#{request.host}:#{request.port}/"
+      };
+
+        var user_id = "#{current_user.id}";
+        var form = $("#new_comment");
+
+        var chatSocket = new ChatSocket(
+          user_id,
+          form
+        );
+
+
+    });

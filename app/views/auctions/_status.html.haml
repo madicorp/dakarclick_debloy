@@ -1,7 +1,8 @@
--if @product.auction.top_bid.present?
-  -if @product.auction.top_bid.user ==current_user
-    %p You won the auction!
+%li.infogagn
+  -if @auction.top_bid.present?
+    -if @auction.top_bid.user ==current_user
+      Félicitations , vous êtes le gagnant.
+    -else
+      Desolé, vous avez perdu l'enchère.
   -else
-    %p Sorry you lost the auction!
--else
-  %p The auction have no winner!
+    L'enchère n'a malheureusement pas de gagnant!

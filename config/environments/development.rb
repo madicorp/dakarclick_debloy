@@ -46,4 +46,6 @@ Rails.application.configure do
   config.log_level = :debug
 
   config.consider_all_requests_local = false
+
+  Paperclip.options[:command_path] = "C:/Windows/system32/convert"
 end

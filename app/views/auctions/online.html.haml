@@ -1,0 +1,35 @@
+.best-deals-area.pt60#online
+  .container
+    .row
+      .col-md-12
+        .title.pb30
+          %h1 Enchères en cours
+        .pull-right
+          .btn.seemore
+            =link_to "Plus" , "#"
+    .row.row-padd
+      - @auctionOnline.each do |auction|
+        .col-md-3.col-sm-3.col-padd-custom
+          .single-product{:id => "auction#{auction.id}"}
+            .av_title= auction.product.name
+            .product-img
+              %a{:href => "#", class: "btngo"}
+                =image_tag auction.product.image
+              .time-ratting-bought-custom
+                .time-counter
+                  .countdown{"data-countdown" => auction.auction_close}
+            .single-product-text
+              .price-type
+                .old-price
+                  %span= auction.top_bid.user.name unless auction.top_bid.nil?
+                .running-price
+                  %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
+              .cart-btn
+                =link_to "GO", auction , class: "btngo"
+                -#-if current_user
+                -#  =link_to "GO", auction, data: { toogle:"modal" , target: "#auction-modal"} , :title => "GO" , class: "btngo"
+                -#-else
+                -#  %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
+                -#    GO
+#infinite-scroll
+  = will_paginate @auctionOnline

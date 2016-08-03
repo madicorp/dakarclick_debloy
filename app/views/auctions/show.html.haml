@@ -1,4 +1,4 @@
-.single-auction.product-wraper.mt60
+.single-product-wraper.mt60
   .single-prodcut-area
     .container
       .row.row-padd
@@ -14,13 +14,16 @@
             .auction.product-des
               %ul
                 %li Chaque offre augmente l'enchère  de #{@auction.valuetoinc} FCFA
-                %li.infogagn
+                %li.infogagn#infogagn
                   -if @auction.top_bid.present?
                     -if current_user
-                      -if @auction.top_bid.user_id == current_user.id
+                      -if @auction.topbid_user == current_user.id
                         Félicitations ,vous êtes temporairement le gagnant.
                       -else
                         Ooopss. Vous êtes hors enchère en ce moment.
+              .price-type
+                -if current_user
+                  =render "robot"
               .running-price.desblockprice
                 %h1.desprice #{@auction.current_bid} FCFA
                 -if current_user
@@ -30,10 +33,13 @@
                     .cart-btn.nopad
                       %a.white{:href => "#login-modal", :title => "Enchérir" , "data-toggle" => "modal" }
                         Enchérir
-                      %a.wishl{:href => "#", :title => "Ajouter aux souhaits"}
-                        %i.fa.fa-heart
             .count-bought
               .time-counter
                 %div{"data-countdown" => @auction.auction_close}
               .bought
                 %span.nbench #{@auction.bids.size} Enchères
+-if !current_user.nil?
+  :javascript
+    $(function() {
+            sessionStorage.setItem('ours', "#{current_user.id}");
+     })

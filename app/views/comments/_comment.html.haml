@@ -1,0 +1,9 @@
+- @comments.each do |comment|
+  %li.message.appeared{"data-id" => comment.id, class:  load_class(comment.user)}
+    .avatar
+      = image_tag(profile_avatar(comment.user), alt: comment.user.name , width: 60 , height: 60, class: 'media-object pull-left' )
+    .text_wrapper
+      .text
+        =comment.body
+      %span
+        #{comment.user.name} : #{comment.created_at.strftime('%d/%m/%Y, %H:%M:%S')}

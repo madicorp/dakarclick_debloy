@@ -33,7 +33,13 @@ $(document).on('ready page:change', function(event) {
         var $this = $(this),
             finalDate = $(this).data('countdown');
         $this.countdown(finalDate, function(event) {
-            $this.html(event.strftime('<span class="cdown days"><span class="time-count">%-D<span>J</span></span></span><span class="cdown hour"><span class="time-count">%-H<span>H</span></span></span><span class="cdown minutes"><span class="time-count">%M<span>M</span></span></span> <span class="cdown second"><span class="time-count">%S<span>S</span></span></span>'));
+
+        $this.html(event.strftime('<span class="cdown days"><span class="time-count">%-D<span>J</span></span></span><span class="cdown hour"><span class="time-count">%-H<span>H</span></span></span><span class="cdown minutes"><span class="time-count">%M<span>M</span></span></span> <span class="cdown second"><span class="time-count">%S<span>S</span></span></span>'));
+        if(event.type == 'finish')
+        {
+            console.log(event);
+        }
+
         });
     });
 
@@ -154,6 +160,8 @@ $(document).on('ready page:change', function(event) {
         $(".cart-total").find(".s_total").html( s_total+ " <em>F CFA</em>");
         $(".cart-total").find(".tva").html(tva + " <em>F CFA</em>");
         $(".cart-total").find(".total").html((s_total + tva) + " <em>F CFA</em>");
+        $("#order_total_ttc").val(s_total + tva);
+        $("#order_total_ht").val(s_total);
     });
     $(".cart-plus-minus")
     $(".qtybutton").on("click", function() {
@@ -175,6 +183,8 @@ $(document).on('ready page:change', function(event) {
         $(".cart-total").find(".s_total").html(s_total + " <em>F CFA</em>");
         $(".cart-total").find(".tva").html(tva + " <em>F CFA</em>");
         $(".cart-total").find(".total").html(s_total + tva + " <em>F CFA</em>");
+        $("#order_total_ttc").val(s_total + tva);
+        $("#order_total_ht").val(s_total);
         $(".cart-plus-minus-box").trigger('input');
     });
 
@@ -219,6 +229,5 @@ $(document).on('ready page:change', function(event) {
         $(this).toggleClass('clicked');
         $(".masud").slideToggle();
     });
-
-
+    
 });

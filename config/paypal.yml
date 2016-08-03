@@ -1,0 +1,29 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: AXgeWJbs3adMdPDrUshhI9GG0Qx2pE66wgGILsGjTSjyd5R3uuG7T96xlThAK7MTO82iFwF0cVsKDo_M
+  client_secret: EPA_oM-wjeyFIB8_LJk42BX5ajvMQJJc4ilnGGDETvXe4286ec7cme8UGEBgnZDqZZzV1ABb4YdPJ3uR
+
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  #app_id: APP-80W284485P519543T
+  #username: khouleibrahima-facilitator_api1.gmail.com
+  #password: MUEHGMGB2EMP42GB
+  #signature: AFcWxV21C7fd0v3bYYYRCpSSRl31ABDob6nEz9JibN-2LP9ZKfRnBnU1
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: Platform.sdk.seller@gmail.com
+
+  # # IP Address
+  # ip_address: 127.0.0.1
+  # # HTTP Proxy
+  # http_proxy: http://proxy-ipaddress:3129/
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  mode: live

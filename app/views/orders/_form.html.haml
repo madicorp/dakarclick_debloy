@@ -21,19 +21,43 @@
               %fieldset#pay-info.required
                 .content-info
                   .checkout-option
-                    %form{:action => "#"}
-                      .method-input-box
-                        %p
-                          %input{:checked => "checked",:name => "payment", :type => "radio", :value => "paydunya"}/
-                          %label
-                            %span
-                              =image_tag "icon/paydunya.png"
-                        %p
-                          %input{ :name => "payment", :type => "radio", :value => "paypal"}/
-                          %label
-                            %span
-                              =image_tag "icon/paypal.png"
-
+                    .method-input-box.row
+                      .col-md-6.col-md-offset-3
+                        .row
+                          .col-xs-4
+                            =image_tag "icon/credit-card.png", :class => ' btn-radio img-responsive img-radio', :style => "opacity: 1; border: 1px solid #1253a4"
+                            %button.btn.btn-dakarclick.btn-radio.active{:type => "button"} Carte
+                            =f.radio_button :payment_method, "card", :class => "hidden", :id => 'card-item', :checked => true, :required => true
+                          .col-xs-4
+                            =image_tag "icon/paydunya.png", :class => ' btn-radio img-responsive img-radio'
+                            %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paydunya
+                            =f.radio_button :payment_method , "paydunya", :class => "hidden", :id => 'paydunya-item'
+                          .col-xs-4
+                            =image_tag "icon/paypal.png", :class => ' btn-radio img-responsive img-radio'
+                            %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paypal
+                            =f.radio_button :payment_method, "paypal", :class => "hidden", :id => 'paypal-item'
+                    .space-40
+                    .row.card-info-block
+                      .col-xs-6
+                        .card-wrapper
+                      .col-xs-6
+                        .card-info
+                          %input{:name=>"card[type]", :type => "hidden"}
+                          .row
+                            .row
+                            .col-md-6
+                              %input.form-control{:name => "card[firstname]", :type => "text", :placeholder => "Prenom"}/
+                            .col-md-6
+                              %input.form-control{:name => "card[lastname]", :type => "text", :placeholder => "Nom"}/
+                            .col-md-12
+                              %input.form-control{:name => "card[number]", :type => "text", :placeholder => "Numero Carte"}/
+                          .row
+                            .col-md-4
+                              %input.form-control{:name => "card[month]", :type => "text", :placeholder => "MM"}/
+                            .col-md-4
+                              %input.form-control{:name => "card[year]", :type => "text", :placeholder => "YYYY"}/
+                            .col-md-4
+                              %input.form-control{:name => "card[cvc]", :type => "text", :placeholder => "CVC"}/
     .panel.super-accordion
       #headingsix.panel-heading{:role => "tab"}
         %h4.panel-title
@@ -78,10 +102,9 @@
                       %b Total:
                     %td.right.total.last
                       = @order.total_ttc
-                      =f.hidden_field :total_ttc
-                      =f.hidden_field :total_ht
-
                       %em F CFA
+              =f.hidden_field :total_ttc
+              =f.hidden_field :total_ht
           .buttons.common-btn
             -if current_user
               =f.button "Commander" ,"data-loading-text" => "Loading...", class: "btn btn-primary"

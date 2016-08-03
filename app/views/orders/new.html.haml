@@ -6,7 +6,7 @@
         %ol.breadcrumb
           %li.home
             %a{:href => "index.html", :title => "Go to Home Page"} Accueil
-          %li.active Commande
+          %li.active Order
 / breadcumb-area end
 
 / Checkout process area start
@@ -17,7 +17,3 @@
         .form-title
           %h1 Nouvelle commande
         = render 'form'
-
-/ checkout process area end
-
-= link_to 'Back', orders_path
