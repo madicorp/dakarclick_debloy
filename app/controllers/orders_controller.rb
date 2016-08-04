@@ -125,8 +125,8 @@ class OrdersController < ApplicationController
                                          :payment_method =>  "paypal"
                                      },
                                      :redirect_urls => {
-                                         :return_url => "http://localhost:3000/confirm/paypal",
-                                         :cancel_url => "http://localhost:3000/confirm/paypal"
+                                         :return_url => "https://dakarclick.herokuapp.com/confirm/paypal",
+                                         :cancel_url => "https://dakarclick.herokuapp.com/confirm/paypal"
                                      },
                                      :transactions =>  [{ # Item List
                                                           :item_list => {
