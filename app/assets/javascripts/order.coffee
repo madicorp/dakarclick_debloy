@@ -3,6 +3,7 @@
     $('.btn-radio').click (e) ->
       $('.btn-radio').not(this).removeClass('active').siblings('input').removeAttr('checked',false).siblings('.img-radio').css('opacity','0.5').css('border','none')
       $(this).addClass('active').siblings('input').attr('checked','true').siblings('.img-radio').css('opacity','1').css('border', '1px solid #1253a4')
+      $('#paymentmethod').val($(this).addClass('active').siblings('input').val())
       if $(this).siblings('input').attr('id') == 'card-item'
         $(".card-info-block").show()
       else

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :commandes
+  has_many :orders
   has_many :robots
   has_many :comments, dependent: :delete_all
   has_many :submissions

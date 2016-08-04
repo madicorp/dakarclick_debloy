@@ -27,15 +27,15 @@
                           .col-xs-4
                             =image_tag "icon/credit-card.png", :class => ' btn-radio img-responsive img-radio', :style => "opacity: 1; border: 1px solid #1253a4"
                             %button.btn.btn-dakarclick.btn-radio.active{:type => "button"} Carte
-                            =f.radio_button :payment_method, "card", :class => "hidden", :id => 'card-item', :checked => true, :required => true
+                            %input{:class => "hidden", :id => 'card-item', :checked => true, :required => true, :type => "radio-button", :value =>"card"}
                           .col-xs-4
                             =image_tag "icon/paydunya.png", :class => ' btn-radio img-responsive img-radio'
                             %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paydunya
-                            =f.radio_button :payment_method , "paydunya", :class => "hidden", :id => 'paydunya-item'
+                            %input{:class => "hidden", :id => 'paydunya-item', :type => "radio-button", :value =>"paydunya"}
                           .col-xs-4
                             =image_tag "icon/paypal.png", :class => ' btn-radio img-responsive img-radio'
                             %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paypal
-                            =f.radio_button :payment_method, "paypal", :class => "hidden", :id => 'paypal-item'
+                            %input{:class => "hidden", :id => 'paypal-item', :type => "radio-button", :value =>"paypal"}
                     .space-40
                     .row.card-info-block
                       .col-xs-6
@@ -105,6 +105,7 @@
                       %em F CFA
               =f.hidden_field :total_ttc
               =f.hidden_field :total_ht
+              =f.hidden_field :payment_method , :id => "paymentmethod"
           .buttons.common-btn
             -if current_user
               =f.button "Commander" ,"data-loading-text" => "Loading...", class: "btn btn-primary"

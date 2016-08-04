@@ -1,6 +1,5 @@
 class Submission < ActiveRecord::Base
     belongs_to :user
     has_attached_file :image
-    validates_attachment :image,
-                         content_type: { content_type: ["image/jpeg", "image/jpg","image/gif", "image/png"] }
+    validates_attachment_content_type :image, :content_type => [/\Aimage/, 'application/octet-stream']
 end

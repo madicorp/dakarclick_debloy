@@ -1,5 +1,5 @@
 require 'open-uri'
-
+require 'paypal-sdk-rest'
 class ConfirmController < ApplicationController
     def index
 
@@ -17,6 +17,9 @@ class ConfirmController < ApplicationController
                 if invoice.status.eql? 'completed'
                     unit = invoice.get_custom_data("units")
                     user = current_user
+                    if user.units.nil?
+                        user.units =0
+                    end
                     user.units += unit.to_i
                     user.save
                     #     url = invoice.receipt_url
@@ -30,7 +33,19 @@ class ConfirmController < ApplicationController
         end
     end
   def paypal
-      p params
-      redirect_to confirm_path
+      if params[:paymentId].present?
+          paymentId = params[:paymentId]
+          @payment = PayPal::SDK::REST::Payment.find paymentId
+          unit = @payment.transactions[0].item_list.items[0].quantity
+          user = current_user
+          if user.units.nil?
+              user.units =0
+          end
+          user.units += unit.to_i
+          user.save
+          redirect_to confirm_path
+      else
+          redirect_to root_path
+      end
   end
 end
