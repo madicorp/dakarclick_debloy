@@ -63,11 +63,6 @@ class OrdersController < ApplicationController
           # the above types and intent as `sale or `authorize`
           @payment = PayPal::SDK::REST::Payment.new({
                                                         :intent => "sale",
-
-                                                        # ###Payer
-                                                        # A resource representing a Payer that funds a payment
-                                                        # Use the List of `FundingInstrument` and the Payment Method
-                                                        # as 'credit_card'
                                                         :payer => {
                                                             :payment_method => "credit_card",
                                                             :funding_instruments => [{
