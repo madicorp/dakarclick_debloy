@@ -1,63 +1,62 @@
 .area-slider.pt60
-  .container
-    .row
-      .col-md-8.col-sm-12.col-xs-12.ar-sl
-        / slider
-        .slider-area2
-          .bend.niceties.preview-2
-            #ensign-nivoslider-3.slides
-              =image_tag "slider/s1.jpg", :title => "#slider-direction-1"
-              =image_tag "slider/s2.jpg", :title => "#slider-direction-2"
-              =image_tag "slider/s3.jpg", :title => "#slider-direction-3"
-            / direction 1
-            #slider-direction-1.t-cn.slider-direction
-              / layer 1
-              .layer10
-                =image_tag  "slider/slide2_caption.png"
-                .rm-btn
-                  %a{:href => "#"} Read More
-            / direction 2
-            #slider-direction-2.slider-direction
-              / layer 1
-              .layer11
-                =image_tag  "slider/slide1_caption.png"
-                .rm-btn
-                  %a{:href => "#"} Read More
-            / direction 3
-            #slider-direction-3.slider-direction
-              / layer 1
-              .layer12
-                =image_tag  "slider/slide3_caption.png"
-                .rm-btn
-                  %a{:href => "#"} Read More
-      / slider end
-      .col-md-4.hidden-sm.hidden-xs.td-item.popins-font
-        .title.t-bdr.pb30
-          %h1 TENDANCES DEALS
-        .single-product
-          .product-img
-            %a{:href => "#"}
-              =image_tag  "product/h14-300x300.jpg"
-            .time-ratting-bought-custom
-              .ratting
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star-o
-              .bought
-                %span 11 Bought
-            .best-deal-tag
-          .single-product-text
-            .product-name
-              %a{:href => "#"} Parfum Channel
-            .dis-percentage
-              %span 90%
-            .price-type
-              .old-price
-                %span
-                  %del $800
-              .running-price
-                %span $600
-            .cart-btn.common4
-              %a{:href => "#"} GO
+  .row
+    .col-md-8.col-sm-12.col-xs-12.ar-sl
+      / slider
+      .slider-area2
+        .bend.niceties.preview-2
+          #ensign-nivoslider-3.slides
+            =image_tag "slider/s1.jpg", :title => "#slider-direction-1"
+            =image_tag "slider/s2.jpg", :title => "#slider-direction-2"
+            =image_tag "slider/s3.jpg", :title => "#slider-direction-3"
+          / direction 1
+          #slider-direction-1.t-cn.slider-direction
+            / layer 1
+            .layer10
+              =image_tag  "slider/slide2_caption.png"
+              .rm-btn
+                %a{:href => "#"} Read More
+          / direction 2
+          #slider-direction-2.slider-direction
+            / layer 1
+            .layer11
+              =image_tag  "slider/slide1_caption.png"
+              .rm-btn
+                %a{:href => "#"} Read More
+          / direction 3
+          #slider-direction-3.slider-direction
+            / layer 1
+            .layer12
+              =image_tag  "slider/slide3_caption.png"
+              .rm-btn
+                %a{:href => "#"} Read More
+    / slider end
+    .col-md-4.hidden-sm.hidden-xs.td-item.popins-font
+      .title.t-bdr.pb30
+        %h1 ENCHERE STAR
+      .single-product
+        .product-img
+          %a{:href => "#"}
+            =image_tag  "product/h14-300x300.jpg", :class => "style_image_phare"
+          .time-ratting-bought-custom
+            .ratting
+              %i.fa.fa-star
+              %i.fa.fa-star
+              %i.fa.fa-star
+              %i.fa.fa-star
+              %i.fa.fa-star-o
+            .bought
+              %span 11 Bought
+          .best-deal-tag
+        .single-product-text
+          .product-name
+            %a{:href => "#"} Parfum Channel
+          .dis-percentage
+            %span 90%
+          .price-type
+            .old-price
+              %span
+                %del $800
+            .running-price
+              %span $600
+          .cart-btn.common4
+            %a{:href => "#"} GO

@@ -1,42 +1,14 @@
 -if @auction.ended?
   =render "auctions/status"
 -else
-  =form_for [@auction, Bid.new] do |f|
-    -#%p
-    -#  %strong
-    -#    -if @product.auction.top_bid.present?
-    -#      -if @product.auction.top_bid.user_id == current_user.id
-    -#        Current bid:
-    -#      -else
-    -#        You were outbid:
-    -#    -else
-    -#      Current bid:
-    -#
-    -#    =@product.auction.current_bid
-    %p
-      .cart-btn.nopad
-        =f.button "Enchérir", class: "btn btn-primary customenc", id: "send_bid_btn"
-        -#-else
-        -#  %a.white{:href => "#", :title => "Enchérir"}
-        -#    Enchérir
-
-:javascript
-
-  $(function(){
-
-    App = {
-     websocket_url: "wss://#{request.host}:#{request.port}/"
-    };
-
-    var user_id = "#{current_user.id}";
-    var auction_id = "#{@auction.id}";
-    var form = $("#new_bid");
-
-    var auctionSocket = new AuctionSocket(
-      user_id,
-      auction_id,
-      form
-    );
-
-
-  });
+  %input#user_id{:type => "hidden" , :value => (current_user.id unless current_user.nil?) }
+  %input#auction_id{:type => "hidden" , :value => @auction.id}
+  %p
+    .cart-btn.nopad
+      -if current_user
+        %button#send_bid_btn.btn.btn-primary.customenc
+          Enchérir
+      -else
+        %a{:href => "#login-modal", :title => "Enchérir" , "data-toggle" => "modal" , class: "customenc"}
+          Enchérir
+= javascript_include_tag "auction.bid"

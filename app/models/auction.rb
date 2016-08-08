@@ -25,6 +25,15 @@ class Auction < ActiveRecord::Base
       end
   end
 
+  def last_users
+      names = Array.new(3)
+      bids.order(value: :desc).first(3).each_with_index { |bid , index|
+             names[index] = bid.user.username
+      }
+
+    return names
+  end
+
   def active_robots
     Robot.joins(:auction).where(:is_active => true, :auction_id => self.id)
   end

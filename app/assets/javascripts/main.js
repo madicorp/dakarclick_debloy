@@ -34,13 +34,13 @@ $(document).on('ready page:change', function(event) {
             finalDate = $(this).data('countdown');
         $this.countdown(finalDate, function(event) {
 
-        $this.html(event.strftime('<span class="cdown days"><span class="time-count">%-D<span>J</span></span></span><span class="cdown hour"><span class="time-count">%-H<span>H</span></span></span><span class="cdown minutes"><span class="time-count">%M<span>M</span></span></span> <span class="cdown second"><span class="time-count">%S<span>S</span></span></span>'));
-        if(event.type == 'finish')
-        {
-            console.log(event);
-        }
-
-        });
+        $this.html(event.strftime('<span ><span>%-D<span>J</span></span></span><span><span>%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>'));
+        }).on('update.countdown', function () {
+            
+        })
+         .on('finish.countdown', function () {
+             
+         });
     });
 
     /*----------------------------
@@ -229,5 +229,5 @@ $(document).on('ready page:change', function(event) {
         $(this).toggleClass('clicked');
         $(".masud").slideToggle();
     });
-    
+
 });

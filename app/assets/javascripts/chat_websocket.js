@@ -1,43 +1,42 @@
 var ChatSocket = function(user_id, form) {
-  this.user_id = user_id;
-  this.form = $(form);
+    this.user_id = user_id;
+    this.form = $(form);
 
-  this.socket = new WebSocket(App.websocket_url + 'comments');
+    this.socket = new WebSocket(App.websocket_url + 'comments');
 
-  this.initMessages();
+    this.initMessages();
 };
 
 ChatSocket.prototype.initMessages = function() {
-  var _this = this;
+    var _this = this;
 
-  this.form.submit(function(e) {
-    e.preventDefault();
-      _this.sendMessage(_this.form);
-      return false;
-  });
+    this.form.submit(function(e) {
+        e.preventDefault();
+        _this.sendMessage(_this.form);
+        return false;
+    });
     $("#send-msg-btn").click(function (e) {
         e.preventDefault();
         _this.sendMessage(_this.form);
     });
 
-  this.socket.onmessage = function(e) {
-      var data ="";
-      try {
-          data = JSON.parse(e.data);
+    this.socket.onmessage = function(e) {
+        var data ="";
+        try {
+            data = JSON.parse(e.data);
 
-      }catch (e){
-          console.log(e);
-      }
+        }catch (e){
+            console.log(e);
+        }
 
+        switch(data.action) {
+            case 'chatnotifother':
+                _this.chatnotifother(data);
+                break;
 
-      switch(data.action) {
-          case 'chatnotifother':
-              _this.chatnotifother(data);
-          break;
-
-    }
-    console.log(e);
-  };
+        }
+        console.log(e);
+    };
 
     return false;
 };

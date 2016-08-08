@@ -8,24 +8,13 @@
               %a{:href => root_path}
                 Accueil
             %li
-              -#-if request.original_url == root_url
-              -#  %a{:href => "#online"} En Cours
-              -#-else
-              -#  %a{:href => root_url << "#online"} En Cours
-              %a{:href => online_path} En Cours
+              %a{:href => auctions_path(:filter => 'online')} En Cours
             %li
-              -if request.original_url  == root_url
-                %a{:href => "#coming"} A venir
-              -else
-                %a{:href => root_url << '#coming'} A venir
+              %a{:href => auctions_path(:filter => 'coming')} A venir
             %li
-              -#-if request.original_url  == root_url
-              -#  %a{:href => "#closed"} Terminées
-              -#-else
-              -#  %a{:href => root_url << '#closed'} Terminées
-              %a{:href => closed_path} Terminées
+              %a{:href => auctions_path(:filter => 'closed')} Terminées
             %li
-              %a{:href => "/how_it_works"} Comment ça marche
+              %a{:href => '/how_it_works'} Comment ça marche
             %li
               %a{:href => submissions_path} Proposez vos produits
             %li

@@ -2,7 +2,7 @@
   .row
     .col-md-12
       .title
-        %h1 Enchères à venir
+        %h1 Enchères en cours
       .pull-right
         .btn.seemore
           =link_to "Plus" , "#"
@@ -18,9 +18,23 @@
           .timer_alert{"data-countdown" => auction.auction_close}
         .av_price
           .price{"data-productid" => auction.product.id} #{auction.value} FCFA
+        .av_winner
+          .winner
+            winner
+          .winner
+            winner
+          .winner
+            winner
         .center
           -if !current_user
             %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
               GO
           -else
-            =link_to "GO", auction, :title => "GO" , class: "btngo coming"
+            =link_to "GO", auction, :title => "GO" , class: "btngo"
+-#-if current_user
+-#  =link_to "GO", auction, data: { toogle:"modal" , target: "#auction-modal"} , :title => "GO" , class: "btngo"
+-#-else
+-#  %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
+  -#    GO
+#infinite-scroll
+  = will_paginate @auctions

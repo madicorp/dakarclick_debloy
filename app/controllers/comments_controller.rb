@@ -3,14 +3,14 @@ class CommentsController < ApplicationController
 
     def index
         @comment = Comment.new
-        @comments = Comment.order('created_at DESC').limit(10)
+        @comments = Comment.order('created_at ASC').limit(10)
     end
 
   def create
       respond_to do |format|
           if current_user
               @comment = current_user.comments.build(comment_params)
-              @comments = Comment.order('created_at DESC').limit(10)
+              @comments = Comment.order('created_at ASC').limit(10)
               if @comment.save
                   flash.now[:success] = 'Your comment was successfully posted!'
               else
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   end
     def refresh
         respond_to do |format|
-            @comments = Comment.order('created_at DESC').limit(10)
+            @comments = Comment.order('created_at ASC').limit(10)
             format.js { render "comments/create",  content_type: 'text/javascript' }
         end
     end

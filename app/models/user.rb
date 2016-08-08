@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :robots
   has_many :comments, dependent: :delete_all
   has_many :submissions
+  validates_presence_of :username
+  validates_uniqueness_of :username
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

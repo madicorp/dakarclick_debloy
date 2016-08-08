@@ -2,6 +2,7 @@ require 'paypal-sdk-rest'
 require 'money'
 require 'money/bank/google_currency'
 require 'monetize'
+require 'restclient'
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -56,11 +57,37 @@ class OrdersController < ApplicationController
         when "card"
           Money.default_bank = Money::Bank::GoogleCurrency.new
           card = card_params
-          p  '%.2f' % @order.total_ttc.to_money(:XOF).exchange_to(:EUR)
-          p ('%.2f' % (118.to_money(:XOF).exchange_to(:EUR)* @order.quantity))
+
+          $api_key = 'Z4111GCL07LLE54A43IB21tYeBK0oroLCcW93KKUCMZeffo9I'
+          $shared_secret = 'FYj4#{CWkNdX+3XFOrRYvpsXKa1WdDXj5pSa41jP'
+          $base_uri = "cybersource/"
+          $resource_path = "payments/v1/authorizations"
+          $query_string = "apiKey=" + $api_key
+
           # ###Payment
           # A Payment Resource; create one using
           # the above types and intent as `sale or `authorize`
+
+          request_body = {
+              "amount" =>  '%.2f' % (118.to_money(:XOF).exchange_to(:USD)* @order.quantity),
+              "currency" => "USD",
+              "payment" => {
+                  "cardNumber" => card[:number].tr(" ", ""),
+                  "cardExpirationMonth" => card[:month],
+                  "cardExpirationYear" => card[:year],
+                  "cvn" => card[:cvc]
+              },
+              "merchantDefinedData"=> {
+              },
+              "items"=> [{
+                             "productSKU"=> "Unités DakarClick",
+                             "quantity"=> @order.quantity,
+                             "amount"=> '%.2f' % 118.to_money(:XOF).exchange_to(:USD),
+                         }]
+          }.to_json;
+          response = authorize_credit_card(request_body)
+          p response
+=begin
           @payment = PayPal::SDK::REST::Payment.new({
                                      :intent => "sale",
 
@@ -116,7 +143,8 @@ class OrdersController < ApplicationController
             p "Error while creating payment:"
             p @payment.error.inspect
           end
-          redirect_to root_path
+=end
+          #redirect_to root_path
         when "paypal"
           Money.default_bank = Money::Bank::GoogleCurrency.new
           @payment = PayPal::SDK::REST::Payment.new({
@@ -125,8 +153,8 @@ class OrdersController < ApplicationController
                                          :payment_method =>  "paypal"
                                      },
                                      :redirect_urls => {
-                                         :return_url => "https://dakarclick.herokuapp.com/confirm/paypal",
-                                         :cancel_url => "https://dakarclick.herokuapp.com/confirm/paypal"
+                                         :return_url => "http://localhost:3000/confirm/paypal",
+                                         :cancel_url => "http://localhost:3000/confirm/paypal"
                                      },
                                      :transactions =>  [{ # Item List
                                                           :item_list => {
@@ -172,5 +200,43 @@ class OrdersController < ApplicationController
   end
   def card_params
     params.require(:card).permit(:number, :firstname, :lastname ,:month, :year, :cvc, :type)
+    end
+private
+  def get_xpay_token(resource_path, query_string, request_body)
+    require 'digest'
+    timestamp = Time.now.getutc.to_i.to_s
+    hash_input = timestamp + resource_path + query_string + request_body
+    hash_output = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), $shared_secret, hash_input)
+    return "xv2:" + timestamp + ":" + hash_output
+  end
+
+  def authorize_credit_card(request_body)
+    xpay_token = get_xpay_token($resource_path, $query_string, request_body)
+    full_request_url = "https://sandbox.api.visa.com/" + $base_uri + $resource_path + "?" + $query_string
+
+    p
+      'url' => full_request_url,
+      'method' => :post,
+          'payload' => request_body,
+      'headers' => {
+          "content-type" => "application/json",
+          "x-pay-token" => xpay_token
+      }
+    )
+
+    begin
+      response = RestClient::Request.execute(:url => full_request_url,
+                                             :method => :post,
+                                             :payload => request_body,
+                                             :headers => {
+                                                 "content-type" => "application/json",
+                                                 "x-pay-token" => xpay_token
+                                             }
+      )
+    rescue RestClient::ExceptionWithResponse => e
+      response = e.response
+    end
+    return response
   end
 end
+

@@ -14,11 +14,15 @@ class PlaceBid
 
         if user.units >= 2
             auction.value += auction.valuetoinc
-            auction.auction_close += auction.timetoinc.seconds
+            puts "#{auction.auction_close - Time.now}"
+            if (auction.auction_close - Time.now)< 60
+              auction.auction_close += 30.seconds
+            end
             user.units -= 2
             @value = auction.value
             @units = user.units
-            @auction_close = auction.auction_close
+            @auction_close = auction.auction_close.to_formatted_s(:db)
+
             ActiveRecord::Base.transaction do
                 auction.save
                 user.save

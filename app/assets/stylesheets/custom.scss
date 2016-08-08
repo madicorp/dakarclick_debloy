@@ -63,7 +63,7 @@ footer a {
 .home-4-waraper .currency .dropdown-menu li button:hover {
   color: #ffd464;
 }
-.cart-btn.common4 > a, .btngo, .cart-btn.nopad a {
+.cart-btn.common4 > a, .cart-btn.nopad a {
   background: #ffd464 none repeat scroll 0 0 !important;
 }
 .cart-btn.common4 > a:hover,.btngo:hover {
@@ -212,14 +212,87 @@ div.frm-action span{
 .av_title {
     background: rgba(0, 102, 255, 0.5) none repeat scroll 0 0;;
     font-weight: bold;
-    height: 50px;
+    height: 38px;
     overflow: hidden;
     text-align: center;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 5px;
     color: #fff;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+.av_image {
+  text-align: left;
+  vertical-align: middle;
+  height: 100px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+.av_timer {
+  height: 20px;
+}
+.av_timer .timer_alert {
+  background: rgba(0, 102, 255, 0.5) none repeat scroll 0 0;
+  color: #be1818;
+}
+
+div.av_timer div.timer, div.av_timer div.timer_alert, div.av_timer div.timer_inverse, div.av_timer div.timer_finished {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin: 3px auto;
+  padding: 2px;
+  width: 130px;
+  height: 20px;
+  line-height: 20px;
+}
+
+div.av_price div.price {
+  margin: 0px auto;
+  width: 130px;
+}
+div.ah_details div.price, td.al_price div.price, div.av_price div.price, span.span_price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #b90101;
+  text-align: center;
+  white-space: nowrap;
+}
+
+div.av_price .price_inverse{
+  margin: 0px auto;
+  width: 130px;
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+div.av_winner {
+  margin-top: 1px;
+  margin-bottom: 8px;
+}
+
+div.winner {
+  color: #0e8fbf;
+  text-align: center;
+  height: 14px;
+}
+
+.center{
+  text-align:  center !important;
+}
+.av_image .image {
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 110px;
+  height: 100px;
+  margin: 0px auto;
 }
 
 .seemore a {
@@ -231,7 +304,14 @@ div.frm-action span{
 }
 
 .col-padd-custom{
-  padding: 10px
+  //padding: 10px
+  background-color: #fff;
+  width: 186px;
+  height: 100%;
+  border: solid 1px #e1e1e1;
+  float: left;
+  margin: 1px 10px 7px 0px;
+  padding-bottom: 5px;
 }
 
 .time-ratting-bought-custom {
@@ -643,4 +723,32 @@ body {
 
 .message_template {
   display: none;
+}
+
+
+#contentdc{
+  margin: 0px auto;
+  width : 980px
+}
+
+
+.style_image_phare{
+  height: 200px
+}
+
+.style_image_auction{
+  height: 107px
+}
+
+
+.btngo {
+  background: #ffd464 none repeat scroll 0 0 !important;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 10px;
+  display: inline-block;
+  text-decoration: none;
 }
