@@ -33,10 +33,9 @@
 //= require chat_websocket
 
 
-    $(document).on('ready page:change',function (event) {
+    $(document).on('ready page:change page:load turbolinks:load',function (event) {
         (function ($) {
             "use strict";
-
 
             $('#ensign-nivoslider-3').nivoSlider({
                 effect: 'random',
@@ -51,6 +50,7 @@
                 pauseOnHover: true,
                 manualAdvance: false
             });
+
 
 
             //scroll to animation
@@ -81,27 +81,6 @@
             });
         })(jQuery);
     });
-
-
-    // // show spinner on AJAX start
-    // $(document).ajaxStart(function(){
-    //     // $(".bg_load").show();
-    // });
-    //
-    // // hide spinner on AJAX stop
-    // $(document).ajaxStop(function(){
-    //     // $(".bg_load").hide();
-    // });
-    //
-    // $(document).on("ready page:update", function(){
-    //     // $(".bg_load").show();
-    // });
-    //
-    // $(document).on("ready page:receive", function(){
-    //     // $(".bg_load").hide();
-    // });
-
-
 
 
 

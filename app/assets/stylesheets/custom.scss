@@ -248,7 +248,22 @@ div.av_timer div.timer, div.av_timer div.timer_alert, div.av_timer div.timer_inv
   height: 20px;
   line-height: 20px;
 }
+.av_price{
+  padding: 7px 17px;
+  height: 45px;
+}
+.av_price .price{
+  position: absolute;
+  z-index: 10;
+  padding-left: 10px;
+  padding-top: 5px;
+}
 
+
+.av_price .bg-price{
+  position: absolute;
+  width: 160px;
+}
 div.av_price div.price {
   margin: 0px auto;
   width: 130px;
@@ -279,8 +294,9 @@ div.av_winner {
 
 div.winner {
   color: #0e8fbf;
-  text-align: center;
   height: 14px;
+  text-align: justify;
+  padding-left: 40%;
 }
 
 .center{
@@ -327,13 +343,35 @@ div.winner {
   transition: all 0.8s ease 0s;
   width: 100%;
 }
+.bt-information .b_static_footer{
+  padding: 0px 21px;
+}
+.bt-information .b_static_footer p{
+  text-align: center;
+}
+.single-prodcut-des .time-counter{
+  font-size: 20px;
+}
+
+.time-counter::before,
+.home-2-waraper .escapes-area .time-counter::before{
+  font-size: 20px;
+  margin-left: -25px;
+}
+
+.running-price.first-child{
+  border-right: 3px solid #f1f1f1;
+  padding-right: 50px;
+}
 
 .price-custom{
   color :#1253a4  !important;
   font-weight: 700 !important;
   font-size: 16px !important;
 }
-
+.slide-auction-closed .col-md-6{
+  margin: 10px;
+}
 .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;
@@ -535,7 +573,6 @@ em{
 
 body {
   #background-color: #edeff2;
-  background-image: image-url("fond.JPG");
   font-family: "Calibri", "Roboto", sans-serif;
 }
 

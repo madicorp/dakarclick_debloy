@@ -9,6 +9,7 @@
     = render "comment"
   .bottom_wrapper.clearfix
     = form_for @comment, remote: true do |f|
+      %input#user_id{:type => "hidden" , :value => (current_user.id unless current_user.nil?) }
       .message_input_wrapper
         = f.text_field :body, class: 'message_input', required: true, placeholder: "Type your message here..."
       -if current_user
@@ -22,27 +23,4 @@
             .icon
             .text
               Envoyer
-.message_template
-  %li.message
-    .avatar
-    .text_wrapper
-      .text
--if current_user
-  :javascript
-
-      $(function(){
-
-      App = {
-        websocket_url: "ws://#{request.host}:#{request.port}/"
-      };
-
-        var user_id = "#{current_user.id}";
-        var form = $("#new_comment");
-
-        var chatSocket = new ChatSocket(
-          user_id,
-          form
-        );
-
-
-    });
+= javascript_include_tag "chat"

@@ -4,18 +4,17 @@ class AuctionsController < ApplicationController
     params[:filter].present? ? filter = params[:filter] : filter = ""
     case filter
       when "online"
-        condition = "auctions.auction_close > ? and auctions.status = ?",Time.now,true
-        order = 'created_at DESC'
+        @status = "en cours"
+        @auctions =  Auction.active.paginate(page: params[:page])
       when "closed"
-        condition = "auctions.auction_close < ?", Time.now
-        order = 'created_at DESC'
+        @status = "Terminés"
+        @auctions =  Auction.closed.paginate(page: params[:page])
       when "coming"
-        condition = "auctions.auction_close > ? and auctions.status = ?", Time.now,false
-        order = 'created_at DESC'
+        @status = "A Venir"
+        @auctions =  Auction.coming.paginate(page: params[:page])
       else
         redirect_to root_path
     end
-    @auctions = Auction.paginate(page: params[:page]).order(order).where(condition)
   end
 
   def create

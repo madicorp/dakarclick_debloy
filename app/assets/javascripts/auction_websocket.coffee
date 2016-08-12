@@ -20,7 +20,7 @@
           console.info e
         switch data.message
           when 'bidok'  then  self.bid(data)
-          when 'outbid' then  self.outbid(data)
+          when 'outbid' then  self.bid(data)
           when 'won'    then  self.won(data)
           when 'createrobotok' then  self.createrobot(data)
           when 'lost' then  self.lost(data)
@@ -37,17 +37,19 @@
 
     # Auction bid function to update informations
     bid: (data) ->
-      $('.messunits').html(data.units+ 'Unités')
       $('.nbench').html(data.ench+ ' Enchères')
       last_users = data.last_users
-      $('#auction'+data.auction_id).find('.av_winner').html('')
+      $('.auction'+data.auction_id).find('.av_winner').html('')
+      i= 1
       for user in data.last_users
-        $('#auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+user+"</div>")
-
-
-      $('#auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('#auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
-      $('#auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
+        if user
+          $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+i + "- "+user+"</div>")
+        else
+          $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>-</div>")
+        i++
+      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
+      $('.auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
+      $('.auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
         $this = $(this)
         finalDate = data.auction_close
         $this.countdown finalDate, (event) ->
@@ -58,6 +60,8 @@
       user_id =  parseInt(sessionStorage.getItem('ours'))
       if(data.user_id == user_id)
         $('#infogagn').html('Félicitations ,vous êtes temporairement le gagnant.')
+        if data.units
+          $('.messunits').html(data.units+ 'Unités')
       else
         $('#infogagn').html('Ooopss. Vous êtes hors enchère en ce moment.')
 
@@ -75,16 +79,16 @@
         $("#send_bid_btn").prop('disabled', true)
 
 # Auction outbid function update informations
-    outbid: (data) ->
+    ###outbid: (data) ->
       $('.nbench').html(data.ench+ ' Enchères')
       last_users = data.last_users
-      $('#auction'+data.auction_id).find('.av_winner').html('')
+      $('.auction'+data.auction_id).find('.av_winner').html('')
       for user in data.last_users
-        $('#auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+user+"</div>")
-      $('#auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('#auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('#auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
-      $('#auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
+        $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+user+"</div>")
+      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
+      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
+      $('.auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
+      $('.auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
         $this = $(this)
         finalDate = data.auction_close
         $this.countdown finalDate, (event) ->
@@ -117,7 +121,7 @@
       if(data.disable_robot_id != "undefined" && data.disable_robot_id != null)
         $("#robot_"+data.disable_robot_id).bootstrapSwitch('state', false, false)
         $("#conteur_"+data.disable_robot_id).addClass("hide")
-        $("#send_bid_btn").prop('disabled', false)
+        $("#send_bid_btn").prop('disabled', false)###
 
 
     # Auction create robot funcrtion update robot form

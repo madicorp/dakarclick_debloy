@@ -7,7 +7,8 @@
         .btn.seemore
           =link_to "Plus" , "#"
   .row.row-padd
-    - @auctions.each do |auction|
+    -@auctions = Auction.coming(10,'created_at DESC') if  current_page?(root_url)
+    - Auction.coming(10,'created_at DESC').each do |auction|
       .col-padd-custom
         .av_title= auction.product.name
         .av_image
@@ -18,9 +19,6 @@
           .timer_alert{"data-countdown" => auction.auction_close}
         .av_price
           .price{"data-productid" => auction.product.id} #{auction.value} FCFA
+          =image_tag "icon/price.png", class: "bg-price"
         .center
-          -if !current_user
-            %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
-              GO
-          -else
-            =link_to "GO", auction, :title => "GO" , class: "btngo coming"
+          Bientot !

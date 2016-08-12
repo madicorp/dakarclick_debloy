@@ -86,18 +86,6 @@
               %table.table.table-hover
                 %tbody
                   %tr
-                    %td.left
-                      %b Sub-Total:
-                    %td.right.s_total
-                      = @order.total_ht
-                      %em F CFA
-                  %tr
-                    %td.left
-                      %b VAT (18%):
-                    %td.right.tva
-                      = @order.total_ttc - @order.total_ht
-                      %em F CFA
-                  %tr
                     %td.left.last
                       %b Total:
                     %td.right.total.last

@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
           Money.default_bank = Money::Bank::GoogleCurrency.new
           card = card_params
           p  '%.2f' % @order.total_ttc.to_money(:XOF).exchange_to(:EUR)
-          p ('%.2f' % (118.to_money(:XOF).exchange_to(:EUR)* @order.quantity))
+          p ('%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity))
           # ###Payment
           # A Payment Resource; create one using
           # the above types and intent as `sale or `authorize`
@@ -83,10 +83,10 @@ class OrdersController < ApplicationController
                                                                                    :items => [{
                                                                                                   :name => "Unités DakarClick",
                                                                                                   :currency => "EUR",
-                                                                                                  :price => '%.2f' % 118.to_money(:XOF).exchange_to(:EUR),
+                                                                                                  :price => '%.2f' % 100.to_money(:XOF).exchange_to(:EUR),
                                                                                                   :quantity => @order.quantity}]},
                                                                                :amount =>  {
-                                                                                   :total =>  '%.2f' % (118.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
+                                                                                   :total =>  '%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
                                                                                    :currency =>  "EUR"
                                                                                },
                                                                                :description =>  "This is the payment transaction description."
@@ -128,10 +128,10 @@ class OrdersController < ApplicationController
                                                                                  :items => [{
                                                                                                 :name => "Unités DakarClick",
                                                                                                 :currency => "EUR",
-                                                                                                :price => '%.2f' % 118.to_money(:XOF).exchange_to(:EUR),
+                                                                                                :price => '%.2f' % 100.to_money(:XOF).exchange_to(:EUR),
                                                                                                 :quantity => @order.quantity}]},
                                                                              :amount =>  {
-                                                                                 :total =>  '%.2f' % (118.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
+                                                                                 :total =>  '%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
                                                                                  :currency =>  "EUR"
                                                                              },
                                                                              :description =>  "This is the payment transaction description."

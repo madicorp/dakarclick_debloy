@@ -1,14 +1,11 @@
 /**
  * Created by a621275 on 07/06/2016.
  */
-$(document).ready(function () {
+$(document).on('ready page:change page:load turbolinks:load', function(event) {
     /*----------------------------
      jQuery MeanMenu
      ------------------------------ */
     jQuery('nav#dropdown').meanmenu();
-});
-$(document).on('ready page:change', function(event) {
-
     //    toggle class
     $(".buy-btn span").on("click", function() {
         $(".header-top-area").toggleClass("btn-none");
@@ -106,6 +103,14 @@ $(document).on('ready page:change', function(event) {
         /* transitionStyle : "fade", */    /* [This code for animation ] */
         navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
     });
+    $(".slide-auction-closed" ).owlCarousel({
+        navigation : true, // Show next and prev buttons
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        singleItem:true,
+        /* transitionStyle : "fade", */    /* [This code for animation ] */
+        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+    });
 
     $(".new-arri-total").owlCarousel({
         autoPlay: false,
@@ -156,12 +161,8 @@ $(document).on('ready page:change', function(event) {
             $(this).val(newVal);
         }
         var s_total = newVal * 100;
-        var tva = s_total * 18/100;
-        $(".cart-total").find(".s_total").html( s_total+ " <em>F CFA</em>");
-        $(".cart-total").find(".tva").html(tva + " <em>F CFA</em>");
-        $(".cart-total").find(".total").html((s_total + tva) + " <em>F CFA</em>");
-        $("#order_total_ttc").val(s_total + tva);
-        $("#order_total_ht").val(s_total);
+        $(".cart-total").find(".total").html(s_total  + " <em>F CFA</em>");
+        $("#order_total_ttc").val(s_total);
     });
     $(".cart-plus-minus")
     $(".qtybutton").on("click", function() {
@@ -179,22 +180,16 @@ $(document).on('ready page:change', function(event) {
         }
         $button.parent().find("input").val(newVal);
         var s_total = newVal * 100;
-        var tva = s_total * 18/100;
-        $(".cart-total").find(".s_total").html(s_total + " <em>F CFA</em>");
-        $(".cart-total").find(".tva").html(tva + " <em>F CFA</em>");
-        $(".cart-total").find(".total").html(s_total + tva + " <em>F CFA</em>");
-        $("#order_total_ttc").val(s_total + tva);
-        $("#order_total_ht").val(s_total);
+        $(".cart-total").find(".total").html(s_total +" <em>F CFA</em>");
+        $("#order_total_ttc").val(s_total);
         $(".cart-plus-minus-box").trigger('input');
     });
 
     $(".cart-plus-minus-box").bind("input",function () {
         var link = $(".link_commande").attr("href").substr(0, $(".link_commande").attr("href").indexOf('?'));
         var qte = $(".cart-plus-minus-box").val();
-        var s_total = qte *100;
-        var tva = s_total * 18/100;
-        var total = (qte * 100) + tva;
-        var new_link = link + "?qte="+qte+"&tva="+tva+"&total="+total;
+        var total = (qte * 100);
+        var new_link = link + "?qte="+qte+"&total="+total;
         $(".link_commande").attr("href",new_link);
     });
 

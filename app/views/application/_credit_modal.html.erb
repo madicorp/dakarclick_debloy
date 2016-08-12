@@ -32,14 +32,6 @@
           <table class="table table-hover">
             <tbody>
             <tr>
-              <td class="left"><b>Sub-Total:</b></td>
-              <td class="right s_total">100 <em>F CFA</em></td>
-            </tr>
-            <tr>
-              <td class="left "><b>VAT (18%):</b></td>
-              <td class="right tva">18 <em>FCFA</em></td>
-            </tr>
-            <tr>
               <td class="left  last"><b>Total:</b></td>
               <td class="right total  last">100 <em>F CFA</em></td>
             </tr>
@@ -49,7 +41,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to "Commander", new_order_path(qte: "1" ,tva: "18" ,total: "118") , class: "btn btn-default link_commande" %>
+        <%= link_to "Commander", new_order_path(qte: "1" ,total: "118") , class: "btn btn-default link_commande" %>
       </div>
     </div>
 

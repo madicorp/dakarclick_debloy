@@ -15,7 +15,7 @@ ChatSocket.prototype.initMessages = function() {
         _this.sendMessage(_this.form);
         return false;
     });
-    $("#send-msg-btn").click(function (e) {
+        $("#send-msg-btn").click(function (e) {
         e.preventDefault();
         _this.sendMessage(_this.form);
     });

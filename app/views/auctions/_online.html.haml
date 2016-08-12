@@ -7,45 +7,8 @@
         .btn.seemore
           =link_to "Plus" , "#"
   .row.row-padd
-    - @auctions.each do |auction|
-      .col-padd-custom{:id => "auction"+auction.id.to_s}
-        %input{:type => "hidden" , :value => auction.id}
-        .av_title= auction.product.name
-        .av_image
-          .center
-            %a.image{:href => auction_path(auction.id)}
-              =image_tag auction.product.image ,class: "style_image_auction"
-        .av_timer
-          .timer_alert{"data-countdown" => auction.auction_close}
-        .av_price
-          .price #{auction.value} FCFA
-        .av_winner
-          -auction.last_users.each do |name|
-            .winner=name
-        .center
-          -if !current_user
-            %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
-              GO
-          -else
-            -#=link_to "GO", auction, :title => "GO" , class: "btngo"
-            %button.send_home_btn.btn.btngo
-              GO
-            -#-if current_user
-          -#  =link_to "GO", auction, data: { toogle:"modal" , target: "#auction-modal"} , :title => "GO" , class: "btngo"
-          -#-else
-          -#  %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
-          -#    GO
-        -#.single-product-text
-        -#  .price-type
-        -#    .old-price
-        -#      %span= auction.top_bid.user.name unless auction.top_bid.nil?
-        -#    .running-price
-        -#      %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
-        -#  .cart-btn
-        -#    =link_to "GO", auction , class: "btngo"
-        -#      -#-if current_user
-        -#      -#  =link_to "GO", auction, data: { toogle:"modal" , target: "#auction-modal"} , :title => "GO" , class: "btngo"
-        -#      -#-else
-        -#      -#  %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
-        -#      -#    GO
+    -@auctions = Auction.active(10,'created_at DESC') if current_page?(root_url)
+    -@auctions.each do |auction|
+      - @auction = auction
+      =render "auctions/single_preview"
 %input#user_id{:type => "hidden" , :value => (current_user.id unless current_user.nil?) }

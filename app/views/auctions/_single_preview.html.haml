@@ -1,0 +1,25 @@
+.col-padd-custom{:class => "auction"+@auction.id.to_s}
+  %input{:type => "hidden" , :value => @auction.id}
+  .av_title= @auction.product.name
+  .av_image
+    .center
+      %a.image{:href => auction_path(@auction.id)}
+        =image_tag @auction.product.image ,class: "style_image_auction"
+  .av_timer
+    .timer_alert{"data-countdown" => @auction.auction_close}
+  .av_price
+    .price
+      #{@auction.value} FCFA
+    =image_tag "icon/price.png", class: "bg-price"
+  .av_winner
+    -@auction.podium.each_with_index do |name, index|
+      .winner
+        ="#{index+1}- #{name}" unless name.nil?
+  .center
+    -if !current_user
+      %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
+        GO
+    -else
+      -#=link_to "GO", auction, :title => "GO" , class: "btngo"
+      %button.send_home_btn.btn.btngo
+        GO

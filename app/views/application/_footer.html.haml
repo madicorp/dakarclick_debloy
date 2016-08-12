@@ -4,50 +4,10 @@
   %footer#bt_footer
     .container
       .row
-        .footer_column.pt40.pb40
+        .footer_column.pt20
           .footer_column_content.col-sm-8.col-xs-12
-            .bt-information.column.col-sm-4.col-xs-12
-              %h3
-                %span Information
-              %ul
-                %li
-                  %a{:href => "about-us.html"} About Us
-                %li
-                  %a{:href => "login.html"} Delivery Information
-                %li
-                  %a{:href => "login.html"} Privacy Policy
-                %li
-                  %a{:href => "login.html"} Terms & Conditions
-                %li
-                  %a{:href => "contact.html"} Contact Us
-                %li
-                  %a{:href => "login.html"} Site Map
-            .bt-service.column.col-sm-4.col-xs-12
-              %h3
-                %span Extras
-              %ul
-                %li
-                  %a{:href => "shop.html"} Returns
-                %li
-                  %a{:href => "shop.html"} Brands
-                %li
-                  %a{:href => "shop.html"} Gift Vouchers
-                %li
-                  %a{:href => "shop.html"} Specials
-            .bt-account.column.col-sm-4.col-xs-12
-              %h3
-                %span My Account
-              %ul
-                %li
-                  %a{:href => "login.html"} Newsletter
-                %li
-                  %a{:href => "blog.html"} Order History
-                %li
-                  %a{:href => "login.html"} Affiliates
-                %li
-                  %a{:href => "wishlist.html"} Wish List
             .ads_payment
-              .b_footer_ads
+              .b_footer_ads.hide
                 %a{:href => "#", :title => "Google Play"}
                   =image_tag  "icon/google_play.png"
                 %a{:href => "#", :title => "App Store"}
@@ -72,24 +32,28 @@
           .bt-information.column.col-sm-4.col-xs-12
             %a{:href => "#", :title => "logo"}
               =image_tag  "logo_bas.png"
-            .b_static_footer
-              %h3
-                %span Adresse
-              %p.street
+      .row
+        .footer_column.bt-information
+          .b_static_footer
+            %h3
+              %span Contact
+            .row
+              %p.col-md-4
                 %i.fa.fa-map-marker
+                %strong Addresse
+                %br/
                 Biscuiterie, cité Cheikh Ahmadou Bamba
-              %p.support
+              %p.col-md-4
                 %i.fa.fa-envelope
-                  Contact@dakarclic.com
-              %p.service
-                %i.fa.fa-life-ring
-                Telephone
-              %p.phone
-                (221) 77 749 04 21
+                %strong Email
                 %br/
-                (221) 76 133 79 10
+                Contact@dakarclic.com
+              %p.col-md-4
+                %i.fa.fa-phone
+                %strong telephone
                 %br/
-                (221)  33 864 29 87
+                (221) 77 749 04 21 - (221) 76 133 79 10 -
+                %br (221) 33 864 29 87
     .powered-payment
       .container
         .row

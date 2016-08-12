@@ -34,29 +34,29 @@
       .title.t-bdr.pb30
         %h1 ENCHERE STAR
       .single-product
-        .product-img
-          %a{:href => "#"}
-            =image_tag  "product/h14-300x300.jpg", :class => "style_image_phare"
-          .time-ratting-bought-custom
-            .ratting
-              %i.fa.fa-star
-              %i.fa.fa-star
-              %i.fa.fa-star
-              %i.fa.fa-star
-              %i.fa.fa-star-o
-            .bought
-              %span 11 Bought
-          .best-deal-tag
-        .single-product-text
-          .product-name
-            %a{:href => "#"} Parfum Channel
-          .dis-percentage
-            %span 90%
-          .price-type
-            .old-price
-              %span
-                %del $800
-            .running-price
-              %span $600
-          .cart-btn.common4
-            %a{:href => "#"} GO
+        -@auction = Auction.active.select("count(bids.id) as nbr_bid, auctions.*").from("bids, auctions").where("bids.auction_id = auctions.id").order("nbr_bid DESC").group("auctions.id, bids.id").first
+        .col-padd-custom{:class => "auction"+@auction.id.to_s}
+          %input{:type => "hidden" , :value => @auction.id}
+          .av_title= @auction.product.name
+          .av_image
+            .center
+              %a.image{:href => auction_path(@auction.id)}
+                =image_tag @auction.product.image ,class: "style_image_auction"
+          .av_timer
+            .timer_alert{"data-countdown" => @auction.auction_close}
+          .av_price
+            .price
+              #{@auction.value} FCFA
+            =image_tag "icon/price.png", class: "bg-price"
+          .av_winner{class: @auction.podium.size}
+            -@auction.podium.each_with_index do |name, index|
+              .winner
+                ="#{index+1}- #{name}" unless name.nil?
+          .center
+            -if !current_user
+              %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
+                GO
+            -else
+              -#=link_to "GO", auction, :title => "GO" , class: "btngo"
+              %button.send_home_btn.btn.btngo
+                GO

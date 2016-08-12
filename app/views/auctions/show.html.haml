@@ -7,7 +7,7 @@
             / <img id="zoom_03" src="img/auction.product/h8-380x320.jpg" data-zoom-image="img/auction.product/large/h8-680x573.jpg" alt="">
             = image_tag @auction.product.image , id: "zoom_03"
       .col-md-7.col-sm-6.col-xs-12.col-padd
-        .single-prodcut-des
+        .single-prodcut-des{:class => "auction"+@auction.id.to_s}
           .auction.product-name
             %h3= @auction.product.name
           .auction.product-des
@@ -23,11 +23,17 @@
             .price-type
               -if current_user
                 =render "robot"
-            .running-price.desblockprice
-              %h1.desprice #{@auction.current_bid} FCFA
+            .running-price.desblockprice.first-child
+              %h1.desprice.price #{@auction.current_bid} FCFA
               =render "bid"
+            .running-price.desblockprice
+              %h1 Gagnants
+              .av_winner
+                -@auction.podium.each_with_index do |name, index|
+                  .winner
+                    ="#{index+1}- #{name}" unless name.nil?
           .count-bought
             .time-counter
-              %div#countdownauction{"data-countdown" => @auction.auction_close}
+              %div#countdownauction.timer_alert{"data-countdown" => @auction.auction_close}
             -#.bought
             -#  %span.nbench #{@auction.bids.size} Enchères
