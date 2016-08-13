@@ -120,8 +120,8 @@ class OrdersController < ApplicationController
                                                             :payment_method =>  "paypal"
                                                         },
                                                         :redirect_urls => {
-                                                            :return_url => "#{root_path}/confirm/paypal",
-                                                            :cancel_url => "#{root_path}/confirm/paypal"
+                                                            :return_url => "#{root_url}/confirm/paypal",
+                                                            :cancel_url => "#{root_url}/confirm/paypal"
                                                         },
                                                         :transactions =>  [{ # Item List
                                                                              :item_list => {
