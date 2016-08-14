@@ -93,11 +93,11 @@ class AuctionSocket
                 :user_id => service.user.id,
                 :units_robot => service.units_robot,
                 :auction_id => service.auction.id,
-                :last_users => service.auction.last_users,
+                :last_users => service.auction.podium,
                 :auction_close => service.auction_close
             }.to_json
             socket.send reponse
-            notify_outbids socket, service.value , service.nb_ench, service.user.id , -1,nil,service.auction.id ,service.auction.last_users,service.auction_close
+            notify_outbids socket, service.value , service.nb_ench, service.user.id , -1,nil,service.auction.id ,service.auction.podium,service.auction_close
         else
             if service.status == :won
                 notify_auction_ended socket
@@ -117,11 +117,11 @@ class AuctionSocket
                 :user_id => service.user.id,
                 :units_robot => service.units_robot,
                 :disable_robot_id => service.disable_robot_id,
-                :last_users => service.auction.last_users
+                :last_users => service.auction.podium
 
             }.to_json
             socket.send reponse
-            notify_outbids socket, service.value , service.nb_ench, service.user.id , service.units_robot, service.disable_robot_id,service.auction.id , service.auction.last_users ,nil
+            notify_outbids socket, service.value , service.nb_ench, service.user.id , service.units_robot, service.disable_robot_id,service.auction.id , service.auction.podium ,nil
         else
             if service.status == :won
                 notify_auction_ended socket
@@ -130,7 +130,6 @@ class AuctionSocket
     end
 
     def create_robot_socket message
-        p message.to_s, "****************"
         socket = Faye::WebSocket.new env
         socket.send message
     end
