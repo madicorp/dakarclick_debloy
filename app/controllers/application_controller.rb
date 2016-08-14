@@ -11,4 +11,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     request.referrer || root_path
   end
+  def after_update_path_for(resource)
+    request.referrer || root_path
+  end
 end
