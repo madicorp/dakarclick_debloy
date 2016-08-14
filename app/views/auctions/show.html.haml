@@ -1,5 +1,5 @@
-.single-product-wraper.mt60
-  .single-prodcut-area
+.single-prodcut-area.mt60
+  .container
     .row.row-padd
       .col-md-5.col-sm-6.col-xs-12.col-padd
         .auction.product-zoom-area
@@ -30,7 +30,7 @@
               %h1 Gagnants
               .av_winner
                 -@auction.podium.each_with_index do |name, index|
-                  .winner
+                  .winner{:class => ("first" if index == 0)}
                     ="#{index+1}- #{name}" unless name.nil?
           .count-bought
             .time-counter

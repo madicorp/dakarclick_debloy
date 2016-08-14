@@ -41,21 +41,30 @@
       last_users = data.last_users
       $('.auction'+data.auction_id).find('.av_winner').html('')
       i= 1
+      first = 'first'
       for user in data.last_users
         if user
-          $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+i + "- "+user+"</div>")
+          $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner "+first+"'>"+i + "- "+user+"</div>")
         else
           $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>-</div>")
         i++
+        first=""
       $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
       $('.auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
       $('.auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
         $this = $(this)
         finalDate = data.auction_close
-        $this.countdown finalDate, (event) ->
+        $this.timeTo {
+            timeTo: new Date(new Date(finalDate)),
+            displayDays: 2,
+            displayCaptions: true,
+            fontSize: 48,
+            captionSize: 14
+          }
+        ###$this.countdown finalDate, (event) ->
           $this.html event.strftime('<span><span>%-D<span>J</span></span></span><span><span >%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>')
           return
-        return
+        return###
 
       user_id =  parseInt(sessionStorage.getItem('ours'))
       if(data.user_id == user_id)

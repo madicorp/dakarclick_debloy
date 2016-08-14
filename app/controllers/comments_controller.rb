@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @comment = Comment.new
-    @comments = Comment.order('created_at DESC').limit(10)
+    @comments = Comment.order('created_at DESC').limit(7)
     @comments = @comments.sort_by { |c| c[:created_at]}
   end
   def create
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       if current_user
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-          @comments = Comment.order('created_at DESC').limit(10)
+          @comments = Comment.order('created_at DESC').limit(7)
           @comments = @comments.sort_by { |c| c[:created_at]}
           format.js { render  content_type: 'text/javascript' }
         end
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   end
   def refresh
     respond_to do |format|
-      @comments = Comment.order('created_at DESC').limit(10)
+      @comments = Comment.order('created_at DESC').limit(7)
       @comments = @comments.sort_by { |c| c[:created_at]}
       format.js { render "comments/create",  content_type: 'text/javascript' }
     end

@@ -2,17 +2,13 @@
 <div class="breadcumb-area">
     <div class="row">
       <div class="col-md-12">
-        <ol class="breadcrumb">
-          <li class="home"><a href="index.html" title="Go to Home Page">Home</a></li>
-          <li class="active">Login</li>
-        </ol>
       </div>
     </div>
 </div>
 <!--  breadcumb-area end -->
 <!-- Account Area Start -->
 <div class="account-area pb60">
-    <div class="row">
+    <div class="row row-padd">
       <div class="col-sm-9 col-xs-12 col-sm-offset-2">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>

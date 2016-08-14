@@ -550,6 +550,11 @@ display: block
 .list-inline > li > a {
   font-size: 13px;
 }
+
+a.btn.btn-default {
+    height: 30px;
+    margin: 17px;
+}
 .wishlist-total {
   display: none;
 }

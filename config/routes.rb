@@ -5,9 +5,6 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
-  get 'talking'=> 'talking#index'
-
-
   get 'how_it_works' => 'how_it_works#index'
 
   get 'confirm' => 'confirm#index'
@@ -16,19 +13,15 @@ Rails.application.routes.draw do
   get 'comments/refresh' => 'comments#refresh'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users , :path_prefix => 'space' ,:controllers => { registrations: 'registrations' }
+  devise_for :users do
+    resources :orders
+    resources :robots
+  end
 
   resources :submissions do
   end
 
   resources :comments do
-  end
-
-  resources :users do
-    resources :orders  do
-    end
-    resources :robots  do
-    end
   end
 
   resources :products do

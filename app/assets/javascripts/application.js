@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require_self
 //= require jquery.min
 //= require jquery.turbolinks.min
 //= require bootstrap-sprockets
@@ -21,66 +21,15 @@
 //= require jquery.nivo.slider
 //= require wow.min
 //= require owl.carousel.min
-//= require jquery.countdown.min
+//= require jquery.time-to.min
 //= require jquery.fancybox.pack
 //= require jquery.elevateZoom-3.0.8.min
+//= require turbolinks
 //= require card
 //= require main
 //= require auction_websocket
-//= require turbolinks
 //= require order
 //= require robot
 //= require chat_websocket
-
-
-    $(document).on('ready page:change page:load turbolinks:load',function (event) {
-        (function ($) {
-            "use strict";
-
-            $('#ensign-nivoslider-3').nivoSlider({
-                effect: 'random',
-                slices: 15,
-                boxCols: 8,
-                boxRows: 4,
-                animSpeed: 500,
-                pauseTime: 5000,
-                startSlide: 0,
-                directionNav: true,
-                controlNavThumbs: false,
-                pauseOnHover: true,
-                manualAdvance: false
-            });
-
-
-
-            //scroll to animation
-            $("a[href^='#'][data-toggle!='modal'][data-toggle!='collapse']").click(function (e) {
-                e.preventDefault();
-                var margin = 50;
-                if ($(document).scrollTop() <= 180)
-                {
-                    margin += 50;
-                }
-                var element = $(this).attr("href");
-                $("html, body").animate({scrollTop: $(element).offset().top - margin }, 2000);
-                return false;
-            });
-
-            $(document).scroll(function(e){
-                var scrollTop = $(document).scrollTop();
-                if(scrollTop > 200){
-                    $("#scrollUp").css("display","block");
-                }else{
-                    $("#scrollUp").css("display","none");
-                }
-                if(scrollTop >= 180){
-                    $('.menu-area').removeClass('navbar-static-top').addClass('navbar-fixed-top');
-                } else {
-                    $('.menu-area').removeClass('navbar-fixed-top').addClass('navbar-static-top');
-                }
-            });
-        })(jQuery);
-    });
-
 
 

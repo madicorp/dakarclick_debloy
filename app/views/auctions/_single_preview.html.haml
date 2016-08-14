@@ -13,7 +13,7 @@
     =image_tag "icon/price.png", class: "bg-price"
   .av_winner
     -@auction.podium.each_with_index do |name, index|
-      .winner
+      .winner{:class => ("first" if index == 0)}
         ="#{index+1}- #{name}" unless name.nil?
   .center
     -if !current_user

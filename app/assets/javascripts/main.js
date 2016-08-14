@@ -1,7 +1,50 @@
 /**
  * Created by a621275 on 07/06/2016.
  */
-$(document).on('ready page:change page:load turbolinks:load', function(event) {
+$(document).on('ready page:load', function(event) {
+
+
+    $('#ensign-nivoslider-3').nivoSlider({
+        effect: 'random',
+        slices: 15,
+        boxCols: 8,
+        boxRows: 4,
+        animSpeed: 500,
+        pauseTime: 5000,
+        startSlide: 0,
+        directionNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false
+    });
+
+    //scroll to animation
+    $("a[href^='#'][data-toggle!='modal'][data-toggle!='collapse']").click(function (e) {
+        e.preventDefault();
+        var margin = 50;
+        if ($(document).scrollTop() <= 180)
+        {
+            margin += 50;
+        }
+        var element = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(element).offset().top - margin }, 2000);
+        return false;
+    });
+
+    $(document).scroll(function(e){
+        var scrollTop = $(document).scrollTop();
+        if(scrollTop > 200){
+            $("#scrollUp").css("display","block");
+        }else{
+            $("#scrollUp").css("display","none");
+        }
+        if(scrollTop >= 180){
+            $('.menu-area').removeClass('navbar-static-top').addClass('navbar-fixed-top');
+        } else {
+            $('.menu-area').removeClass('navbar-fixed-top').addClass('navbar-static-top');
+        }
+    });
+
     /*----------------------------
      jQuery MeanMenu
      ------------------------------ */
@@ -11,14 +54,6 @@ $(document).on('ready page:change page:load turbolinks:load', function(event) {
         $(".header-top-area").toggleClass("btn-none");
     });
 
-    /*---------------------
-     tooltip
-     --------------------- */
-    $('[data-toggle="tooltip"]').tooltip({
-        animated: 'fade',
-        placement: 'top',
-        container: 'body'
-    });
     /*----------------------------
      wow js active
      ------------------------------ */
@@ -27,82 +62,16 @@ $(document).on('ready page:change page:load turbolinks:load', function(event) {
      Countdown active
      ------------------------------ */
     $('[data-countdown]').each(function() {
-        var $this = $(this),
-            finalDate = $(this).data('countdown');
-        $this.countdown(finalDate, function(event) {
+        finalDate = $(this).data('countdown');
+        $(this).timeTo({
+            timeTo: new Date(new Date( finalDate)),
+            displayDays: 2,
+            fontSize: 20,
+        });
 
-        $this.html(event.strftime('<span ><span>%-D<span>J</span></span></span><span><span>%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>'));
-        }).on('update.countdown', function () {
-            
-        })
-         .on('finish.countdown', function () {
-             
-         });
     });
 
-    /*----------------------------
-     owl active
-     ------------------------------ */
-    $(".total-product-slide").owlCarousel({
-        autoPlay: false,
-        slideSpeed: 2000,
-        pagination: false,
-        navigation: true,
-        items: 3,
-        /* transitionStyle : "fade", */
-        /* [This code for animation ] */
-        navigationText: false,
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [980, 3],
-        itemsTablet: [768, 2],
-        itemsMobile: [479, 1],
-    });
-    /*----------------------------
-     owl active (total-tab-product)
-     ------------------------------ */
-    $(".total-tab-product").owlCarousel({
-        autoPlay: false,
-        slideSpeed: 2000,
-        pagination: false,
-        navigation: true,
-        items: 5,
-        itemsCustom : [
-            [0, 1],
-            [450, 2],
-            [480, 2],
-            [600, 2],
-            [700, 3],
-            [768, 3],
-            [992, 4],
-            [1199, 5]
-        ],
-        /* transitionStyle : "fade", */
-        /* [This code for animation ] */
-        navigationText: false,
-    });
 
-    /*----------------------------
-     owl active
-     ------------------------------ */
-    $(".slide-blog" ).owlCarousel({
-        autoPlay: false,
-        slideSpeed:2000,
-        pagination:false,
-        navigation:true,
-        items: 3,
-        itemsCustom : [
-            [0, 1],
-            [450, 1],
-            [480, 1],
-            [600, 1],
-            [700, 1],
-            [768, 2],
-            [992, 2],
-            [1199, 3]
-        ],
-        /* transitionStyle : "fade", */    /* [This code for animation ] */
-        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-    });
     $(".slide-auction-closed" ).owlCarousel({
         navigation : true, // Show next and prev buttons
         slideSpeed : 300,
@@ -110,43 +79,6 @@ $(document).on('ready page:change page:load turbolinks:load', function(event) {
         singleItem:true,
         /* transitionStyle : "fade", */    /* [This code for animation ] */
         navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-    });
-
-    $(".new-arri-total").owlCarousel({
-        autoPlay: false,
-        slideSpeed: 2000,
-        items: 1,
-        pagination: false,
-        navigation: true,
-        navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        itemsDesktop: [1199, 1],
-        itemsDesktopSmall: [979, 1],
-        itemsTablet: [768, 1]
-    });
-    /*----------------------------
-     scrollUp
-     ------------------------------ */
-    // $.scrollUp({
-    //     scrollText: '<i class="fa fa-angle-up"></i>',
-    //     easingType: 'linear',
-    //     scrollSpeed: 900,
-    //     animation: 'fade'
-    // });
-
-    /*----------------------------
-     Zoom carsoule active
-     ------------------------------ */
-    $("#gallery_01").owlCarousel({
-        autoPlay: false,
-        slideSpeed: 2000,
-        items: 3,
-        pagination: false,
-        navigation: true,
-        navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [979, 3],
-        itemsTablet: [768, 2],
-        itemsMobile: [480, 3]
     });
 
 

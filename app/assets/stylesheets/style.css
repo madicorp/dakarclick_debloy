@@ -2435,7 +2435,7 @@ h3.widget-title-modal {
     padding: 0 5px;
 }
 .breadcumb-area {
-    background: rgba(0, 0, 0, 0) url("bg_breadcrumb.jpg") no-repeat scroll 50% 0 / cover;
+    background: rgba(0, 0, 0, 0) url("bg_breadcrumb.png") no-repeat scroll 50% 0 / cover;
     clear: both;
     margin-bottom: 60px;
     margin-top: -1px;

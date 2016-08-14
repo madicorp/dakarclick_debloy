@@ -1,24 +1,22 @@
-.best-deals-area.pt60#online
-  .row
-    .col-md-12
-      .title
-        %h1 Enchères à venir
-      .pull-right
-        .btn.seemore
-          =link_to "Plus" , "#"
-  .row.row-padd
-    -@auctions = Auction.coming(10,'created_at DESC') if  current_page?(root_url)
-    - Auction.coming(10,'created_at DESC').each do |auction|
-      .col-padd-custom
-        .av_title= auction.product.name
-        .av_image
+.best-deals-area.pt60.pb60
+  .container
+    .row.row-title
+      .col-md-12
+        .title
+          %h1 Enchères à venir
+    .row.row-padd
+      -@auctions = Auction.coming(10,'created_at DESC') if  current_page?(root_url)
+      - Auction.coming(10,'created_at DESC').each do |auction|
+        .col-padd-custom
+          .av_title= auction.product.name
+          .av_image
+            .center
+              %a.image{:href => "#"}
+                =image_tag auction.product.image ,class: "style_image_auction"
+          .av_timer
+            .timer_alert{"data-countdown" => auction.auction_close}
+          .av_price
+            .price{"data-productid" => auction.product.id} #{auction.value} FCFA
+            =image_tag "icon/price.png", class: "bg-price"
           .center
-            %a.image{:href => "#"}
-              =image_tag auction.product.image ,class: "style_image_auction"
-        .av_timer
-          .timer_alert{"data-countdown" => auction.auction_close}
-        .av_price
-          .price{"data-productid" => auction.product.id} #{auction.value} FCFA
-          =image_tag "icon/price.png", class: "bg-price"
-        .center
-          Bientot !
+            Bientot !

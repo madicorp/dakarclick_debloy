@@ -1,29 +1,30 @@
-.best-deals-area.pt60#closed
-  .row
-    .col-md-12
-      .title
-        %h1 Enchères terminées
-  .row.row-padd.slide-auction-closed.slide-btn
-    - @auctions = Auction.closed(10,'created_at DESC') if current_page?(root_url)
-    - @auctions.each do |auction|
-      .row
-        .col-md-8.col-md-offset-2
-          .single-product-wrap
-            .col-md-4.col-sm-6.col-xs-12.col-padd
-              .single-product{:id => "auction#{auction.id}"}
-                .product-img
-                  %a{:href => "#"}
-                    =image_tag auction.product.image
-            .col-md-8.col-sm-6.col-xs-12.col-padd
-              .single-product-text2
-                .time-ratting-bought2
-                  .bought
-                    %h5= auction.product.name
+.best-deals-area.pt60.pb60
+  .container
+    .row.row-title
+      .col-md-12
+        .title
+          %h1 Enchères terminées
+    .row.row-padd.slide-auction-closed.slide-btn
+      - @auctions = Auction.closed(10,'created_at DESC') if current_page?(root_url)
+      - @auctions.each do |auction|
+        .row
+          .col-md-8.col-md-offset-2
+            .single-product-wrap
+              .col-md-4.col-sm-6.col-xs-12.col-padd
+                .single-product{:id => "auction#{auction.id}"}
+                  .product-img
+                    %a{:href => "#"}
+                      =image_tag auction.product.image
+              .col-md-8.col-sm-6.col-xs-12.col-padd
+                .single-product-text2
+                  .time-ratting-bought2
+                    .bought
+                      %h5= auction.product.name
+                      .price-type
+                        .running-price
+                        %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
+                  .product-name
+                    %span= auction.description unless auction.top_bid.nil?
                     .price-type
-                      .running-price
-                      %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
-                .product-name
-                  %span= auction.description unless auction.top_bid.nil?
-                  .price-type
-                    .old-price
-                      %span=auction.top_bid.user.username unless auction.top_bid.nil?
+                      .old-price
+                        %span=auction.top_bid.user.username unless auction.top_bid.nil?

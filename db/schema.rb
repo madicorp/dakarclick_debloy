@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808172720) do
+ActiveRecord::Schema.define(version: 20160814020904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,21 @@ ActiveRecord::Schema.define(version: 20160808172720) do
   add_index "robots", ["auction_id"], name: "index_robots_on_auction_id", using: :btree
   add_index "robots", ["user_id"], name: "index_robots_on_user_id", using: :btree
 
+  create_table "sliders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.text     "description"
     t.text     "product"
@@ -122,6 +137,7 @@ ActiveRecord::Schema.define(version: 20160808172720) do
     t.integer  "units"
     t.string   "avatar"
     t.string   "username"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

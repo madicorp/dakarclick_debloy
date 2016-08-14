@@ -41,18 +41,18 @@
 .main-header.pt20.pb20
   .container
     .row
-      .col-md-3.col-lg-3.col-sm-3.col-xs-12
+      .col-md-4.col-lg-4.col-sm-4.col-xs-12
         .logo
           %a{:href => root_path}
             =image_tag  "logo.png"
-      .col-md-6.col-lg-6.col-sm-6.col-xs-12
-        .search-catagory
+      .col-md-4.col-lg-4.col-sm-4.col-xs-12
+        .search-catagory.hide
           .categori
             %form#select-categoris.form-horizontal{:method => "post"}
               .search-bar
                 %input{:placeholder => "search hear...", :type => "text"}/
                 %i.fa.fa-search
-      .col-md-3.col-lg-3.col-sm-3.col-xs-12
+      .col-md-4.col-lg-4.col-sm-4.col-xs-12
         .top-links
           %ul.list-inline
             -if current_user
