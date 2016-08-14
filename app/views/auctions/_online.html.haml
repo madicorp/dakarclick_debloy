@@ -5,7 +5,7 @@
         .title
           %h1 Enchères en cours
     .row.row-padd
-      -@auctions = Auction.active(10,'created_at DESC') if current_page?(root_url)
+      -@auctions = Auction.active(8,'created_at DESC') if current_page?(root_url)
       -@auctions.each do |auction|
         - @auction = auction
         =render "auctions/single_preview"
