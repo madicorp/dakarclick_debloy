@@ -50,6 +50,7 @@ footer a {
 }
 .home-4-waraper .menu-area ul li > a{
   border: 3px solid rgba(255,255,255,0);
+  font-family: "Comic Sans MS";
   //border-bottom: none;
 }
 .home-4-waraper .menu-area ul li a:hover, .home-4-waraper .menu-area ul li:hover > a {
@@ -118,7 +119,7 @@ footer a {
 }
 .menu-area ul li > a{
   color: #333;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 10px;
   padding: 20px 20px;
 }
@@ -254,6 +255,10 @@ div.av_timer div.timer, div.av_timer div.timer_alert, div.av_timer div.timer_inv
 .av_price{
   padding: 7px 17px;
   height: 45px;
+}
+
+.padleft60{
+  padding-left: 60px !important;
 }
 .av_price .price{
   position: absolute;
@@ -816,4 +821,8 @@ body {
   padding: 5px 10px;
   display: inline-block;
   text-decoration: none;
+}
+
+.nomag{
+  margin : 0px !important;
 }

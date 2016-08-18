@@ -1,4 +1,3 @@
----
 fr:
   activerecord:
     errors:
@@ -208,3 +207,265 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
     pm: pm
+  errors:
+    messages:
+      not_found: "n'a pas été trouvé(e)"
+      already_confirmed: "a déjà été confirmé(e)"
+      not_locked: "n'était pas verrouillé(e)"
+      not_saved:
+              one: "1 error prohibited this %{resource} from being saved:"
+              other: "%{count} errors prohibited this %{resource} from being saved:"
+  devise:
+    failure:
+      unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
+      unconfirmed: "Vous devez confirmer votre compte pour continuer."
+      locked: "Votre compte est verrouillé."
+      invalid: "Courriel ou mot de passe incorrect."
+      invalid_token: "Jeton d'authentification incorrect."
+      timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
+      inactive: "Votre compte n'est pas encore activé."
+    sessions:
+      signed_in: "Connecté."
+      signed_out: "Déconnecté."
+    passwords:
+      send_instructions: "Vous allez recevoir un courriel contenant des instructions pour changer votre mot de passe."
+      updated: "Votre mot de passe a été changé. Vous êtes maintenant connecté."
+    confirmations:
+      send_instructions: "Vous allez recevoir un courriel contenant des instructions pour activer votre compte."
+      confirmed: "Votre compte a été activé. Vous êtes maintenant connecté."
+    registrations:
+      signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
+      updated: "Votre mise à jour a été prise en compte."
+      destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
+    unlocks:
+      send_instructions: "Vous allez recevoir un courriel avec des instructions pour déverrouiller votre compte."
+      unlocked: "Votre compte est déverrouillé. Vous êtes maintenant connecté."
+    mailer:
+      confirmation_instructions: "Instructions de confirmation"
+      reset_password_instructions: "Instructions pour changer le mot de passe"
+      unlock_instructions: "Instructions pour déverrouiller le compte"
+
+    ##########################################################################################################
+    # For generated views: By "rails generate devise_views".
+    #                      Assuming to use I18n "Lazy" lookup, except for the ones under "common" namespace.
+    #                      e.g. Under views/devise/confirmations/new.html.erb,
+    #                           <h2>Resend confirmation instructions</h2>
+    #                           is changed to
+    #                           <h2><%= t(".resend_confirmation_instructions") %></h2>
+    #                           locally.
+    ##########################################################################################################
+    common:
+      forgot_your_password?: "Mot de passe oublié ?"
+      hello: "Bonjour"
+      sign_in: "Se connecter"
+      sign_up: "S'enregistrer"
+    shared:
+      links:
+        didnt_receive_confirmation_instructions?: "Vous n'avez pas reçu de courriel de confirmation ?"
+        didnt_receive_unlock_instructions?: "Vous n'avez pas reçu de courriel de déverrouillage de votre compte ?"
+    confirmations:
+      new:
+        resend_confirmation_instructions: "Renvoyer le courriel de confirmation"
+    mailer:
+      confirmation_instructions:
+        welcome: "Bienvenu(e)"
+        you_can_confirm_your_account_through_the_link_below: "Vous pouvez confirmer votre compte en cliquant sur le lien ci-dessous"
+        confirm_my_account: "Confirmer mon compte"
+      reset_password_instructions:
+        # For "Someone has requested a link to change your password, and you can do this through the link below."
+        reset_password_instruction: "Un changement de mot de passe a été demandé. Vous pouvez le faire en cliquant sur le lien ci-dessous."
+        change_my_password: "Changer mon mot de passe"
+        # For "If you didn't request this, please ignore this email."
+        wrong_request_instruction: "Si vous n'avez pas demandé ce changement, ignorez ce message."
+        # For "Your password won't change until you access the link above and create a new one."
+        unchange_password_message: "Votre mot de passe ne sera pas changé tant que vous n'aurez pas accédé au lien ci-dessus pour en créer un nouveau."
+      unlock_instructions:
+        # For "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+        locked_account_message: "Votre compte a été verrouillé à la suite d'un trop grand nombre de tentatives d'authentification."
+        # For "Click the link below to unlock your account"
+        unlock_account_instruction: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte"
+        unlock_my_account: "Déverrouiller mon compte"
+    passwords:
+      edit:
+        change_your_password: "Changez votre mot de passe"
+        change_my_password: "Changer mon mot de passe"
+      new:
+        send_me_reset_password_instructions: "Envoyez-moi un courriel pour changer mon mot de passe"
+    registrations:
+      edit:
+        edit: "Modifier"
+        # For "leave blank if you don't want to change it"
+        password_instruction: "Laisser vide si vous ne voulez pas le changer"
+        # For "we need your current password to confirm your changes"
+        current_password_instruction: "Vous devez saisir votre mot de passe courant pour confirmer vos changement"
+        update: "Mettre à jour"
+        cancel_my_account: "Annuler mon compte"
+        unhappy?: "Pas content(e) ?"
+        are_you_sure?: "Êtes-vous sûr ?"
+        back: "Retour"
+    unlocks:
+      new:
+        resend_unlock_instructions: "Renvoyez le mail pour déverrouiller mon compte"
+
+  admin:
+    js:
+      true: Vrai
+      false: Faux
+      is_present: Est présent
+      is_blank: Est vide
+      date: Date ...
+      between_and_: Entre le ... et le ...
+      today: "Aujourd'hui"
+      yesterday: Hier
+      this_week: Cette semaine
+      last_week: Semaine précédente
+      number: Nombre ...
+      contains: Contient
+      is_exactly: Est exactement
+      starts_with: Commence par
+      ends_with: Termine par
+    loading: "Chargement..."
+    home:
+      name: Home
+    pagination:
+      previous: "&laquo; Préc."
+      next: "Suiv. &raquo;"
+      truncate: "…"
+    misc:
+      filter_date_format: "dd/mm/yy" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
+      search: "Rechercher"
+      filter: "Filtrer"
+      refresh: "Rafraîchir"
+      show_all: "Voir tout"
+      add_filter: "Ajouter un filtre..."
+      bulk_menu_title: "Objets sélectionnés..."
+      remove: "Enlever"
+      add_new: "Ajouter nouveau"
+      chosen: "%{name} choisis"
+      chose_all: "Prendre tout"
+      clear_all: "Tout enlever"
+      up: "Monter"
+      down: "Descendre"
+      navigation: "Navigation"
+      navigation_static_label: "Liens"
+      log_out: "Déconnexion"
+      ago: ""
+    flash:
+      successful: "%{name} a été %{action} avec succès"
+      error: "%{name} n'a pas pu être %{action}"
+      noaction: "Aucune action !"
+      model_not_found: "Le model '%{model}' n'a pas été trouvé"
+      object_not_found: "%{model} avec id '%{id}' n'a pas été trouvé"
+    table_headers:
+      model_name: "Nom du modèle"
+      last_used: "Utilisé"
+      records: "Enregistrements"
+      username: "Utilisateur"
+      changes: "Changements"
+      created_at: "Date/Heure"
+      item: "Objet"
+      message: "Message"
+    actions:
+      dashboard:
+        title: "Administration"
+        menu: "Administration"
+        breadcrumb: "Administration"
+      index:
+        title: "Listing des %{model_label_plural}"
+        menu: "Liste"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "Détails pour %{model_label} '%{object_label}'"
+        menu: "Voir"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "Voir dans l'application"
+      new:
+        title: "Création d'un(e) %{model_label}"
+        menu: "Nouveau"
+        breadcrumb: "Nouveau"
+        link: "Ajouter un(e) %{model_label}"
+        done: "créé(e)"
+      edit:
+        title: "Édition %{model_label} '%{object_label}'"
+        menu: "Édition"
+        breadcrumb: "Édition"
+        link: "Éditer ce(tte) %{model_label}"
+        done: "modifié(e)"
+      delete:
+        title: "Suppression %{model_label} '%{object_label}'"
+        menu: "Supprimer"
+        breadcrumb: "Suppression"
+        link: "Supprimer '%{object_label}'"
+        done: "supprimé(e)"
+      bulk_delete:
+        title: "Suppression de %{model_label_plural}"
+        menu: "Délétion multiple"
+        breadcrumb: "Délétion multiple"
+        bulk_link: "Supprimer les %{model_label_plural} sélectionné(e)s"
+      export:
+        title: "Export de %{model_label_plural}"
+        menu: "Export"
+        breadcrumb: "Export"
+        link: "Export des %{model_label_plural} trouvé(e)s"
+        bulk_link: "Exporter les %{model_label_plural} sélectionné(e)s"
+        done: "exporté(e)s"
+      history_index:
+        title: "Historique des %{model_label_plural}"
+        menu: "Historique"
+        breadcrumb: "Historique"
+      history_show:
+        title: "Historique %{model_label} '%{object_label}'"
+        menu: "Historique"
+        breadcrumb: "Historique"
+    form:
+      cancel: "Annuler"
+      basic_info: "Informations de base"
+      required: "Obligatoire"
+      optional: "Facultatif"
+      one_char: "caractère"
+      char_length_up_to: "longueur jusqu'à"
+      char_length_of: "longueur de"
+      save: "Enregistrer"
+      save_and_add_another: "Enregistrer et créer un(e) autre"
+      save_and_edit: "Enregistrer et re-modifier"
+      all_of_the_following_related_items_will_be_deleted: " ? Les objets suivants peuvent être affectés (supprimés ou orphelins) : "
+      are_you_sure_you_want_to_delete_the_object: "Êtes-vous sûr de vouloir supprimer cet(te) %{model_name}"
+      confirmation: "Oui, je suis sûr(e)"
+      bulk_delete: "Les objets suivants seront supprimés, ce qui pourrait supprimer ou rendre orpheline les dépendances affichées :"
+      new_model: "%{name} (nouveau)"
+    export:
+      confirmation: "Exporter en %{name}"
+      select: "Sélectionner les champs à exporter"
+      select_all_fields: "Selectionner Tous Les Champs"
+      fields_from: "Champs pour '%{name}'"
+      fields_from_associated: "Champs pour l'association '%{name}'"
+      display: "Afficher %{name} : %{type}"
+      options_for: "Options pour %{name}"
+      empty_value_for_associated_objects: "<vide>"
+      click_to_reverse_selection: 'Cliquer pour inverser la sélection'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "Encoder en..."
+        encoding_to_help: "Choisir l'encodage de sortie. Laisser vide pour garder l'encodage d'entrée : (%{name})"
+        skip_header: "Pas d'en-tête"
+        skip_header_help: "Ne pas afficher d'en-tête (pas de champs de description)"
+        default_col_sep: ";"
+        col_sep: "Séparateur de colonnes"
+        col_sep_help: "Laisser vide pour utiliser la valeur par défaut recommandée pour votre système ('%{value}')"
+
+  sign_up: "Inscription"
+  sign_in:  "Connexion"
+  sign_in_with: "Se connecter via"
+  name_label: "Nom"
+  username_label: "Identifiant"
+  email_label: "Email"
+  password_label: "Mot de passe"
+  passwordconfirm_label: "Confirmation"
+  phone_number_label: "Numéro de téléphone"
+  btnsignup: "S'inscrire"
+  charmin: "caractères minimum"
+  forgotpass: "Mot de passe oublié?"
+  dontreceiveconfirm: "N'a pas reçu les instructions de confirmation"
+  dontreceiveunlock: "N'a pas reçu les instructions de déverrouillage"

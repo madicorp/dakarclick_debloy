@@ -1,4 +1,5 @@
 =render "auctions/#{params[:filter]}"
+= javascript_include_tag "home.bid"
 
 #infinite-scroll
   = will_paginate @auctions

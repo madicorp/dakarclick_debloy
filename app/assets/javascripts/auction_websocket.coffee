@@ -66,6 +66,8 @@
           return
         return###
 
+      #el = $('.auction'+data.auction_id).find('.timeTo ul li')
+      #el.pulse({ color: "red" }, { pulses : 5 });
       user_id =  parseInt(sessionStorage.getItem('ours'))
       if(data.user_id == user_id)
         $('#infogagn').html('Félicitations ,vous êtes temporairement le gagnant.')

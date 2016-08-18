@@ -1,5 +1,13 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bonjour, <%= @email.upcase %></p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Bienvenue à DakarClick</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>Pourriez-vous s'il vous plaît cliquer sur le lien ci-dessous pour vérifier que ceci est bien votre adresse e-mail?</p>
+
+<p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+
+<p>Si vous avez besoin d'aide ou avez des questions, s'il vous plaît visitez http://dakarclick.herokuapp.com/how_it_works</p>
+
+<p>Merci!</p>
+<p>DakarClick</p>

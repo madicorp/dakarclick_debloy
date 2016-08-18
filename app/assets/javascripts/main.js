@@ -73,12 +73,11 @@ $(document).on('ready page:load', function(event) {
 
 
     $(".slide-auction-closed" ).owlCarousel({
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        /* transitionStyle : "fade", */    /* [This code for animation ] */
-        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+        items:1,
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true
     });
 
 

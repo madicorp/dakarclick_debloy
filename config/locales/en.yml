@@ -21,3 +21,17 @@
 
 en:
   hello: "Hello world"
+  sign_up: "Sign up"
+  sign_in:  "Sign in"
+  sign_in_with: "Sign in with"
+  name_label: "Name"
+  username_label: "Username"
+  email_label: "Email"
+  password_label: "Password"
+  passwordconfirm_label: "Password confirmation"
+  phone_number_label: "Phone Number"
+  btnsignup: "Sign up"
+  charmin: "characters minimum"
+  forgotpass: "Forgot your password?"
+  dontreceiveconfirm: "Didn't receive confirmation instructions?"
+  dontreceiveunlock: "Didn't receive unlock instructions?"

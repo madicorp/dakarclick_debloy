@@ -21,6 +21,7 @@
 //= require jquery.nivo.slider
 //= require wow.min
 //= require owl.carousel.min
+//= require jquery.pulse.min.js
 //= require jquery.time-to.min
 //= require jquery.fancybox.pack
 //= require jquery.elevateZoom-3.0.8.min
