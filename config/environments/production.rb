@@ -97,7 +97,7 @@ Rails.application.configure do
       domain: "dakarclick.herokuapp.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: ENV["dakarclick"],
-      password: ENV["dakarclick2016"]
+      user_name: "dakarclick@gmail.com",
+      password: "dakarclick2016"
   }
 end
