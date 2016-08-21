@@ -2,8 +2,9 @@
 a{
   color: #fff;
 }
-.b_static_footer, .b_static_footer h3 {
+.b_static_footer, .b_static_footer h1 {
   color:rgba(48, 48, 47, 0.86) !important;
+  text-align: center;
 }
 .home-4-waraper .main-header {
   background: #f4f4f2 none repeat scroll 0 0;
@@ -833,7 +834,7 @@ body {
 .tg-brand {
   width: 100%;
   float: left;
-  height: 140px;
+  height: 70px;
   cursor: pointer;
   background: transparent;
 }
@@ -856,7 +857,7 @@ figure {
   display: block;
   margin: 0 auto;
   opacity: 0.50;
-  max-height: 100px;
+  max-height: 50px;
 }
 .nomag{
   margin : 0px !important;
