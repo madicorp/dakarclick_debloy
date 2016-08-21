@@ -11,7 +11,7 @@
       #headingfive.panel-heading{:role => "tab"}
         %h4.panel-title
           %a.collapsed{"aria-controls" => "payment-information", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#payment-information"}
-            Choix de paiement
+            Etape 1 - Choix de paiement
             %span
               %i.fa.fa-caret-down
       #payment-information.panel-collapse.collapse{"aria-labelledby" => "headingfive", :role => "tabpanel"}
@@ -62,7 +62,7 @@
       #headingsix.panel-heading{:role => "tab"}
         %h4.panel-title
           %a.collapsed{"aria-controls" => "confirm-order", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#confirm-order"}
-            Detail Commande
+            Etape 2 - Detail Commande
             %span
               %i.fa.fa-caret-down
       #confirm-order.panel-collapse.collapse{"aria-labelledby" => "headingsix", :role => "tabpanel"}
@@ -89,7 +89,7 @@
                     %td.left.last
                       %b Total:
                     %td.right.total.last
-                      = to_currency(@order.total_ttc)
+                      = ActiveSupport::NumberHelper.number_to_currency(@order.total_ttc, precision: 0, unit: 'FCFA')
                       %em F CFA
               =f.hidden_field :total_ttc
               =f.hidden_field :total_ht
