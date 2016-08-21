@@ -90,7 +90,6 @@
                       %b Total:
                     %td.right.total.last
                       = ActiveSupport::NumberHelper.number_to_currency(@order.total_ttc, precision: 0, unit: 'FCFA')
-                      %em F CFA
               =f.hidden_field :total_ttc
               =f.hidden_field :total_ht
               =f.hidden_field :payment_method , :id => "paymentmethod"

@@ -93,7 +93,7 @@ $(document).on('ready page:load', function(event) {
             $(this).val(newVal);
         }
         var s_total = newVal * 100;
-        $(".cart-total").find(".total").html(s_total  + " <em>F CFA</em>");
+        $(".cart-total").find(".total").html(s_total);
         $("#order_total_ttc").val(s_total);
     });
     $(".cart-plus-minus")
@@ -112,7 +112,7 @@ $(document).on('ready page:load', function(event) {
         }
         $button.parent().find("input").val(newVal);
         var s_total = newVal * 100;
-        $(".cart-total").find(".total").html(s_total +" <em>F CFA</em>");
+        $(".cart-total").find(".total").html(s_total);
         $("#order_total_ttc").val(s_total);
         $(".cart-plus-minus-box").trigger('input');
     });
