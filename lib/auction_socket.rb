@@ -87,7 +87,7 @@ class AuctionSocket
         if service.execute auction_id: message["auction_id"],  user_id: message["user_id"]
             reponse = {
                 :message => 'bidok',
-                :value => service.value,
+                :value => ActiveSupport::NumberHelper.number_to_currency(service.value, precision: 0, unit: 'FCFA'),
                 :units => service.units,
                 :ench => service.nb_ench,
                 :user_id => service.user.id,
@@ -111,7 +111,7 @@ class AuctionSocket
         if service.robot @robot
             reponse = {
                 :message => 'bidok',
-                :value => service.value,
+                :value => ActiveSupport::NumberHelper.number_to_currency(service.value, precision: 0, unit: 'FCFA'),
                 :units => service.units,
                 :ench => service.nb_ench,
                 :user_id => service.user.id,
@@ -137,7 +137,7 @@ class AuctionSocket
     def notify_outbids socket, value , nb_ench, user_id ,units_robot, disable_robot_id ,auction_id , last_users ,auction_close
         reponse = {
             :message => 'outbid',
-            :value  => value,
+            :value  => ActiveSupport::NumberHelper.number_to_currency(value, precision: 0, unit: 'FCFA'),
             :ench => nb_ench,
             :user_id => user_id,
             :auction_id => auction_id,
