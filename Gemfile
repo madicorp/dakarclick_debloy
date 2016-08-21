@@ -58,6 +58,7 @@ gem 'angular-ui-bootstrap-rails'
 gem 'momentjs-rails'
 gem 'rest-client'
 gem 'json'
+gem 'aws-sdk', '~> 2.3'
 
 #for bootstrap UI
 # Use ActiveModel has_secure_password
