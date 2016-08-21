@@ -12,7 +12,7 @@
             %h3= @auction.product.name
           .auction.product-des
             %ul
-              %li Chaque offre augmente l'enchère  de #{@auction.valuetoinc} FCFA
+              %li Chaque offre augmente l'enchère  de #{ActiveSupport::NumberHelper.number_to_currency(@auction.valuetoinc, precision: 0, unit: 'FCFA')}
               %li.infogagn#infogagn
                 -if @auction.top_bid.present?
                   -if current_user
@@ -24,7 +24,7 @@
               -if current_user
                 =render "robot"
             .running-price.desblockprice.first-child
-              %h1.desprice.price #{@auction.current_bid} FCFA
+              %h1.desprice.price #{ActiveSupport::NumberHelper.number_to_currency(@auction.current_bid, precision: 0, unit: 'FCFA')}
               =render "bid"
             .running-price.desblockprice
               %h1 Gagnants

@@ -13,7 +13,7 @@
               %h3= @product.name
             .product-des
               %ul
-                %li Chaque offre augmente l'enchère  de #{@product.auction.valuetoinc} FCFA
+                %li Chaque offre augmente l'enchère  de #{ActiveSupport::NumberHelper.number_to_currency(@product.auction.valuetoinc, precision: 0, unit: 'FCFA')}
                 %li.infogagn
                   -if @product.auction.top_bid.present?
                     -if current_user
@@ -22,7 +22,7 @@
                       -else
                         Ooopss. Vous êtes hors enchère en ce moment.
               .running-price.desblockprice
-                %h1.desprice #{@product.auction.current_bid} FCFA
+                %h1.desprice #{ActiveSupport::NumberHelper.number_to_currency(@product.auction.current_bid, precision: 0, unit: 'FCFA')}
                 -if current_user
                   =render "bid"
                 -else

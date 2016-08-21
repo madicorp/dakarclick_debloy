@@ -15,7 +15,7 @@
           .timer_alert{"data-countdown" => @auction.auction_close}
         .av_price.padleft60
           .price
-            #{@auction.value} FCFA
+            #{ActiveSupport::NumberHelper.number_to_currency(@auction.value, precision: 0, unit: 'FCFA')}
           =image_tag "icon/price.png", class: "bg-price"
         .av_winner{class: @auction.podium.size}
           -@auction.podium.each_with_index do |name, index|

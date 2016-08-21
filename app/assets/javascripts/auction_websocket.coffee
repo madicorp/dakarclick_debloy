@@ -49,25 +49,23 @@
           $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>-</div>")
         i++
         first=""
-      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('.auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
-      $('.auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
-        $this = $(this)
-        finalDate = data.auction_close
-        $this.timeTo {
-            timeTo: new Date(new Date(finalDate)),
-            displayDays: 2,
-            displayCaptions: true,
-            fontSize: 48,
-            captionSize: 14
-          }
-        ###$this.countdown finalDate, (event) ->
-          $this.html event.strftime('<span><span>%-D<span>J</span></span></span><span><span >%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>')
-          return
-        return###
-
-      #el = $('.auction'+data.auction_id).find('.timeTo ul li')
-      #el.pulse({ color: "red" }, { pulses : 5 });
+      $('.auction'+data.auction_id).find('.price').html(data.value)
+      timer = $('.auction'+data.auction_id).find('.timer_alert')
+      timer.attr("data-countdown", data.auction_close)
+      finalDate = data.auction_close
+      finish = new Date(new Date(finalDate))
+      now = new Date
+      diff = finish.getTime() - now.getTime()
+      $(timer).timeTo {
+          timeTo: new Date(new Date(finalDate)),
+          displayDays: 2,
+          fontSize: 20,
+          countdownAlertLimit: 30
+        }
+      if (diff / 1000) > 30
+        $('.auction'+data.auction_id).find("[data-countdown]").children("div").each ->
+          console.log($(this).html())
+          $(this).removeClass('timeTo-alert')
       user_id =  parseInt(sessionStorage.getItem('ours'))
       if(data.user_id == user_id)
         $('#infogagn').html('Félicitations ,vous êtes temporairement le gagnant.')
@@ -76,7 +74,7 @@
       else
         $('#infogagn').html('Ooopss. Vous êtes hors enchère en ce moment.')
 
-      $('.desprice').html(data.value + 'FCFA')
+      $('.desprice').html(data.value)
 
       $('#infogagn').addClass('infogagn_inverse').removeClass('infogagn')
       $('.infogagn_inverse').animateCss('wobble','infogagn','infogagn_inverse')
@@ -88,51 +86,6 @@
         $("#robot_" + data.disable_robot_id).bootstrapSwitch('state', false, false)
         $("#conteur_" + data.disable_robot_id).addClass("hide")
         $("#send_bid_btn").prop('disabled', true)
-
-# Auction outbid function update informations
-    ###outbid: (data) ->
-      $('.nbench').html(data.ench+ ' Enchères')
-      last_users = data.last_users
-      $('.auction'+data.auction_id).find('.av_winner').html('')
-      for user in data.last_users
-        $('.auction'+data.auction_id).find('.av_winner').append("<div class='winner'>"+user+"</div>")
-      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('.auction'+data.auction_id).find('.price').html(data.value + ' FCFA')
-      $('.auction'+data.auction_id).find('.timer_alert').attr("data-countdown", data.auction_close)
-      $('.auction'+data.auction_id).find('.timer_alert').attr 'data-countdown', ->
-        $this = $(this)
-        finalDate = data.auction_close
-        $this.countdown finalDate, (event) ->
-          $this.html event.strftime('<span><span>%-D<span>J</span></span></span><span><span >%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>')
-          return
-        return
-
-      user_id =   parseInt(sessionStorage.getItem('ours'))
-      if(data.user_id == user_id)
-        $('#infogagn').html('Félicitations ,vous êtes temporairement le gagnant.')
-      else
-        $('#infogagn').html('Ooopss. Vous êtes hors enchère en ce moment.')
-
-      $('.desprice').html(data.value + 'FCFA')
-      $('#infogagn').addClass('infogagn_inverse').removeClass('infogagn')
-      $('.infogagn_inverse').animateCss('wobble','infogagn','infogagn_inverse')
-
-      $('.desprice').addClass('desprice_inverse').removeClass('desprice')
-      $('.desprice_inverse').animateCss('pulse', 'desprice_inverse','desprice')
-
-      $('#countdownauction').attr("data-countdown", data.auction_close)
-      $('#countdownauction').attr 'data-countdown', ->
-        $this = $(this)
-        finalDate = data.auction_close
-        $this.countdown finalDate, (event) ->
-          $this.html event.strftime('<span><span>%-D<span>J</span></span></span><span><span >%-H<span>H</span></span></span><span><span>%M<span>M</span></span></span> <span><span>%S<span>S</span></span></span>')
-          return
-        return
-
-      if(data.disable_robot_id != "undefined" && data.disable_robot_id != null)
-        $("#robot_"+data.disable_robot_id).bootstrapSwitch('state', false, false)
-        $("#conteur_"+data.disable_robot_id).addClass("hide")
-        $("#send_bid_btn").prop('disabled', false)###
 
 
     # Auction create robot funcrtion update robot form

@@ -64,9 +64,10 @@ $(document).on('ready page:load', function(event) {
     $('[data-countdown]').each(function() {
         finalDate = $(this).data('countdown');
         $(this).timeTo({
-            timeTo: new Date(new Date( finalDate)),
+            timeTo: new Date(moment(finalDate)),
             displayDays: 2,
             fontSize: 20,
+            countdownAlertLimit: 30
         });
 
     });

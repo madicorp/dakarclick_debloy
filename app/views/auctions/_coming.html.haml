@@ -16,7 +16,7 @@
           .av_timer
             .timer_alert{"data-countdown" => auction.auction_close}
           .av_price
-            .price{"data-productid" => auction.product.id} #{auction.value} FCFA
+            .price{"data-productid" => auction.product.id} #{ActiveSupport::NumberHelper.number_to_currency(auction.value, precision: 0, unit: 'FCFA')}
             =image_tag "icon/price.png", class: "bg-price"
           .center
             Bientot !

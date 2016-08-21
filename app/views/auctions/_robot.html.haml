@@ -1,21 +1,22 @@
-=form_for [@auction, @robot], html: {:class => "form_robot"}  do |f|
-  .row
-    .form-group.col-md-6
-      %label Status Robot
-      =f.check_box :is_active,:id => "robot_#{current_user.id.to_s + @auction.id.to_s}", class: "activate-robots", "data-off-text" => "<i class='fa fa-power-off'></i>", "data-on-text" => "<i class='fa fa-android'></i>", "data-handle-width" => "100", "data-size" => "large", "data-on-color" => "success"
-    .col-md-6
-      .count-bought
-        .time-counter{:class => ("hide" unless @robot.is_active),:id => "conteur_#{current_user.id.to_s + @auction.id.to_s}"}
-          %div{"data-countdown" => (@robot.ends_at if @robot.is_active)}
-  .ratting-review.robot-config-area.hide
-    .product-quantity.row
-      .cart-quantity.col-md-12
-        =f.hidden_field :user_id, value: current_user.id
-        .form-group.col-md-5
-          %label Unite
-          =f.number_field :units, class: "form-control", required: true
-        .col-md-5
-          %label Duration
-          =f.text_field :ends_at, class: "form-control timepicker", required: true
-        .form-group.col-md-2
-          =f.submit "Activer" ,class: "btn btn-sm btn-primary"
+-if false
+  =form_for [@auction, @robot], html: {:class => "form_robot"}  do |f|
+    .row
+      .form-group.col-md-6
+        %label Status Robot
+        =f.check_box :is_active,:id => "robot_#{current_user.id.to_s + @auction.id.to_s}", class: "activate-robots", "data-off-text" => "<i class='fa fa-power-off'></i>", "data-on-text" => "<i class='fa fa-android'></i>", "data-handle-width" => "100", "data-size" => "large", "data-on-color" => "success"
+      .col-md-6
+        .count-bought
+          .time-counter{:class => ("hide" unless @robot.is_active),:id => "conteur_#{current_user.id.to_s + @auction.id.to_s}"}
+            %div{"data-countdown" => (@robot.ends_at if @robot.is_active)}
+    .ratting-review.robot-config-area.hide
+      .product-quantity.row
+        .cart-quantity.col-md-12
+          =f.hidden_field :user_id, value: current_user.id
+          .form-group.col-md-5
+            %label Unite
+            =f.number_field :units, class: "form-control", required: true
+          .col-md-5
+            %label Duration
+            =f.text_field :ends_at, class: "form-control timepicker", required: true
+          .form-group.col-md-2
+            =f.submit "Activer" ,class: "btn btn-sm btn-primary"

@@ -89,7 +89,7 @@
                     %td.left.last
                       %b Total:
                     %td.right.total.last
-                      = @order.total_ttc
+                      = to_currency(@order.total_ttc)
                       %em F CFA
               =f.hidden_field :total_ttc
               =f.hidden_field :total_ht

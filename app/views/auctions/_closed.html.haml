@@ -22,7 +22,7 @@
                       %h5= auction.product.name
                       .price-type
                         .running-price
-                        %span.price-custom{"data-productid" => auction.product.id} #{auction.value} FCFA
+                        %span.price-custom{"data-productid" => auction.product.id} #{ActiveSupport::NumberHelper.number_to_currency(auction.value, precision: 0, unit: 'FCFA')}
                   .product-name
                     %span= auction.description unless auction.top_bid.nil?
                     .price-type

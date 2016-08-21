@@ -9,7 +9,7 @@
     .timer_alert{"data-countdown" => @auction.auction_close}
   .av_price
     .price
-      #{@auction.value} FCFA
+      #{ActiveSupport::NumberHelper.number_to_currency(@auction.value, precision: 0, unit: 'FCFA')}
     =image_tag "icon/price.png", class: "bg-price"
   .av_winner
     -@auction.podium.each_with_index do |name, index|
@@ -20,6 +20,5 @@
       %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
         GO
     -else
-      -#=link_to "GO", auction, :title => "GO" , class: "btngo"
       %button.send_home_btn.btn.btngo
         GO
