@@ -78,7 +78,8 @@ $(document).on('ready page:load', function(event) {
         loop:true,
         autoplay:true,
         autoplayTimeout:2000,
-        autoplayHoverPause:true
+        autoplayHoverPause:true,
+        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
     });
 
 
