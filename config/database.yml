@@ -1,38 +1,9 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
-development:
-  host: ec2-54-243-47-83.compute-1.amazonaws.com
-  adapter: postgresql
-  database: d8fv33r2dl1pcd
-  username: qvbpwbgztzpina
-  password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
-  port: 5432
-  pool: 5
-  timeout: 5000
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  host: ec2-54-243-47-83.compute-1.amazonaws.com
-  adapter: postgresql
-  database: d8fv33r2dl1pcd
-  username: qvbpwbgztzpina
-  password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
-  port: 5432
-  pool: 5
-  timeout: 5000
-
 production:
-  host: ec2-54-243-47-83.compute-1.amazonaws.com
-  adapter: postgresql
-  database: d8fv33r2dl1pcd
-  username: qvbpwbgztzpina
-  password: Yx6XOfvjqoy_OXN9rJI9A76Kbn
-  port: 5432
-  pool: 5
-  timeout: 5000
+  host: <%= ENV['DB_HOST'] %>
+  adapter: <%= ENV['DB_ADAPTER'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  port: <%= ENV['DB_PORT'] %>
+  pool: <%= ENV['DB_POOL'] %>
+  timeout: <%= ENV['DB_TIMEOUT'] %>

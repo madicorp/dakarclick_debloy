@@ -1,14 +1,13 @@
-Paydunya::Setup.master_key = "3OyMcM74-4NXR-Dqjv-Dzfr-mzgZQcKC2fMs"
-Paydunya::Setup.public_key = "test_public_JQ5yEn9yswKhn8QIu5CQbZTradO"
-Paydunya::Setup.private_key = "test_private_2BFarw7iXUn9NM7QGLi0pCLgeUC"
-Paydunya::Setup.mode = "test" # Optionnel. Utilisez cette option pour les paiements tests.
-Paydunya::Setup.token = "XXwhVKiLvwL6nNbvg6QW"
+Paydunya::Setup.master_key = ENV["PAYDUNYA_MASTER_KEY"]
+Paydunya::Setup.public_key = ENV["PAYDUNYA_PUBLIC_KEY"]
+Paydunya::Setup.private_key = ENV["PAYDUNYA_PRIVATE_KEY"]
+Paydunya::Setup.token = ENV["PAYDUNYA_TOKEN"]
 
 # Configuration des informations DakarClick
-Paydunya::Checkout::Store.name = "Dakar Click" # Seul le nom est requis
-Paydunya::Checkout::Store.tagline = "Pour le meilleur et pour le prix"
-Paydunya::Checkout::Store.postal_address = "Dakar Plateau"
-Paydunya::Checkout::Store.phone_number = "336530583"
-Paydunya::Checkout::Store.website_url = "http://dakarclick.madi-corp.net/"
-Paydunya::Checkout::Store.logo_url = "http://dakarclick.madi-corp.net/assets/logo-931d2e772558777e599cb2da6fe1405c732364fc66ee9ca26688b68aa3ee26d6.png"
-Paydunya::Checkout::Store.return_url = "https://dakarclick.herokuapp.com/confirm/paydunya"
+Paydunya::Checkout::Store.name = ENV["PAYDUNYA_STORE_NAME"]
+Paydunya::Checkout::Store.tagline = ENV["PAYDUNYA_TAGLINE"]
+Paydunya::Checkout::Store.postal_address = ENV["PAYDUNYA_ADDRESS"]
+Paydunya::Checkout::Store.phone_number = ENV["PAYDUNYA_NUMBER"]
+Paydunya::Checkout::Store.website_url = ENV["PAYDUNYA_WEBRITE_URL"]
+Paydunya::Checkout::Store.logo_url = ENV["PAYDUNYA_LOGO_URL"]
+Paydunya::Checkout::Store.return_url = ENV["PAYDUNYA_RETRUN_URL"]
