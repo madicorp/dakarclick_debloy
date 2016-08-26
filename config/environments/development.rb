@@ -16,7 +16,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: 'dakarclick.herokuapp.com', port: 80 }
+  config.action_mailer.default_url_options = { host: 'dakarclic.com', port: 80 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -46,8 +46,6 @@ Rails.application.configure do
   config.log_level = :debug
 
   config.consider_all_requests_local = false
-
-  Paperclip.options[:command_path] = "C:/Windows/system32/convert"
 
   
   config.action_mailer.delivery_method = :smtp

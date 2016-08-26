@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'confirm/paydunya' => 'confirm#paydunya'
   get 'confirm/paypal' => 'confirm#paypal'
   get 'comments/refresh' => 'comments#refresh'
-
+  get '/undefined' => 'home#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users do
     resources :orders

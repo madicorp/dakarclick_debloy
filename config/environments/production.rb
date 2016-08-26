@@ -86,18 +86,18 @@ Rails.application.configure do
       }
   }
 
-  config.action_mailer.default_url_options = { :host => 'dakarclick.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => ENV.fetch 'SMTP_DOMAIN' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: 587,
-      domain: "dakarclick.herokuapp.com",
-      authentication: "plain",
+      address: ENV.fetch ('SMTP_ADDRESS'),
+      port: ENV.fetch ('SMTP_PORT'),
+      domain: ENV.fetch('SMTP_DOMAIN'),
+      authentication: ENV.fetch('SMTP_AUTH'),
       enable_starttls_auto: true,
-      user_name: "dakarclick@gmail.com",
-      password: "dakarclick2016"
+      user_name: ENV.fetch('SMTP_USER'),
+      password: ENV.fetch('SMTP_PASS')
   }
 end

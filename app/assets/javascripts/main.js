@@ -4,7 +4,7 @@
 $(document).on('ready page:load', function(event) {
 
 
-    $('#ensign-nivoslider-3').nivoSlider({
+    $('#home-slider').nivoSlider({
         effect: 'random',
         slices: 15,
         boxCols: 8,
@@ -27,7 +27,9 @@ $(document).on('ready page:load', function(event) {
             margin += 50;
         }
         var element = $(this).attr("href");
-        $("html, body").animate({scrollTop: $(element).offset().top - margin }, 2000);
+        if (element.length) {
+            $("html, body").animate({scrollTop: $(element).offset().top - margin}, 2000);
+        }
         return false;
     });
 

@@ -27,7 +27,7 @@
               %h1.desprice.price #{ActiveSupport::NumberHelper.number_to_currency(@auction.current_bid, precision: 0, unit: 'FCFA')}
               =render "bid"
             .running-price.desblockprice
-              %h1 Gagnants
+              %h1 Classement
               .av_winner
                 -@auction.podium.each_with_index do |name, index|
                   .winner{:class => ("first" if index == 0)}

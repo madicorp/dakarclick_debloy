@@ -146,7 +146,7 @@ footer {
   color: #ffd464;
 }
 .b_header_middle {
-  background-color:rgba(48, 48, 47, 0.5);
+  background-color:rgb(254, 219, 125);
 }
 .language strong b, .currency strong b,
 .b_header_middle .contact,
@@ -161,6 +161,10 @@ footer {
 .b_header_middle .contact a:hover,
 .b_header_middle .top_right .footer-social ul li a:hover{
   color: #ffd464;
+}
+.bt-information a img {
+  height: 60px;
+  margin-left: 40%;
 }
 .btn-login,.btn-register,.wishlist-total,.my_account{
   line-height: 63px;
@@ -591,14 +595,41 @@ body {
   font-weight: bold;
   font-size: small;
 }
-.row-padd, .td-item.popins-font{
+.row-padd{
   background-color: #fafcff;
   padding: 20px;
+}
+
+.td-item.popins-font{
+  background-color: #f7129d;
+  padding: 0px;
+  margin-left: 3%;
+}
+.td-item.popins-font .title.t-bdr{
+  background: #00aeaf;
+  padding: 10px;
+  color: #fff;
+}
+.td-item.popins-font .title.t-bdr > h1{
+  text-align: center;
+  padding: 1%;
+}
+.td-item.popins-font .av_title , .td-item.popins-font .av_timer .timer_alert{
+  background: #98c831 none repeat scroll 0 0;
+}
+.td-item.popins-font .btngo{
+  background: #f05e12  none repeat scroll 0 0 !important;
 }
 .td-item.popins-font .col-padd-custom{
   width: 100% !important;
 }
-.row-title, .td-item.popins-font .title.t-bdr, .page-header{
+.td-item.popins-font div.winner{
+  color: #dd0086 ;
+}
+.td-item.popins-font .padleft60{
+  padding-left: 23% !important;
+}
+.row-title, .page-header{
   background: rgba(24, 87, 165, 0.76);
   padding: 10px;
   color: #fff;

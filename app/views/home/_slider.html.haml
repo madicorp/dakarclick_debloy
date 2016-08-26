@@ -1,7 +1,7 @@
 .slider-area2
   .bend.niceties.preview-2
     -@sliders = Slider.all
-    #ensign-nivoslider-3.slides
+    #home-slider.slides
       -@sliders.each do |slider|
         =image_tag slider.image, :title => "##{slider.created_at.to_i}"
     -@sliders.each_with_index do |slider, index|
