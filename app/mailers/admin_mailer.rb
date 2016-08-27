@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-  default to: Proc.new { Admin.pluck(:email) },
+  default to: 'contact@dakarclic.com',
           from: 'contact@dakarclic.com'
 
   def new_registration(user)
