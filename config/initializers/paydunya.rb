@@ -2,6 +2,7 @@ Paydunya::Setup.master_key = ENV.fetch("PAYDUNYA_MASTER_KEY")
 Paydunya::Setup.public_key = ENV.fetch("PAYDUNYA_PUBLIC_KEY")
 Paydunya::Setup.private_key = ENV.fetch("PAYDUNYA_PRIVATE_KEY")
 Paydunya::Setup.token = ENV.fetch("PAYDUNYA_TOKEN")
+Paydunya::Setup.mode = "live"
 
 # Configuration des informations DakarClick
 Paydunya::Checkout::Store.name = ENV.fetch("PAYDUNYA_STORE_NAME")
