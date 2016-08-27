@@ -25,7 +25,7 @@ $(document).on('ready page:load', function(event) {
        "onclick": null,
        "showDuration": "300",
        "hideDuration": "1000",
-       "timeOut": "5000",
+       "timeOut": "10000",
        "extendedTimeOut": "1000",
        "showEasing": "swing",
        "hideEasing": "linear",
@@ -48,19 +48,19 @@ $(document).on('ready page:load', function(event) {
         return false;
     });
 
-    $(document).scroll(function(e){
-        var scrollTop = $(document).scrollTop();
-        if(scrollTop > 200){
-            $("#scrollUp").css("display","block");
-        }else{
-            $("#scrollUp").css("display","none");
-        }
-        if(scrollTop >= 180){
-            $('.menu-area').removeClass('navbar-static-top').addClass('navbar-fixed-top');
-        } else {
-            $('.menu-area').removeClass('navbar-fixed-top').addClass('navbar-static-top');
-        }
-    });
+    // $(document).scroll(function(e){
+    //     var scrollTop = $(document).scrollTop();
+    //     if(scrollTop > 200){
+    //         $("#scrollUp").css("display","block");
+    //     }else{
+    //         $("#scrollUp").css("display","none");
+    //     }
+    //     if(scrollTop >= 180){
+    //         $('.menu-area').removeClass('navbar-static-top').addClass('navbar-fixed-top');
+    //     } else {
+    //         $('.menu-area').removeClass('navbar-fixed-top').addClass('navbar-static-top');
+    //     }
+    // });
 
     /*----------------------------
      jQuery MeanMenu

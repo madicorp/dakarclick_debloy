@@ -1,171 +1,146 @@
-require 'paypal-sdk-rest'
-require 'money'
-require 'money/bank/google_currency'
-require 'monetize'
-class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+module Paydunya
+  module Checkout
+    class Invoice < Paydunya::Checkout::Core
 
-  # # GET /orders
-  # # GET /orders.json
-  # def index
-  #   @orders = Order.all
-  # end
-  #
-  # # GET /orders/1
-  # # GET /orders/1.json
-  # def show
-  # end
+      attr_accessor :items, :total_amount, :taxes, :description, :currency, :store
+      attr_accessor :customer, :custom_data, :cancel_url, :return_url, :invoice_url, :receipt_url
 
-  # GET /orders/new
-  def new
+      def initialize
+        @items = {}
+        @taxes = {}
+        @custom_data = {}
+        @customer = {}
+        @total_amount = 0.0
+        @currency = "fcfa"
+        @store = Paydunya::Checkout::Store
+        @return_url = @store.return_url
+        @cancel_url = @store.cancel_url
+      end
 
-    @order = Order.new
-    @order.quantity = params[:qte] unless params[:qte].nil?
-    @order.total_ttc = params[:total] unless params[:total].nil?
-    @order.total_ht = @order.total_ttc - params[:tva].to_s.to_d unless params[:total].nil? && params[:tva].nil?
-  end
+      # Adds invoice items to the @items hash, the idea is to allow this function to be used in a loop
+      def add_item(name,quantity,unit_price,total_price,description="")
+        @items.merge!({
+          :"item_#{@items.size}" => {
+            :name => name,
+            :quantity => quantity,
+            :unit_price => unit_price,
+            :total_price => total_price,
+            :description => description
+          }
+        })
+      end
 
-  # GET /orders/1/edit
-  # def edit
-  # end
+      # Adds invoice tax to the @taxes hash, the idea is to allow this function to be used in a loop
+      def add_tax(name,amount)
+        @taxes.merge!({
+          :"tax_#{@taxes.size}" => {
+            :name => name,
+            :amount => amount
+          }
+        })
+      end
 
-  def create
-    p order_params
-    @order = Order.new order_params
-    @order.status= "Pending"
-    if @order.save
-      case @order.payment_method
-        when "paydunya"
-          invoice = Paydunya::Checkout::Invoice.new
-          invoice.add_item("Unités DakarClick", @order.quantity, @order.total_ht, @order.total_ttc)
-          invoice.add_tax("TVA (18%)", @order.total_ht)
-          invoice.total_amount = @order.total_ttc
-          invoice.add_custom_data("units",@order.quantity)
-          invoice.add_custom_data("orderid",@order.id)
+      def add_custom_data(key,value)
+        @custom_data["#{key}"] = value
+      end
 
-          if invoice.create
-            puts invoice.status
-            puts invoice.response_text
-            # Vous pouvez par exemple faire un "redirect_to invoice.invoice_url"
-            redirect_to  invoice.invoice_url
-            puts invoice.invoice_url
-          else
-            puts invoice.status
-            puts invoice.response_text
-          end
-        when "card"
-          Money.default_bank = Money::Bank::GoogleCurrency.new
-          card = card_params
-          p  '%.2f' % @order.total_ttc.to_money(:XOF).exchange_to(:EUR)
-          p ('%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity))
-          # ###Payment
-          # A Payment Resource; create one using
-          # the above types and intent as `sale or `authorize`
-          @payment = PayPal::SDK::REST::Payment.new({
-                                                        :intent => "sale",
-                                                        :payer => {
-                                                            :payment_method => "credit_card",
-                                                            :funding_instruments => [{
-                                                                                         :credit_card => {
-                                                                                             :type => card[:type],
-                                                                                             :number => card[:number].tr(" ", ""),
-                                                                                             :expire_month => card[:month],
-                                                                                             :expire_year => card[:year],
-                                                                                             :cvv2 => card[:cvc],
-                                                                                             :first_name => card[:firstname],
-                                                                                             :last_name => card[:lastname],
-                                                                                         }
-                                                                                     }]
-                                                        },
-                                                        :transactions =>  [{
-                                                                               # Item List
-                                                                               :item_list => {
-                                                                                   :items => [{
-                                                                                                  :name => "Unités DakarClick",
-                                                                                                  :currency => "EUR",
-                                                                                                  :price => '%.2f' % 100.to_money(:XOF).exchange_to(:EUR),
-                                                                                                  :quantity => @order.quantity}]},
-                                                                               :amount =>  {
-                                                                                   :total =>  '%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
-                                                                                   :currency =>  "EUR"
-                                                                               },
-                                                                               :description =>  "This is the payment transaction description."
-                                                                           }]
-                                                    })
-          # Create Payment and return status( true or false )
-          if @payment.create
-            p "Payment[#{@payment.id}] created successfully"
-            unit = @payment.transactions[0].item_list.items[0].quantity
-            user = current_user
-            if user.units.nil?
-              user.units =0
-            end
+      def get_items
+        @items
+      end
 
-            user.units  += unit.to_i
-            if user.save
-              redirect_to confirm_path
-            end
+      def get_taxes
+        @taxes
+      end
 
-          else
-            # Display Error message
-            p "Error while creating payment:"
-            p @payment.error.inspect
-          end
-          redirect_to root_path
-        when "paypal"
-          Money.default_bank = Money::Bank::GoogleCurrency.new
-          @payment = PayPal::SDK::REST::Payment.new({
-                                                        :intent =>  "sale",
-                                                        :payer =>  {
-                                                            :payment_method =>  "paypal"
-                                                        },
-                                                        :redirect_urls => {
-                                                            :return_url => "http://localhost:3000/confirm/paypal",
-                                                            :cancel_url => "http://localhost:3000/confirm/paypal"
-                                                        },
-                                                        :transactions =>  [{ # Item List
-                                                                             :item_list => {
-                                                                                 :items => [{
-                                                                                                :name => "Unités DakarClick",
-                                                                                                :currency => "EUR",
-                                                                                                :price => '%.2f' % 100.to_money(:XOF).exchange_to(:EUR),
-                                                                                                :quantity => @order.quantity}]},
-                                                                             :amount =>  {
-                                                                                 :total =>  '%.2f' % (100.to_money(:XOF).exchange_to(:EUR)* @order.quantity),
-                                                                                 :currency =>  "EUR"
-                                                                             },
-                                                                             :description =>  "This is the payment transaction description."
-                                                                           }]
-                                                    })
+      def get_customer_info(key)
+        @customer["#{key}"]
+      end
 
-          # Create Payment and return status
-          if @payment.create
-            # Redirect the user to given approval url
-            @redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
-            redirect_to @redirect_url.to_s.split(": ").last.tr("\"","")
-            p "Payment[#{@payment.id}]"
-            p "Redirect: #{@redirect_url}"
-          else
-            p @payment.error.inspect
-          end
+      def get_custom_data(key)
+        @custom_data["#{key}"]
+      end
+
+      def confirm(token)
+        result = http_get_request("#{Paydunya::Setup.checkout_confirm_base_url}#{token}")
+        unless result.size > 0
+          @response_text = "Invoice Not Found"
+          @response_code = 1002
+          @status = Paydunya::FAIL
+          return false
+        end
+
+        if result["status"] == "completed"
+          rebuild_invoice(result)
+          @response_text = result["response_text"]
+          true
         else
-          redirect_to root_path
+          @status = result["status"]
+          @items = result["invoice"]["items"]
+          @taxes = result["invoice"]["taxes"]
+          @description = result["invoice"]["description"]
+          @custom_data = result["custom_data"]
+          @total_amount = result["invoice"]["total_amount"]
+          @response_text = "Invoice status is #{result['status'].upcase}"
+          false
+        end
+      end
+
+      def create
+        result = http_json_request(Paydunya::Setup.checkout_base_url,build_invoice_payload)
+        create_response(result)
+      end
+
+      protected
+      def build_invoice_payload
+        { :invoice => {
+          :items => @items,
+          :taxes => @taxes,
+          :total_amount => @total_amount,
+          :description => description
+        },
+        :store => {
+          :name => @store.name,
+          :tagline => @store.tagline,
+          :postal_address => @store.postal_address,
+          :phone => @store.phone_number,
+          :logo_url => @store.logo_url,
+          :website_url => @store.website_url
+        },
+        :custom_data => @custom_data,
+        :actions => {
+          :cancel_url => @cancel_url,
+          :return_url => @return_url
+        }
+      }
+      end
+
+      def rebuild_invoice(result={})
+        @status = result["status"]
+        @customer = result["customer"]
+        @items = result["invoice"]["items"]
+        @taxes = result["invoice"]["taxes"]
+        @description = result["invoice"]["description"]
+        @custom_data = result["custom_data"]
+        @total_amount = result["invoice"]["total_amount"]
+        @receipt_url = result["receipt_url"]
+      end
+
+      def create_response(result={})
+        if result["response_code"] == "00"
+          @token = result["token"]
+          @response_text = result["response_text"]
+          @response_code = result["response_code"]
+          @invoice_url = result["invoice_token"] || result["response_text"]
+          @status = Paydunya::SUCCESS
+          true
+        else
+          @response_text = result["response_text"]
+          @response_code = result["response_code"]
+          @invoice_url = nil
+          @status = Paydunya::FAIL
+          false
+        end
       end
     end
-
-  end
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_order
-    @order = Order.find params[:id]
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def order_params
-    # params.fetch(:order, {})
-    params.require(:order).permit(:quantity, :total_ttc ,:total_ht, :payment_method)
-  end
-  def card_params
-    params.require(:card).permit(:number, :firstname, :lastname ,:month, :year, :cvc, :type)
   end
 end

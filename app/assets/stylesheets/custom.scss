@@ -842,6 +842,20 @@ body {
   height: 107px
 }
 
+#confirm-order, #cancelAcount{
+  color: #000;
+}
+
+.list-group-item{
+  padding: 20px 0px;
+
+}
+.list-group-item.active h4{
+  color: #fff;
+}
+.list-group-item h4{
+  color: #000;
+}
 
 .btngo {
   background: #ffd464 none repeat scroll 0 0 !important;

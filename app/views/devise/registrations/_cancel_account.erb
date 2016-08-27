@@ -1,0 +1,23 @@
+<div class="panel super-accordion">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#cancelAcount" aria-expanded="false" aria-controls="billingInformation">
+                   <span class="icon-lft">
+                      <i class="fa fa-file-o"></i>
+                  </span>
+        <span class="acdr-tit">Cancel my account</span>
+        <span><i class="fa fa-caret-down"></i></span>
+      </a>
+    </h4>
+  </div>
+  <div id="cancelAcount" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="panel-body">
+      <div class="chk-optn">
+        <h3>Cancel my account</h3>
+        <div>
+          <p class="warning">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

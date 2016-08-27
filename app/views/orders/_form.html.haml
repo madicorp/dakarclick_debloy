@@ -5,94 +5,50 @@
       %ul
         - @order.errors.full_messages.each do |msg|
           %li= msg
-
+    %input{:class => "hidden", :id => 'paydunya-item', :type => "radio-button", :value =>"paydunya"}
   #accordion.panel-group.pb60{"aria-multiselectable" => "true", :role => "tablist"}
-    .panel.super-accordion
-      #headingfive.panel-heading{:role => "tab"}
-        %h4.panel-title
-          %a.collapsed{"aria-controls" => "payment-information", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#payment-information"}
-            Etape 1 - Choix de paiement
-            %span
-              %i.fa.fa-caret-down
-      #payment-information.panel-collapse.collapse{"aria-labelledby" => "headingfive", :role => "tabpanel"}
-        .panel-body
-          .row
-            .col-sm-12.col-xs-12
-              %fieldset#pay-info.required
-                .content-info
-                  .checkout-option
-                    .method-input-box.row
-                      .col-md-6.col-md-offset-3
-                        .row
-                          .col-xs-4
-                            =image_tag "icon/credit-card.png", :class => ' btn-radio img-responsive img-radio', :style => "opacity: 1; border: 1px solid #1253a4"
-                            %button.btn.btn-dakarclick.btn-radio.active{:type => "button"} Carte
-                            %input{:class => "hidden", :id => 'card-item', :checked => true, :required => true, :type => "radio-button", :value =>"card"}
-                          .col-xs-4
-                            =image_tag "icon/paydunya.png", :class => ' btn-radio img-responsive img-radio'
-                            %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paydunya
-                            %input{:class => "hidden", :id => 'paydunya-item', :type => "radio-button", :value =>"paydunya"}
-                          .col-xs-4
-                            =image_tag "icon/paypal.png", :class => ' btn-radio img-responsive img-radio'
-                            %button.btn.btn-dakarclick.btn-radio{:type => "button"} Paypal
-                            %input{:class => "hidden", :id => 'paypal-item', :type => "radio-button", :value =>"paypal"}
-                    .space-40
-                    .row.card-info-block
-                      .col-xs-6
-                        .card-wrapper
-                      .col-xs-6
-                        .card-info
-                          %input{:name=>"card[type]", :type => "hidden"}
-                          .row
-                            .row
-                            .col-md-6
-                              %input.form-control{:name => "card[firstname]", :type => "text", :placeholder => "Prenom"}/
-                            .col-md-6
-                              %input.form-control{:name => "card[lastname]", :type => "text", :placeholder => "Nom"}/
-                            .col-md-12
-                              %input.form-control{:name => "card[number]", :type => "text", :placeholder => "Numero Carte"}/
-                          .row
-                            .col-md-4
-                              %input.form-control{:name => "card[month]", :type => "text", :placeholder => "MM"}/
-                            .col-md-4
-                              %input.form-control{:name => "card[year]", :type => "text", :placeholder => "YYYY"}/
-                            .col-md-4
-                              %input.form-control{:name => "card[cvc]", :type => "text", :placeholder => "CVC"}/
     .panel.super-accordion
       #headingsix.panel-heading{:role => "tab"}
         %h4.panel-title
           %a.collapsed{"aria-controls" => "confirm-order", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#confirm-order"}
-            Etape 2 - Validation  Commande
+            Validation  Commande
             %span
               %i.fa.fa-caret-down
-      #confirm-order.panel-collapse.collapse{"aria-labelledby" => "headingsix", :role => "tabpanel"}
+      #confirm-order.panel-collapse.collapse.in{"aria-labelledby" => "headingsix", :role => "tabpanel"}
         .panel-body
-          .table-responsive
-            %table.table.table-bordered
-              %tbody
-                %tr
-                  %td.model Prix à l'unité
-                  %td
-                    %span.price 100 FCFA
-                  %td.align-right
-                    .cart-quantity
-                      .product-quantity
-                        .cart-quantity
-                          .cart-plus-minus
-                            .dec.qtybutton -
-                            =f.text_field :quantity , class: "cart-plus-minus-box"
-                            .inc.qtybutton +
-            .tfoot.cart-total
-              %table.table.table-hover
+          .method-input-box.row
+            .col-md-6
+              =image_tag "icon/orange_money.png", :class => ' btn-radio img-responsive img-radio'
+            .col-md-6
+              %h3 Finalisez votre commade et payer avec Orange Money
+          .space-40
+          .row
+            .table-responsive
+              %table.table.table-bordered
                 %tbody
                   %tr
-                    %td.left.last
-                      %b Total:
-                    %td.right.total.last
-                      = ActiveSupport::NumberHelper.number_to_currency(@order.total_ttc, precision: 0, unit: 'FCFA')
-              =f.hidden_field :total_ttc
-              =f.hidden_field :total_ht
-              =f.hidden_field :payment_method , :id => "paymentmethod"
+                    %td.model Prix à l'unité
+                    %td
+                      %span.price 100 FCFA
+                    %td.align-right
+                      .cart-quantity
+                        .product-quantity
+                          .cart-quantity
+                            .cart-plus-minus
+                              .dec.qtybutton -
+                              =f.text_field :quantity , class: "cart-plus-minus-box"
+                              .inc.qtybutton +
+              .tfoot.cart-total
+                %table.table.table-hover
+                  %tbody
+                    %tr
+                      %td.left.last
+                        %b Total:
+                      %td.right.total.last
+                        = ActiveSupport::NumberHelper.number_to_currency(@order.total_ttc, precision: 0, unit: 'FCFA')
+                =f.hidden_field :total_ttc
+                =f.hidden_field :total_ht
+                =f.hidden_field :payment_method , :id => "paymentmethod", :value => "paydunya"
           .buttons.common-btn
             -if current_user
               =f.button "Commander" ,"data-loading-text" => "Loading...", class: "btn btn-primary"

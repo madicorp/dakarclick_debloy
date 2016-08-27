@@ -1639,7 +1639,6 @@ footer .sign-up-nletter h3 {
 }
 .title.t-bdr > h1 {
     text-align: left;
-    border-bottom: 1px solid #e1e1e1;
     padding-bottom: 15px;
     font-weight: 500;
 }
@@ -3468,7 +3467,7 @@ em {
 .panel-body .table > tbody > tr > td {
     border: medium none;
     font-size: 16px;
-    padding: 25px 20px;
+    padding: 25px 2%;
     vertical-align: middle
 }
 .panel-body .table {

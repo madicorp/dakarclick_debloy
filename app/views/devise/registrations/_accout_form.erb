@@ -1,0 +1,69 @@
+<div class="panel super-accordion">
+  <div class="panel-heading" role="tab" id="headingfour">
+    <h4 class="panel-title">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#delivery-method" aria-expanded="false" aria-controls="delivery-method">
+                 <span class="icon-lft">
+                      <i class="fa fa-user"></i>
+                  </span>
+        <span class="acdr-tit">My Personal Information</span>
+        <span><i class="fa fa-caret-down"></i></span>
+      </a>
+    </h4>
+  </div>
+  <div id="delivery-method" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12  left">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= devise_error_messages! %>
+              <fieldset id="billing-det">
+                <div class="form-group required">
+                  <%= f.label :name, :class => "control-label" %>
+                  <%= f.text_field :name, :class => "form-control", :placeholder=> "Name" , required: true%>
+                </div>
+                <div class="form-group required">
+                  <%= f.label :username, :class => "control-label" %>
+                  <%= f.text_field :username, :class => "form-control", :placeholder=> "Username" , required: true%>
+                </div>
+                <div class="form-group required">
+                  <%= f.label :email, :class => "control-label" %>
+                  <%= f.email_field :email, :class => "form-control", :placeholder=> "E-Mail" , required: true%>
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <% end %>
+                </div>
+                <div class="form-group required">
+                  <%= f.label :phone_number, :class => "control-label" %>
+                  <%= f.text_field :phone_number, :class => "form-control", :placeholder=> "Phone" , required: true%>
+                </div>
+                <div class="form-group">
+                  <%= f.label :current_password, :class => "control-label" %><i>(we need your current password to confirm your changes)</i>
+                  <%= f.password_field :current_password, :class => "form-control", :placeholder=> "Currant Password" , autocomplete: "off" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password, :class => "control-label" %><i>(leave blank if you don't want to change it)</i>
+                  <%= f.password_field :password, :class => "form-control", :placeholder=> "New Password" ,  autocomplete: "off" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password_confirmation, :class => "control-label" %>
+                  <%= f.password_field :password_confirmation, :class => "form-control", :placeholder=> "Password" ,  autocomplete: "off" %>
+                </div>
+              </fieldset>
+
+              <div class="checkbox">
+                <!-- <label>
+                   <input type="checkbox" name="shipping_address" value="1" checked="checked"> Sign up for our newsletter!
+                 </label>
+                 <label>
+                   <input type="checkbox" name="shipping_address" value="1" checked="checked">Receive special offers from our partners!
+                 </label>-->
+              </div>
+              <div class="buttons common-btn">
+                <%= f.submit "Update", :class => "btn btn-primary", :dataLoadingText => "Loading..." %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

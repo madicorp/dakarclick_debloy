@@ -1,5 +1,5 @@
 /* Normal desktop :992px. */
-@media (min-width: 992px) and (max-width: 1270px) {	
+@media (min-width: 992px) and (max-width: 1270px) {
 /* ===Home-01===== */
 .mobile-menu-area {
 	display: none
@@ -527,7 +527,10 @@ margin:0
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
-.container {width:300px}
+.container {width:410px}
+    .panel-body .table > tbody > tr > td{
+        font-size: 12px;
+    }
 .mobile-menu-area {
 display: block
 }
@@ -1048,7 +1051,7 @@ a.btn.btn-default {
 }
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-.container {width:450px}
+.container {width:600px}
 /* ===Home-01===== */
  .wishlist-total {
   display: block;
@@ -1073,7 +1076,7 @@ a.btn.btn-default {
 }
 .time-ratting-bought2 .ratting {
   display:inherit;
-} 
+}
 .single-product-text2 .product-name span {
   display: inherit;
 }

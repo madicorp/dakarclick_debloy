@@ -1,0 +1,42 @@
+<div class="panel super-accordion">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#billingInformation" aria-expanded="false" aria-controls="billingInformation">
+                   <span class="icon-lft">
+                      <i class="fa fa-file-o"></i>
+                  </span>
+        <span class="acdr-tit">My Credit Slip</span>
+        <span><i class="fa fa-caret-down"></i></span>
+      </a>
+    </h4>
+  </div>
+  <div id="billingInformation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="panel-body">
+      <div class="chk-optn">
+        <div class="list-group">
+          <a href="#" class="list-group-item disabled">
+            <span class="col-md-3"><strong>Date</strong></span>
+            <span class="col-md-2"><strong>Credit</strong></span>
+            <span class="col-md-2"><strong>Status</strong></span>
+            <span class="col-md-3"><strong>Moyen de payment</strong></span>
+            <span class="col-md-2"></span>
+          </a>
+          <% @user = User.find current_user.id%>
+          <% @user.orders.order(updated_at: :desc).limit(10).each do |order| %>
+              <a href="<%= order.receipt_url unless order.receipt_url.nil?%>#" target="_blank" class="list-group-item">
+                <span class="col-md-3"><%= order.updated_at %></span>
+                <span class="col-md-2"><%= order.quantity %></span>
+                <span class="col-md-2">
+                  <span class="<%=(order.status == 'completed') ? 'label-success' : ''%> <%=(order.status == "pending") ? 'label-info' : '' %><%=(order.status == "cancelled") ? 'label-danger' : '' %>">
+                    <%= order.status %>
+                  </span>
+                </span>
+                <span class="col-md-3 "><%= order.payment_method %></span>
+                <span class="col-md-2"><i class="fa fa-download"></i></span>
+              </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
