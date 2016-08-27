@@ -23,6 +23,7 @@
 //= require owl.carousel.min
 //= require jquery.time-to.min
 //= require moment
+//= require toastr
 //= require jquery.fancybox.pack
 //= require jquery.elevateZoom-3.0.8.min
 //= require turbolinks
@@ -32,5 +33,3 @@
 //= require order
 //= require robot
 //= require chat_websocket
-
-

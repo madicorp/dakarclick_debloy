@@ -19,6 +19,7 @@
  *= require timeTo
  *= require card
  *= require nivo-slider
+ *= require toastr
  *= require meanmenu.min
  *= require animate
  *= require style
