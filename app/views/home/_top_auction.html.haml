@@ -2,7 +2,7 @@
   %h1 ENCHERE STAR
 .single-product
   -unless Auction.active.size == 0
-    -@auction = Auction.active.select("count(bids.id) as nbr_bid, auctions.*").from("bids, auctions").where("bids.auction_id = auctions.id").order("nbr_bid DESC").group("auctions.id, bids.id").first
+    -@auction = Auction.top_auction.nil? ? Auction.active.select("count(bids.id) as nbr_bid, auctions.*").from("bids, auctions").where("bids.auction_id = auctions.id").order("nbr_bid DESC").group("auctions.id, bids.id").first : Auction.top_auction
     -unless @auction.nil?
       .col-padd-custom.nomag{:class => "auction"+@auction.id.to_s}
         %input{:type => "hidden" , :value => @auction.id}
@@ -12,7 +12,7 @@
             %a.image{:href => auction_path(@auction.id)}
               =image_tag @auction.product.image ,class: "style_image_auction"
         .av_timer
-          .timer_alert{"data-countdown" => @auction.auction_close}
+          .timer_alert{"data-countdown" => @auction.auction_close,  "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "active"}
         .av_price.padleft60
           .price
             #{ActiveSupport::NumberHelper.number_to_currency(@auction.value, precision: 0, unit: 'FCFA')}

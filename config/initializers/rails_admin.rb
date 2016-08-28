@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
 
+  require Rails.root.join('lib', 'rails_admin.rb')
   ### Popular gems integration
     # config.main_app_name = Proc.new { |controller| [  "DakarClic - #{controller.params[:action].try(:titleize)}" ] }
 

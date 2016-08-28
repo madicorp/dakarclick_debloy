@@ -15,6 +15,9 @@ class Auction < ActiveRecord::Base
   def ended?
       auction_close < Time.now
   end
+  def self.top_auction
+    self.active(nil, "created_at desc").where("is_top = ?", true).first
+  end
   def self.active limitation = nil, order =''
     Auction.all.where("auctions.auction_close > ? and auctions.status = ? ", Time.now,true).limit(limitation).order(order)
   end
@@ -22,7 +25,7 @@ class Auction < ActiveRecord::Base
     Auction.all.where("auctions.auction_close > ? and auctions.status = ? ", Time.now,false).limit(limitation).order(order)
   end
   def self.closed limitation = nil, order =''
-    Auction.all.where("auctions.auction_close < ?", Time.now).limit(limitation).order(order)
+    Auction.all.where("auctions.auction_close < ? and auctions.status = ? ", Time.now,true).limit(limitation).order(order)
   end
   def topbid_user
       if top_bid.nil?

@@ -34,6 +34,6 @@
                     ="#{index+1}- #{name}" unless name.nil?
           .count-bought
             .time-counter
-              %div#countdownauction.timer_alert{"data-countdown" => @auction.auction_close}
+              %div#countdownauction.timer_alert{"data-countdown" => @auction.auction_close,  "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "active"}
             -#.bought
             -#  %span.nbench #{@auction.bids.size} Enchères

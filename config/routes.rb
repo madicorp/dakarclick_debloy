@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   resources :orders do
   end
+  match "/auctions/ended" => "auctions#ended", :via => :post
   resources :auctions do
     resources :bids , only: [ :create] do
     end

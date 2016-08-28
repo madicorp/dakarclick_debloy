@@ -31,7 +31,7 @@ $(document).on('ready page:load', function(event) {
        "hideEasing": "linear",
        "showMethod": "fadeIn",
        "hideMethod": "fadeOut"
-   }
+   };
 
     //scroll to animation
     $("a[href^='#'][data-toggle!='modal'][data-toggle!='collapse']").click(function (e) {
@@ -84,7 +84,16 @@ $(document).on('ready page:load', function(event) {
             timeTo: new Date(moment(finalDate)),
             displayDays: 2,
             fontSize: 20,
-            countdownAlertLimit: 30
+            countdownAlertLimit: 30,
+            callback: function () {
+                var auction_id = this.auctionid;
+                var auction_type = this.auctiontype;
+                if (auction_type == "active"){
+                    $.post("/auctions/ended", {"auction_id" : auction_id, "auction_type": auction_type}).done(function (data) {
+                        toastr.info('The Auction '+data.auction+' is ended , '+data.winner+' Wins !');
+                    });
+                }
+            }
         });
 
     });

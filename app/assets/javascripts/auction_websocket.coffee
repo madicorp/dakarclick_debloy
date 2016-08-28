@@ -51,7 +51,7 @@
         first=""
       $('.auction'+data.auction_id).find('.price').html(data.value)
       timer = $('.auction'+data.auction_id).find('.timer_alert')
-      timer.attr("data-countdown", data.auction_close)
+      $(timer).data("countdown", data.auction_close)
       finalDate = data.auction_close
       finish = new Date(new Date(finalDate))
       now = new Date
@@ -60,7 +60,13 @@
           timeTo: new Date(new Date(finalDate)),
           displayDays: 2,
           fontSize: 20,
-          countdownAlertLimit: 30
+          countdownAlertLimit: 30,
+          callback: ->
+            auction_id = $(this).data("auctionid")
+            auction_type = $(this).data("auctiontype")
+            if auction_type == "active"
+              $.post("/auctions/ended", {"auction_id" : auction_id, "auction_type": auction_type}).done (data) ->
+                toastr.info('The Auction '+data.auction+' is ended , '+data.winner+' Wins !');
         }
       if (diff / 1000) > 30
         $('.auction'+data.auction_id).find("[data-countdown]").children("div").each ->
