@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += ['auction.bid.js' , 'home.bid.js', 'chat.js']
+Rails.application.config.assets.precompile += ['auction.bid.js' , 'home.js', 'chat.js', 'rails_admin/custom/tab_charts.js']

@@ -1,0 +1,66 @@
+.row
+  .col-md-8
+    .tab-content
+      .tab-pane.fade.in.active
+        %h1 hello !!
+      #vta.tab-pane.fade
+        %h1 Valeur Total des Arcticles et  Valeur totale des prix affichés
+        .row
+          %canvas#vta-canvas{"width" => 400, "height" => 400}
+      #ca.tab-pane.fade
+        %h1 Chiffre d’affaires
+        .row.range-date-filter
+          %form
+            .col-md-5
+              .form-group
+                .input-group.date.start-date
+                  %input.form-control{"type" =>"text", "name" =>"begins_at"}
+                  %label.input-group-addon
+                    %i.fa.fa-fw.fa-calendar
+            .col-md-5
+              .form-group
+                .input-group.date.end-date
+                  %input.form-control{"type" =>"text", "name" =>"ends_at"}
+                  %label.input-group-addon
+                    %i.fa.fa-fw.fa-calendar
+            .col-md-2
+              %button.btn.btn-primary
+                %i.fa.fa-refresh
+        .row
+          %canvas#ca-canvas{"width" => 400, "height" => 400}
+      #ntcu.tab-pane.fade
+        %h1 Nombre total de coins utilisés
+        .row.range-date-filter
+          %form
+            .col-md-5
+              .form-group
+                .input-group.date.start-date
+                  %input.form-control{"type" =>"text", "name" =>"begins_at"}
+                  %label.input-group-addon
+                    %i.fa.fa-fw.fa-calendar
+            .col-md-5
+              .form-group
+                .input-group.date.end-date
+                  %input.form-control{"type" =>"text", "name" =>"ends_at"}
+                  %label.input-group-addon
+                    %i.fa.fa-fw.fa-calendar
+            .col-md-2
+              %button.btn.btn-primary
+                %i.fa.fa-refresh
+        .row
+          %canvas#ntcu-canvas{"width" => 400, "height" => 400}
+      #ntcup.tab-pane.fade
+        %h1 Nombre total de coins utilisé par produit
+        .row
+          %canvas#ntcup-canvas{"width" => 400, "height" => 400}
+  .col-md-4
+    %ul.nav.nav-pills.nav-stacked
+      %li
+        %a.chart-nav{"data-toggle" => "tab", "href" => "#vta"} Valeur Total réelle et valeur de l'enchere
+      %li
+        %a.chart-nav{"data-toggle" => "tab", "href" => "#ca"} Chiffre d’affaires
+      %li
+        %a.chart-nav{"data-toggle" => "tab", "href" => "#ntcu"} Nombre total de coins utilisés
+      %li
+        %a.chart-nav{"data-toggle" => "tab", "href" => "#ntcup"} Nombre total de coins utilisé par produit
+= javascript_include_tag "rails_admin/custom/tab_charts"

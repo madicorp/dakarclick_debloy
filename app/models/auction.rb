@@ -25,7 +25,7 @@ class Auction < ActiveRecord::Base
     Auction.all.where("auctions.auction_close > ? and auctions.status = ? ", Time.now,false).limit(limitation).order(order)
   end
   def self.closed limitation = nil, order =''
-    Auction.all.where("auctions.auction_close < ? and auctions.status = ? ", Time.now,true).limit(limitation).order(order)
+    Auction.all.where("auctions.auction_close < ?  and auctions.status = ? ", Time.now,true).limit(limitation).order(order)
   end
   def topbid_user
       if top_bid.nil?
@@ -55,7 +55,9 @@ class Auction < ActiveRecord::Base
 
     return names
   end
-
+  def self.total_value_online
+    Auction.active.sum(:value)
+  end
   def active_robots
     Robot.joins(:auction).where(:is_active => true, :auction_id => self.id)
   end

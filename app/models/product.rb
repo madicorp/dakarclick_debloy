@@ -6,4 +6,7 @@ class Product < ActiveRecord::Base
         auction.present?
     end
 
+    def self.total_price_online
+        Product.where(:id => Auction.active.pluck(:product_id)).sum(:price)
+    end
 end

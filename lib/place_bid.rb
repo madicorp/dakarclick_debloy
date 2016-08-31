@@ -12,13 +12,13 @@ class PlaceBid
             return false
         end
 
-        if user.units >= 2
+        if user.units >= 1
             auction.value += auction.valuetoinc
             puts "#{auction.auction_close - Time.now}"
             if (auction.auction_close - Time.now)< 60
               auction.auction_close += 30.seconds
             end
-            user.units -= 2
+            user.units -= 1
             @value = auction.value
             @units = user.units
             @auction_close = auction.auction_close.to_formatted_s(:db)
@@ -44,7 +44,7 @@ class PlaceBid
     end
     def robot robot
         @auction = robot.auction
-        if robot.units >= 2 && robot.ends_at > Time.now
+        if robot.units >= 1 && robot.ends_at > Time.now
             if !auction.ended? && auction.top_bid.user_id == robot.user_id
                 @user = robot.user
                 @status = :won
@@ -58,14 +58,9 @@ class PlaceBid
                 u_r1 = r1.units
                 r2 = @robots.last
                 u_r2 = r2.units
-                if u_r1 % 2 != 0
-                    u_r1-=1
-                end
-                if u_r2 % 2 != 0
-                    u_r2-=1
-                end
+
                 if u_r1 > u_r2
-                    times = u_r2/2
+                    times = u_r2
                     u_r1= r1.units - u_r2
                     u_r2=r2.units - u_r2
                     auction.value += auction.valuetoinc * times
@@ -75,7 +70,7 @@ class PlaceBid
                     @disable_robot_id = r2.id
                     @winner = r1.user_id
                 elsif u_r1 < u_r2
-                    times = u_r1/2
+                    times = u_r1
                     u_r2= r2.units - u_r1
                     u_r1= r1.units - u_r1
                     auction.value += auction.valuetoinc * times
@@ -85,7 +80,7 @@ class PlaceBid
                     @disable_robot_id = r1.id
                     @winner = r2.user_id
                 elsif u_r2 == u_r1
-                    times = u_r2/2
+                    times = u_r2
                     auction.value += auction.valuetoinc * times
                     auction.auction_close += auction.timetoinc.seconds * times
                     u_r2= r2.units - u_r2
@@ -124,8 +119,8 @@ class PlaceBid
             else
                 auction.value += auction.valuetoinc
                 auction.auction_close += auction.timetoinc.seconds
-                robot.units -= 2
-                if  robot.units < 2
+                robot.units -= 1
+                if  robot.units < 1
                     robot.is_active = false
                     robot.ends_at = nil
                     @disable_robot_id =  robot.id

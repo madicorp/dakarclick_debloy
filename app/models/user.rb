@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable ,
          :recoverable, :rememberable, :trackable,:timeoutable, :validatable ,:timeout_in => 10.minutes
-   after_create :send_admin_mail
-   def send_admin_mail
-     AdminMailer.registration(self).deliver
-   end
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    AdminMailer.registration(self).deliver_now
+  end
 end

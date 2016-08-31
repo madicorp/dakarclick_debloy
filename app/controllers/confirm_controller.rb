@@ -21,18 +21,18 @@ class ConfirmController < ApplicationController
                             user.units += unit.to_i
                             user.save
                             flash[:notice] = "Payment Completed"
-                            UserMailer.payment_success(user, invoice).deliver
+                            UserMailer.payment_success(user, invoice).deliver_now
                         else
                             flash[:alert] = "Payment already Completed"
                         end
                     when 'pending'
-                        UserMailer.payment_process(user, invoice).deliver
+                        UserMailer.payment_process(user, invoice).deliver_now
                         flash[:info] = "Payment Pending"
                     when 'cancelled'
-                        UserMailer.payment_failed(user, invoice).deliver
+                        UserMailer.payment_failed(user, invoice).deliver_now
                         flash[:alert] = "Payment Cancelled"
                     when 'success'
-                        UserMailer.payment_failed(user, invoice).deliver
+                        UserMailer.payment_failed(user, invoice).deliver_now
                         flash[:alert] = "Payment Cancelled"
                 end
                 order.status = invoice.status

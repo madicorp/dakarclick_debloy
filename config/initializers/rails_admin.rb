@@ -1,6 +1,5 @@
 RailsAdmin.config do |config|
-
-  require Rails.root.join('lib', 'rails_admin.rb')
+  require Rails.root.join('lib','rails_admin', 'rails_admin_charts.rb')
   ### Popular gems integration
     # config.main_app_name = Proc.new { |controller| [  "DakarClic - #{controller.params[:action].try(:titleize)}" ] }
 
@@ -25,6 +24,7 @@ RailsAdmin.config do |config|
 
   config.actions do
     dashboard                     # mandatory
+    charts                        #custom
     index                         # mandatory
     new
     export
@@ -34,8 +34,8 @@ RailsAdmin.config do |config|
     delete
 
     ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+     history_index
+     history_show
   end
 
     if defined?(WillPaginate)

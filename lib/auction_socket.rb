@@ -51,20 +51,6 @@ class AuctionSocket
                         end
                     when "chat"
                         chat socket, message
-=begin
-                        r1 = @robots.first
-                        r2 = @robots.last
-
-                        #@robots.each do |robot|
-                        #  while robot.ends_at >= Time.now && robot.units >= 1 do
-                        message["robot_id"] = r1.id
-                        active_robot socket, message
-                        message["robot_id"] = r2.id
-                        active_robot socket, message
-=end
-
-                    #tokens[2] = robot.id
-                    #end
                 end
 
                 if message["message"] == "createrobotok"
