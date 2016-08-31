@@ -1,0 +1,21 @@
+.single-prodcut-area.mt60
+  .container
+    .row.row-padd
+      .col-md-5.col-sm-6.col-xs-12.col-padd
+        .auction.product-zoom-area
+          .imgs-area
+            = image_tag @auction.product.image , id: "zoom_03"
+      .col-md-7.col-sm-6.col-xs-12.col-padd
+        .single-prodcut-des{:class => "auction"+@auction.id.to_s}
+          .auction.product-name
+            %h3= @auction.product.name
+          .auction.product-des
+            %ul
+              %li Chaque offre augmente l'enchère  de #{ActiveSupport::NumberHelper.number_to_currency(@auction.valuetoinc, precision: 0, unit: 'FCFA')}
+            .running-price.desblockprice.first-child
+              %h1.desprice.price #{ActiveSupport::NumberHelper.number_to_currency(@auction.current_bid, precision: 0, unit: 'FCFA')}
+          .count-bought
+            .time-counter
+              %div#countdownauction.timer_alert{"data-countdown" => @auction.auction_close,  "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "active"}
+            -#.bought
+            -#  %span.nbench #{@auction.bids.size} Enchères

@@ -32,7 +32,9 @@ class AuctionsController < ApplicationController
   # GET /auctions/1.json
   def show
     @auction = Auction.find(params[:id])
-    @auction = Auction.find(params[:id])
+    if @auction.isComing
+        render "singlecoming"
+    end
     if ! current_user.nil?
       @robot = Robot.find_by_user_id_and_auction_id  current_user.id , @auction.id
     end

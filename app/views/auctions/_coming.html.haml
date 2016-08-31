@@ -11,10 +11,10 @@
           .av_title= auction.product.name
           .av_image
             .center
-              %a.image{:href => "#"}
+              %a.image{:href => auction_path(@auction.id)}
                 =image_tag auction.product.image ,class: "style_image_auction"
           .av_timer
-            .timer_alert{"data-countdown" => auction.auction_close,  "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "coming"}
+            .timer_alert{"data-countdown" => auction.auction_close, "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "coming"}
           .av_price
             .price{"data-productid" => auction.product.id} #{ActiveSupport::NumberHelper.number_to_currency(auction.value, precision: 0, unit: 'FCFA')}
             =image_tag "icon/price.png", class: "bg-price"

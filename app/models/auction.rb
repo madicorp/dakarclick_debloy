@@ -27,6 +27,9 @@ class Auction < ActiveRecord::Base
   def self.closed limitation = nil, order =''
     Auction.all.where("auctions.auction_close < ?  and auctions.status = ? ", Time.now,true).limit(limitation).order(order)
   end
+  def isComing
+      self.auction_close > Time.now && self.status == true
+  end
   def topbid_user
       if top_bid.nil?
           '...'
