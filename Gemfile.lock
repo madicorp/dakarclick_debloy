@@ -234,6 +234,8 @@ GEM
       remotipart (~> 1.0)
       safe_yaml (~> 1.0)
       sass-rails (>= 4.0, < 6)
+    rails_admin_rollincode (1.1)
+      rails (>= 4.0, < 6)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -349,6 +351,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.6)
   rails_admin
+  rails_admin_rollincode (~> 1.0)
   rest-client
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
