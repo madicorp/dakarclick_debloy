@@ -80,6 +80,9 @@ module RailsAdmin
         register_instance_option :statistics? do
           true
         end
+        register_instance_option :pjax? do
+          false
+        end
       end
     end
   end
