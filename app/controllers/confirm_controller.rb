@@ -5,6 +5,7 @@ class ConfirmController < ApplicationController
         redirect_to root_path
     end
     def paydunya
+        p params
         if params[:token].present?
             token = params[:token]
             invoice = Paydunya::Checkout::Invoice.new
