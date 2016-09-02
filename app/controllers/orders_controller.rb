@@ -39,7 +39,6 @@ class OrdersController < ApplicationController
         when "paydunya"
           invoice = Paydunya::Checkout::Invoice.new
           invoice.add_item("Unités DakarClick", @order.quantity, @order.total_ht, @order.total_ttc)
-          invoice.add_tax("TVA (18%)", @order.total_ht)
           invoice.total_amount = @order.total_ttc
           invoice.add_custom_data("units",@order.quantity)
           invoice.add_custom_data("orderid",@order.id)

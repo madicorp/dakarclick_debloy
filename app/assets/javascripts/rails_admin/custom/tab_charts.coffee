@@ -6,14 +6,14 @@
   ## Init Date Piker
   $(".date-filter").each ->
     piker = $(this).find(".date")
-    $(piker).datetimepicker({format: 'MMMM YYYY'})
+    $(piker).datetimepicker({format: 'YYYY MMMM'})
 
   ## Init Date Piker for Range Date
   $(".range-date-filter").each ->
     start_piker = $(this).find(".start-date")
     end_piker = $(this).find(".end-date")
-    $(start_piker).datetimepicker({defaultDate: moment().subtract(1,'d'),format: 'D MMMM YYYY'})
-    $(end_piker).datetimepicker({useCurrent: false, defaultDate: moment(),format: 'D MMMM YYYY' })
+    $(start_piker).datetimepicker({defaultDate: moment().subtract(1,'d'),format: 'YYYY MMMM D'})
+    $(end_piker).datetimepicker({useCurrent: false, defaultDate: moment(),format: 'YYYY MMMM D' })
     $(end_piker).data("DateTimePicker").minDate(moment())
     $(start_piker).data("DateTimePicker").maxDate(moment().subtract(1,'d'))
     $(start_piker).on(
@@ -38,8 +38,8 @@
           (e) ->
             e.preventDefault()
             form = $(this).serializeArray()
-            begins_at = moment(form[0].value).format('DD-MM-YYYY')
-            ends_at = moment(form[1].value).format('DD-MM-YYYY')
+            begins_at = moment(form[0].value).format('YYYY-MM-DD')
+            ends_at = moment(form[1].value).format('YYYY-MM-DD')
             chiffreDaffaireChart(begins_at, ends_at)
             return false;
         )
@@ -49,8 +49,8 @@
           (e) ->
             e.preventDefault()
             form = $(this).serializeArray()
-            begins_at = moment(form[0].value).format('DD-MM-YYYY')
-            ends_at = moment(form[1].value).format('DD-MM-YYYY')
+            begins_at = moment(form[0].value).format('YYYY-MM-DD')
+            ends_at = moment(form[1].value).format('YYYY-MM-DD')
             coinUtiliserChart(begins_at, ends_at)
             return false;
           )

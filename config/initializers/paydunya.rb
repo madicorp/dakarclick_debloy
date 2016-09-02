@@ -1,4 +1,3 @@
-
 Paydunya::Setup.master_key = ENV.fetch("PAYDUNYA_MASTER_KEY")
 Paydunya::Setup.public_key = ENV.fetch("PAYDUNYA_PUBLIC_KEY")
 Paydunya::Setup.private_key = ENV.fetch("PAYDUNYA_PRIVATE_KEY")
