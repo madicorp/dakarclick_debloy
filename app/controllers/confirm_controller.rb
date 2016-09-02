@@ -19,7 +19,6 @@ class ConfirmController < ApplicationController
                                 user.units = 0
                             end
                             user.units += unit.to_i
-                            user.save
                             flash[:notice] = "Payment Completed"
                             UserMailer.payment_success(user, invoice).deliver_now
                         else
@@ -37,7 +36,8 @@ class ConfirmController < ApplicationController
                 end
                 order.status = invoice.status
                 order.receipt_url = invoice.receipt_url
-                order.save
+                user.save if  order.save
+
             end
             unless current_user.nil?
                 redirect_to edit_user_registration_path
