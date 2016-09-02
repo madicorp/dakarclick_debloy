@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'how_it_works' => 'how_it_works#index'
 
   get 'confirm' => 'confirm#index'
-  get 'confirm/paydunya' => 'confirm#paydunya'
   match 'confirm/paydunya' => 'confirm#paydunya', via: [:get, :post]
   get 'comments/refresh' => 'comments#refresh'
   get '/undefined' => 'home#index'
