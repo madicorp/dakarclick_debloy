@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'paypal-sdk-rest'
 class ConfirmController < ApplicationController
-    skip_before_action :verify_authenticity_token, :only => [:paydunya]
     def index
         redirect_to root_path
     end
