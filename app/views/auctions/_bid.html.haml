@@ -6,9 +6,9 @@
   %p
     .cart-btn.nopad
       -if current_user
-        %button#send_bid_btn.btn.btn-primary.customenc
-          Enchérir
+        %a{:title => "GO" , id: "send_bid_btn" , class: "customenc", style: "cursor:pointer"}
+          GO
       -else
-        %a{:href => "#login-modal", :title => "Enchérir" , "data-toggle" => "modal" , class: "customenc"}
-          Enchérir
+        %a{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal" , class: "customenc"}
+          GO
 = javascript_include_tag "auction.bid"

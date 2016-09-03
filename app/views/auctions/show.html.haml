@@ -21,6 +21,8 @@
                     -else
                       Ooopss. Vous êtes hors enchère en ce moment.
             .price-type
+              =raw @auction.description
+            .price-type
               -if current_user
                 =render "robot"
             .running-price.desblockprice.first-child
