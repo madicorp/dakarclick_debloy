@@ -5,13 +5,14 @@ class ConfirmController < ApplicationController
         redirect_to root_path
     end
     def paydunya
-        p params
+        p "params........",params
         if params[:token].present?
             token = params[:token]
             invoice = Paydunya::Checkout::Invoice.new
             if invoice.confirm(token)
                 order = Order.find_by_id invoice.get_custom_data('orderid').to_i
                 user = User.find_by_id order.user_id
+                p 'status ............ ', invoice.status
                 case invoice.status
                     when  'completed'
                         unless order.status == invoice.status
@@ -41,6 +42,7 @@ class ConfirmController < ApplicationController
 
             end
             unless current_user.nil?
+                p "no invoice confirm"
                 redirect_to edit_user_registration_path
             else
                 redirect_to root_path

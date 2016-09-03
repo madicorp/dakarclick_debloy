@@ -44,12 +44,10 @@ class OrdersController < ApplicationController
           invoice.add_custom_data("orderid",@order.id)
 
           if invoice.create
-            puts invoice.status
-            puts invoice.response_text
-            # Vous pouvez par exemple faire un "redirect_to invoice.invoice_url"
             redirect_to  invoice.invoice_url
-            puts invoice.invoice_url
           else
+            p 'invoice fail'
+            @order.destroy
             puts invoice.status
             puts invoice.response_text
           end
