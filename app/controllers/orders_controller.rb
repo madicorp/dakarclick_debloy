@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.quantity = params[:qte] unless params[:qte].nil?
     @order.total_ttc = params[:total] unless params[:total].nil?
-    @order.total_ht = @order.total_ttc - params[:tva].to_s.to_d unless params[:total].nil? && params[:tva].nil?
+    @order.total_ht = @order.total_ttc unless params[:total].nil?
   end
 
   # GET /orders/1/edit
