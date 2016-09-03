@@ -7,7 +7,7 @@ class ConfirmController < ApplicationController
     end
     def paydunya
         if params[:token].present? || params[:data][:invoice][:token].present?
-            token = params[:token].present? ? params[:token] : params[:data][:invoice][:token].
+            token = params[:token].present? ? params[:token] : params[:data][:invoice][:token]
             invoice = Paydunya::Checkout::Invoice.new
             if invoice.confirm(token)
                 order = Order.find_by_id invoice.get_custom_data('orderid').to_i
