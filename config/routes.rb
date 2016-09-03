@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'how_it_works' => 'how_it_works#index'
 
   get 'confirm' => 'confirm#index'
-  match 'confirm/paydunya' => 'confirm#paydunya', via: [:get, :post]
+  get 'confirm/paydunya' => 'confirm#paydunya'
+  match 'confirm/nip' => 'confirm#nip', via: [:get, :post]
   get 'comments/refresh' => 'comments#refresh'
   get '/undefined' => 'home#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
