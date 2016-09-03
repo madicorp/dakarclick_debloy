@@ -51,6 +51,6 @@ class ConfirmController < ApplicationController
         end
     end
   def nip
-    p params[:invoice][:token]
+    p params[:data][:invoice][:token]
   end
 end
