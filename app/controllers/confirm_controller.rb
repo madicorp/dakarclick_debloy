@@ -1,13 +1,13 @@
 require 'open-uri'
 require 'paypal-sdk-rest'
 class ConfirmController < ApplicationController
-    skip_before_action :verify_authenticity_token, :only => [:nip]
+    skip_before_action :verify_authenticity_token, :only => [:paydunya]
     def index
         redirect_to root_path
     end
     def paydunya
-        if params[:token].present?
-            token = params[:token]
+        if params[:token].present? || params[:data][:invoice][:token].present?
+            token = params[:token].present? ? params[:token] : params[:data][:invoice][:token].
             invoice = Paydunya::Checkout::Invoice.new
             if invoice.confirm(token)
                 order = Order.find_by_id invoice.get_custom_data('orderid').to_i
@@ -50,7 +50,4 @@ class ConfirmController < ApplicationController
             redirect_to root_path
         end
     end
-  def nip
-    p params[:data][:invoice][:token]
-  end
 end
