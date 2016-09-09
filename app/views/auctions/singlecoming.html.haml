@@ -12,10 +12,10 @@
           .auction.product-des
             %ul
               %li Chaque offre augmente l'enchère  de #{ActiveSupport::NumberHelper.number_to_currency(@auction.valuetoinc, precision: 0, unit: 'FCFA')}
+            .price-type
+              = @auction.description
             .running-price.desblockprice.first-child
               %h1.desprice.price #{ActiveSupport::NumberHelper.number_to_currency(@auction.current_bid, precision: 0, unit: 'FCFA')}
           .count-bought
             .time-counter
               %div#countdownauction.timer_alert{"data-countdown" => @auction.auction_close,  "data-auctionid" => @auction.id.to_s, "data-auctiontype" => "active"}
-            -#.bought
-            -#  %span.nbench #{@auction.bids.size} Enchères

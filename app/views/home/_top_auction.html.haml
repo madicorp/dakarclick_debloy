@@ -23,9 +23,8 @@
               ="#{index+1}- #{name}" unless name.nil?
         .center
           -if !current_user
-            %a.white{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
+            %button.white{"data-target"  => "#login-modal", :title => "GO" , "data-toggle" => "modal", class: "btngo" }
               GO
           -else
-            -#=link_to "GO", auction, :title => "GO" , class: "btngo"
-            %button.send_home_btn.btn.btngo
+            %button.send_home_btn.btn.btngo{"data-auction" =>"#{@auction.id}"}
               GO

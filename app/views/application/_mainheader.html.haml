@@ -2,23 +2,23 @@
   .container
     .row
       .top_left.col-md-6.col-sm-6.col-xs-6.pull-left
-        .language_currency
-          %form.language{:action => "#", :method => "post"}
-            .btn-group
-              %button.btn-link.dropdown-toggle{"data-toggle" => "dropdown"}
-                %strong
-                  = image_tag "icon/gb.png" , title: "English" , alt:"English"
-                  %b Langue
-                %i.fa.fa-angle-down
-              %ul.dropdown-menu
-                %li
-                  %a{:href => "#"}
-                    = image_tag "icon/de.png" , title: "Deutsch" , alt:"Deutsch"
-                    %span Deutsch
-                %li
-                  %a{:href => "#"}
-                    = image_tag "icon/gb.png" , title: "English" , alt:"English"
-                    %span English
+        -#.language_currency
+        -#  %form.language{:action => "#", :method => "post"}
+        -#    .btn-group
+        -#      %button.btn-link.dropdown-toggle{"data-toggle" => "dropdown"}
+        -#        %strong
+        -#          = image_tag "icon/gb.png" , title: "English" , alt:"English"
+        -#          %b Langue
+        -#        %i.fa.fa-angle-down
+        -#      %ul.dropdown-menu
+        -#        %li
+        -#          %a{:href => "#"}
+        -#            = image_tag "icon/de.png" , title: "Deutsch" , alt:"Deutsch"
+        -#            %span Deutsch
+        -#        %li
+        -#          %a{:href => "#"}
+        -#            = image_tag "icon/gb.png" , title: "English" , alt:"English"
+        -#            %span English
       .top_right.col-md-6.col-sm-6.col-xs-.pull-right
         .footer-social
           %ul
@@ -61,7 +61,8 @@
                   %i.pe-7s-like
                   %span.messunits #{current_user.units} Unités
                   %a.btn.btn-default{"data-toggle" => "modal", :href => "#credit-modal"}
-                    %span.fa.fa-plus
+                    %span.fa.fa-shopping-cart
+                    acheter
               %li
                 %a.dropdown-toggle.my_account{"data-toggle" => "dropdown", :href => "#", :title => "My Account"}
                   %i.fa.fa-lock

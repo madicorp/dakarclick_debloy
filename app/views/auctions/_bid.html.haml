@@ -6,9 +6,9 @@
   %p
     .cart-btn.nopad
       -if current_user
-        %a{:title => "GO" , id: "send_bid_btn" , class: "customenc", style: "cursor:pointer"}
+        %button{:title => "GO" , id: "send_bid_btn" , class: "btn btngo customenc", "data-auction" =>"#{@auction.id}"}
           GO
       -else
-        %a{:href => "#login-modal", :title => "GO" , "data-toggle" => "modal" , class: "customenc"}
+        %button{"data-target" => "#login-modal", :title => "GO" , "data-toggle" => "modal" , class: "btn btngo customenc"}
           GO
 = javascript_include_tag "auction.bid"

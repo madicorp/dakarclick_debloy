@@ -7,7 +7,7 @@ class PlaceBid
         @auction = Auction.find @auction_id
         @user = User.find @user_id
 
-        if auction.ended? && auction.top_bid.user_id == @user_id
+        if auction.ended?
             @status = :won
             return false
         end

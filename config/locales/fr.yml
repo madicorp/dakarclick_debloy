@@ -370,6 +370,10 @@ fr:
         title: "Administration"
         menu: "Administration"
         breadcrumb: "Administration"
+      charts:
+        title: "Tableau de bord"
+        menu: "Tableau de bord"
+        breadcrumb: "Tableau de bord"
       index:
         title: "Listing des %{model_label_plural}"
         menu: "Liste"
