@@ -19,6 +19,7 @@ fr:
       invalid_token: "Jeton d'authentification incorrect."
       timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
       inactive: "Votre compte n'est pas encore activé."
+      already_authenticated: "Vous est déjà connecté ."
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
@@ -32,6 +33,8 @@ fr:
       signed_up: "Votre inscription est enregistrée. Si demandé, un courriel de confirmation vous a été envoyé."
       updated: "Votre mise à jour a été prise en compte."
       destroyed: "Votre compte a été supprimé. Nous espérons vous revoir bientôt."
+      user:
+        signed_up_but_unconfirmed: "Votre inscription est enregistrée. Un courriel de confirmation vous a été envoyé."
     unlocks:
       send_instructions: "Vous allez recevoir un courriel avec des instructions pour déverrouiller votre compte."
       unlocked: "Votre compte est déverrouillé. Vous êtes maintenant connecté."

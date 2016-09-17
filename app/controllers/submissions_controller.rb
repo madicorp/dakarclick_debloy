@@ -6,11 +6,11 @@ class SubmissionsController < ApplicationController
   def create
       @submission = Submission.new(submission_params)
       if @submission.save
-          flash[:success] = "The submission was added!"
-          render 'submissions/create'
+          flash[:success] = "Merci pour votre proposition, nous en tiendrons compte ! :)"
       else
-          render 'submissions/index'
+          flash[:success] = "Une erreur s'est produite veuillez réessayer ultérieurement ."
       end
+      render root_path
   end
 
   private

@@ -69,7 +69,7 @@
             auction_type = $(this).data("auctiontype")
             if auction_type == "active"
               $.post("/auctions/ended", {"auction_id" : auction_id, "auction_type": auction_type}).done (data) ->
-                toastr.info('The Auction '+data.auction+' is ended , '+data.winner+' Wins !')
+                toastr.info('L\'enchère '+data.auction+' est terminée , '+data.winner+' gagne !')
         }
       if (diff / 1000) > 30
         $('.auction'+data.auction_id).find("[data-countdown]").children("div").each ->

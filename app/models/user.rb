@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :orders
-  has_many :robots
-  has_many :comments, dependent: :delete_all
-  has_many :submissions
+  has_many :orders, dependent: :nullify
+  has_many :robots, dependent: :nullify
+  has_many :comments, dependent: :destroy
+  has_many :submissions, dependent: :nullify
   validates_presence_of :username
   validates_uniqueness_of :username
   # Include default devise modules. Others available are:

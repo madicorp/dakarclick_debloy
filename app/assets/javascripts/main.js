@@ -90,7 +90,7 @@ $(document).on('ready page:load', function(event) {
                 var auction_type = this.auctiontype;
                 if (auction_type == "active"){
                     $.post("/auctions/ended", {"auction_id" : auction_id, "auction_type": auction_type}).done(function (data) {
-                        toastr.info('The Auction '+data.auction+' is ended , '+data.winner+' Wins !');
+                        toastr.info('L\'enchère '+data.auction+' est terminée , '+data.winner+' gagne !');
                     });
                 }
             }

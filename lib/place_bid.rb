@@ -15,8 +15,8 @@ class PlaceBid
         if user.units >= 1
             auction.value += auction.valuetoinc
             puts "#{auction.auction_close - Time.now}"
-            if (auction.auction_close - Time.now)< 60
-              auction.auction_close += 30.seconds
+            if (auction.auction_close - Time.now)< 30
+              auction.auction_close += @auction.timetoinc.seconds
             end
             user.units -= 1
             @value = auction.value
@@ -157,3 +157,4 @@ class PlaceBid
         end
     end
 end
+
