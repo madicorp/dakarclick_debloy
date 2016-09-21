@@ -9,7 +9,7 @@
       port = ':' + location.port
       if (location.port == "undefined" || location.port == '')
         port = ''
-      @socket =  new ReconnectingWebSocket(protocol + hostname + port,null,{debug: true, reconnectInterval: 1000});
+      @socket =  new ReconnectingWebSocket(protocol + hostname + port);
       @socket.onclose = (e) ->
         console.log("Refresh Websocket !")
       self = @
