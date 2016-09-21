@@ -11,7 +11,7 @@
         port = ''
       @socket =  new ReconnectingWebSocket(protocol + hostname + port,null,{debug: true, reconnectInterval: 1000});
       @socket.onclose = (e) ->
-        @socket.refresh()
+        console.log("Refresh Websocket !")
       self = @
       @socket.onmessage = (e) ->
         console.log e
