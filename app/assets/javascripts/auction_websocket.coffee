@@ -75,7 +75,6 @@
         }
       if (diff / 1000) > 30
         $('.auction'+data.auction_id).find("[data-countdown]").children("div").each ->
-          console.log($(this).html())
           $(this).removeClass('timeTo-alert')
       user_id =  parseInt(sessionStorage.getItem('ours'))
       if(data.user_id == user_id)

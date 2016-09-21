@@ -10,10 +10,10 @@
       if (location.port == "undefined" || location.port == '')
         port = ''
       @socket =  new ReconnectingWebSocket(protocol + hostname + port)
-      @socket.onclose = (e) ->
+      @socket.onclose = (e)->
         console.log("Refresh Websocket !")
       self = @
-      @socket.onmessage = (e) ->
+      @socket.onmessage = (e)->
         console.log e
         data = ""
         try
