@@ -26,6 +26,7 @@
 //= require toastr
 //= require jquery.fancybox.pack
 //= require jquery.elevateZoom-3.0.8.min
+//= require reconnecting-websocket.min
 //= require turbolinks
 //= require card
 //= require main
