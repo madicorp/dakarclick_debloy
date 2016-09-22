@@ -4,13 +4,14 @@ class SubmissionsController < ApplicationController
   end
 
   def create
+    redirect_to root_path if current_user.nil?
       @submission = Submission.new(submission_params)
       if @submission.save
           flash[:success] = "Merci pour votre proposition, nous en tiendrons compte ! :)"
       else
           flash[:success] = "Une erreur s'est produite veuillez réessayer ultérieurement ."
       end
-      render root_path
+      redirect_to root_path
   end
 
   private
