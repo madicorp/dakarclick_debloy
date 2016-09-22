@@ -9,7 +9,8 @@
       .slider-direction{:id => slider.created_at.to_i, :class => ("t-cn" if index == 0)}
         / layer 1
         .layer10
-          =image_tag slider.content
+          -unless slider.content.nil?
+            =image_tag slider.content
           -unless slider.link.nil? || slider.link == ""
             .rm-btn
               %a{:href => slider.link} Read More
