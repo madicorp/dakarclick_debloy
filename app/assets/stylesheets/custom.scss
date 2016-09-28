@@ -960,3 +960,11 @@ figure {
     font-family: "Comic Sans MS";
     font-weight: bold;
 }
+
+.breadcumb-area {
+  background: rgba(0, 0, 0, 0) image_url("bg_breadcrumb.png") no-repeat scroll 50% 0 / cover;
+  clear: both;
+  margin-bottom: 60px;
+  margin-top: -1px;
+  padding: 115px 10px 55px;
+}

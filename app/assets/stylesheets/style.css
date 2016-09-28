@@ -2432,13 +2432,7 @@ h3.widget-title-modal {
     content: ">";
     padding: 0 5px;
 }
-.breadcumb-area {
-    background: rgba(0, 0, 0, 0) url("bg_breadcrumb.png") no-repeat scroll 50% 0 / cover;
-    clear: both;
-    margin-bottom: 60px;
-    margin-top: -1px;
-    padding: 115px 10px 55px;
-}
+
 /*----------------------------------------*/
 /*  14. Shop Page
 /*----------------------------------------*/
