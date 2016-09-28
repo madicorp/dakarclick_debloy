@@ -6,7 +6,8 @@
           %h1 Enchères en cours
     .row.row-padd
       -@auctions = Auction.active(8,'created_at DESC') if current_page?(root_url)
-      -@auctions.each do |auction|
-        - @auction = auction
-        =render "auctions/single_preview"
+      -unless @auctions.nil?
+        -@auctions.each do |auction|
+          - @auction = auction
+          =render "auctions/single_preview"
     %input#user_id{:type => "hidden" , :value => (current_user.id unless current_user.nil?) }
