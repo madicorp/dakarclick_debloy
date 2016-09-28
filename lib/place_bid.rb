@@ -12,7 +12,7 @@ class PlaceBid
             return false
         end
 
-        if user.units >= 1
+        if !user.nil? && !user.units.nil? && user.units >= 1
             auction.value += auction.valuetoinc
             puts "#{auction.auction_close - Time.now}"
             if (auction.auction_close - Time.now)< 30
