@@ -6,4 +6,8 @@ class AdminMailer < ApplicationMailer
     @user = user
     mail(subject: "New User Signup: #{@user.email}")
   end
+  def auction_ended auction
+    @auction = auction
+    mail(subject: "Auction Ended:")
+  end
 end

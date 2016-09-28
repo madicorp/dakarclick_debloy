@@ -100,12 +100,13 @@ $(document).on('ready page:load', function(event) {
 
 
     $(".slide-auction-closed" ).owlCarousel({
-        items:1,
-        loop:true,
-        autoplay:true,
-        autoplayTimeout:2000,
-        autoplayHoverPause:true,
-        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+        autoPlay: true,
+        slideSpeed:2000,
+        pagination:false,
+        navigation:true,
+        items: 1,
+        /* transitionStyle : "fade", */    /* [This code for animation ] */
+        navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
     });
 
 
