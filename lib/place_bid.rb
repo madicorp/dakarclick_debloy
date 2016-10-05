@@ -34,7 +34,11 @@ class PlaceBid
             #     return false
         end
 
-        bid = auction.bids.build value: @value, user_id: @user_id
+        bid_id = ('99' + auction.id.to_s + @user_id.to_s).to_i
+        bid = Bid.exists?(bid_id) ? Bid.find(bid_id) : Bid.new(:id => bid_id)
+        bid.auction_id = auction.id
+        bid.value = @value
+        bid.user_id = @user_id
 
         if bid.save
             return true
