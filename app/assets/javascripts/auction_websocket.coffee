@@ -58,10 +58,10 @@
       timer = $('.auction'+data.auction_id).find('.timer_alert')
       $(timer).data("countdown", data.auction_close)
       finalDate = data.auction_close
-      finish = new Date(new Date(finalDate))
-      now = new Date
-      diff = finish.getTime() - now.getTime()
-      seconds = (new Date(new Date(finalDate)) - ServerDate) / 1000
+      finish = moment(new Date(finalDate))
+      startTime = new Date(ServerDate)
+      seconds = moment.duration(finish.diff(startTime)).seconds()
+     
       $(timer).timeTo {
           seconds: seconds,
           displayDays: 2,
