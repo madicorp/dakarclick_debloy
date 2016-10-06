@@ -61,8 +61,9 @@
       finish = new Date(new Date(finalDate))
       now = new Date
       diff = finish.getTime() - now.getTime()
+      seconds = (new Date(new Date(finalDate)) - ServerDate) / 1000
       $(timer).timeTo {
-          seconds: (new Date(new Date(finalDate)) - ServerDate) / 1000,
+          seconds: seconds,
           displayDays: 2,
           fontSize: 20,
           countdownAlertLimit: 30,

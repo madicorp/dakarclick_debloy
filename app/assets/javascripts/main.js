@@ -79,9 +79,10 @@ $(document).on('ready page:load', function(event) {
      Countdown active
      ------------------------------ */
     $('[data-countdown]').each(function() {
-        finalDate = $(this).data('countdown');
+        var finalDate = $(this).data('countdown');
+        var seconds = (new Date(moment(finalDate)) - ServerDate) / 1000;
         $(this).timeTo({
-            seconds: (new Date(moment(finalDate)) - ServerDate) / 1000,
+            seconds: seconds,
             displayDays: 2,
             fontSize: 20,
             countdownAlertLimit: 30,
