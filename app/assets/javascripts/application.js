@@ -21,6 +21,7 @@
 //= require jquery.nivo.slider
 //= require wow.min
 //= require owl.carousel.min
+//= require serverdate
 //= require jquery.time-to.min
 //= require moment
 //= require toastr
