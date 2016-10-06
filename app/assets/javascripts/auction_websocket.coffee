@@ -60,7 +60,7 @@
       finalDate = data.auction_close
       finish = moment(finalDate)
       startTime = new Date(ServerDate)
-      seconds = moment.duration(finish.diff(startTime)).seconds()
+      seconds = finish.diff(startTime, 'seconds')
 
       $(timer).timeTo {
           seconds: seconds,

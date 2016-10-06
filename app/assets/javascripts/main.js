@@ -82,7 +82,7 @@ $(document).on('ready page:load', function(event) {
         var finalDate = $(this).data('countdown');
         var finish = moment(finalDate);
         var startTime = new Date(ServerDate);
-        var seconds = moment.duration(finish.diff(startTime)).seconds();
+        var seconds = finish.diff(startTime, 'seconds');
 
         $(this).timeTo({
             seconds: seconds,
