@@ -80,7 +80,7 @@ $(document).on('ready page:load', function(event) {
      ------------------------------ */
     $('[data-countdown]').each(function() {
         var finalDate = $(this).data('countdown');
-        var finish = moment(new Date(finalDate));
+        var finish = moment(finalDate);
         var startTime = new Date(ServerDate);
         var seconds = moment.duration(finish.diff(startTime)).seconds();
 
