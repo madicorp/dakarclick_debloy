@@ -62,7 +62,7 @@
       now = new Date
       diff = finish.getTime() - now.getTime()
       $(timer).timeTo {
-          timeTo: new Date(new Date(finalDate)) - ServerDate,
+          seconds: (new Date(new Date(finalDate)) - ServerDate) / 1000,
           displayDays: 2,
           fontSize: 20,
           countdownAlertLimit: 30,

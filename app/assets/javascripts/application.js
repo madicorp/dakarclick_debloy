@@ -22,7 +22,7 @@
 //= require wow.min
 //= require owl.carousel.min
 //= require serverdate
-//= require jquery.time-to.min
+//= require jquery-time-to
 //= require moment
 //= require toastr
 //= require jquery.fancybox.pack
