@@ -62,7 +62,7 @@
       now = new Date
       diff = finish.getTime() - now.getTime()
       $(timer).timeTo {
-          timeTo: ServerDate - new Date(new Date(finalDate)),
+          timeTo: new Date(new Date(finalDate)) - ServerDate,
           displayDays: 2,
           fontSize: 20,
           countdownAlertLimit: 30,

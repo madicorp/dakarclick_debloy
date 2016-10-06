@@ -81,7 +81,7 @@ $(document).on('ready page:load', function(event) {
     $('[data-countdown]').each(function() {
         finalDate = $(this).data('countdown');
         $(this).timeTo({
-            timeTo: ServerDate - new Date(moment(finalDate)),
+            timeTo: new Date(moment(finalDate)) - ServerDate,
             displayDays: 2,
             fontSize: 20,
             countdownAlertLimit: 30,
